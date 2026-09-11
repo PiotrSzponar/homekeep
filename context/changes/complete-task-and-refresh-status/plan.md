@@ -288,15 +288,15 @@ Automated verification on 2026-09-11: `npm run test`, `npm run lint`, and `npm r
 
 #### Automated
 
-- [x] 3.1 `npm run test` passes.
-- [x] 3.2 `npm run lint` passes.
-- [x] 3.3 `npm run build` passes.
-- [x] 3.4 Tests cover any newly exported date-only helper used by the completion route.
+- [x] 3.1 `npm run test` passes. - 4f83443
+- [x] 3.2 `npm run lint` passes. - 4f83443
+- [x] 3.3 `npm run build` passes. - 4f83443
+- [x] 3.4 Tests cover any newly exported date-only helper used by the completion route. - 4f83443
 
 #### Manual
 
-- [x] 3.5 Signed-in local or production smoke confirms marking a task completed updates `Last done` to the app's current UTC date.
-- [x] 3.6 Smoke confirms the task's `Next due` and status update after redirect.
-- [x] 3.7 Smoke confirms repeat completion on the same day remains successful.
-- [x] 3.8 Smoke confirms an inaccessible or invalid task ID shows a generic dashboard error.
-- [x] 3.9 If a second account is available, smoke confirms one account cannot complete another account's task.
+- [x] 3.5 Signed-in local or production smoke confirms marking a task completed updates `Last done` to the app's current UTC date. - 4f83443
+- [x] 3.6 Smoke confirms the task's `Next due` and status update after redirect. - 4f83443
+- [x] 3.7 Smoke confirms repeat completion on the same day remains successful. - 4f83443
+- [x] 3.8 Smoke confirms an inaccessible or invalid task ID shows a generic dashboard error. - 4f83443
+- [x] 3.9 If a second account is available, smoke confirms one account cannot complete another account's task. - 4f83443
