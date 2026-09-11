@@ -251,12 +251,12 @@ Phase 3 manual gate result on 2026-09-11: local Supabase was unavailable, so own
 
 #### Automated
 
-- [x] 3.1 `npm run test` passes.
-- [x] 3.2 `npm run lint` passes.
-- [x] 3.3 `npm run build` passes.
-- [x] 3.4 Migration contract check confirms table, positive interval constraint, RLS, and four policies are present.
+- [x] 3.1 `npm run test` passes. - 875735f
+- [x] 3.2 `npm run lint` passes. - 875735f
+- [x] 3.3 `npm run build` passes. - 875735f
+- [x] 3.4 Migration contract check confirms table, positive interval constraint, RLS, and four policies are present. - 875735f
 
 #### Manual
 
 - [ ] 3.5 If local Supabase is available, a signed-in user can only query rows whose `user_id` is their own when exercising the migration manually.
-- [x] 3.6 If local Supabase is unavailable, the limitation is recorded in the change notes before implementation is archived.
+- [x] 3.6 If local Supabase is unavailable, the limitation is recorded in the change notes before implementation is archived. - 875735f
