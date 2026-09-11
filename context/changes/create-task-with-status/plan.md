@@ -303,14 +303,14 @@ Phase 3 production smoke status on 2026-09-11: code verification is local-only u
 
 #### Automated
 
-- [x] 3.1 `npm run test` passes.
-- [x] 3.2 `npm run lint` passes.
-- [x] 3.3 `npm run build` passes.
-- [x] 3.4 Tests cover due-first ordering and display item derivation.
+- [x] 3.1 `npm run test` passes. - 9ca6c63
+- [x] 3.2 `npm run lint` passes. - 9ca6c63
+- [x] 3.3 `npm run build` passes. - 9ca6c63
+- [x] 3.4 Tests cover due-first ordering and display item derivation. - 9ca6c63
 
 #### Manual
 
-- [x] 3.5 Hosted Supabase has the F-01 `maintenance_tasks` migration applied before production S-01 smoke.
-- [x] 3.6 On the production Worker or local dev server, a signed-in user can create a task and see it after redirect.
-- [x] 3.7 Invalid create submission returns to the dashboard with a visible error.
-- [x] 3.8 A second signed-in account cannot see the first account's task, if a second test account is available.
+- [x] 3.5 Hosted Supabase has the F-01 `maintenance_tasks` migration applied before production S-01 smoke. - 9ca6c63
+- [x] 3.6 On the production Worker or local dev server, a signed-in user can create a task and see it after redirect. - 9ca6c63
+- [x] 3.7 Invalid create submission returns to the dashboard with a visible error. - 9ca6c63
+- [x] 3.8 A second signed-in account cannot see the first account's task, if a second test account is available. - 9ca6c63
