@@ -195,6 +195,16 @@ Phase 1 hosted Supabase apply gate: apply `supabase/migrations/20260911130500_cr
 
 Phase 1 manual gate result on 2026-09-11: hosted Supabase migration is not applied yet. Production task slices remain blocked until this migration is applied remotely.
 
+Phase 3 migration contract check command:
+
+```powershell
+rg -n "create table if not exists public\.maintenance_tasks|user_id uuid not null references auth\.users\(id\)|recurrence_interval_days integer not null check \(recurrence_interval_days > 0\)|alter table public\.maintenance_tasks enable row level security|maintenance_tasks_select_own|maintenance_tasks_insert_own|maintenance_tasks_update_own|maintenance_tasks_delete_own|auth\.uid\(\)" supabase/migrations/20260911130500_create_maintenance_tasks.sql
+```
+
+The command must return matches for the table, owner foreign key, positive interval constraint, RLS enablement, all four owner-only policies, and `auth.uid()` predicates. If local Supabase is unavailable, this SQL assertion is the repeatable contract check for the migration shape; it does not prove hosted database state.
+
+Phase 3 manual gate result on 2026-09-11: local Supabase was unavailable, so owner-only behavior was not exercised with two local signed-in users. The repeatable SQL assertion above verifies the source-controlled migration shape; live RLS behavior still depends on applying the migration to a Supabase environment and testing authenticated users there.
+
 ## References
 
 - Change identity: `context/changes/owned-task-storage-contract/change.md`
@@ -241,12 +251,12 @@ Phase 1 manual gate result on 2026-09-11: hosted Supabase migration is not appli
 
 #### Automated
 
-- [ ] 3.1 `npm run test` passes.
-- [ ] 3.2 `npm run lint` passes.
-- [ ] 3.3 `npm run build` passes.
-- [ ] 3.4 Migration contract check confirms table, positive interval constraint, RLS, and four policies are present.
+- [x] 3.1 `npm run test` passes.
+- [x] 3.2 `npm run lint` passes.
+- [x] 3.3 `npm run build` passes.
+- [x] 3.4 Migration contract check confirms table, positive interval constraint, RLS, and four policies are present.
 
 #### Manual
 
 - [ ] 3.5 If local Supabase is available, a signed-in user can only query rows whose `user_id` is their own when exercising the migration manually.
-- [ ] 3.6 If local Supabase is unavailable, the limitation is recorded in the change notes before implementation is archived.
+- [x] 3.6 If local Supabase is unavailable, the limitation is recorded in the change notes before implementation is archived.
