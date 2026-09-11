@@ -1,10 +1,10 @@
 ---
 change_id: owned-task-storage-contract
 title: Establish owned task storage contract
-status: implemented
+status: archived
 created: 2026-09-11
 updated: 2026-09-11
-archived_at: null
+archived_at: 2026-09-11T12:08:49Z
 ---
 
 ## Notes
