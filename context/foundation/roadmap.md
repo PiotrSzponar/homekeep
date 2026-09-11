@@ -42,7 +42,7 @@ North star here means the smallest end-to-end slice whose successful delivery pr
 | ID | Change ID | Outcome (user can ...) | Prerequisites | PRD refs | Status |
 | --- | --- | --- | --- | --- | --- |
 | F-01 | owned-task-storage-contract | (foundation) account-scoped task persistence contract exists for vertical task slices | - | FR-006, Access Control, NFR account access | done |
-| S-01 | create-task-with-status | create a maintenance task and immediately see next due date plus current status | F-01 | US-01, FR-001, FR-002, FR-006, Business Logic, NFR task visibility | proposed |
+| S-01 | create-task-with-status | create a maintenance task and immediately see next due date plus current status | F-01 | US-01, FR-001, FR-002, FR-006, Business Logic, NFR task visibility | in-progress |
 | S-02 | complete-task-and-refresh-status | mark a saved maintenance task as completed and see last completed date, next due date, and status update | S-01 | FR-005, FR-002, FR-006, Business Logic, NFR task visibility | proposed |
 | S-03 | edit-task-and-recalculate-status | edit an existing maintenance task and see the recalculated next due date and status | S-01 | FR-003, FR-002, FR-006, Business Logic, NFR task visibility | proposed |
 | S-04 | delete-task | delete an existing maintenance task from their own task list | S-01 | FR-004, FR-006, Access Control | proposed |
@@ -86,7 +86,7 @@ Foundations below assume these are present and do NOT re-scaffold them.
 - **Blockers:** -
 - **Unknowns:** -
 - **Risk:** This is the first user-visible proof of the product; the risk is hiding calculation or ownership mistakes inside a flow that appears to save successfully.
-- **Status:** proposed
+- **Status:** in-progress
 
 ### S-02: Mark task completed
 
@@ -129,7 +129,7 @@ Foundations below assume these are present and do NOT re-scaffold them.
 | Roadmap ID | Change ID | Suggested issue title | Ready for `/10x-plan` | Notes |
 | --- | --- | --- | --- | --- |
 | F-01 | owned-task-storage-contract | Establish owned task storage contract | yes | Run `/10x-plan owned-task-storage-contract` |
-| S-01 | create-task-with-status | Create task and show calculated status | no | Wait for F-01 |
+| S-01 | create-task-with-status | Create task and show calculated status | yes | Run `/10x-plan create-task-with-status` |
 | S-02 | complete-task-and-refresh-status | Mark task completed and refresh status | no | Wait for S-01 |
 | S-03 | edit-task-and-recalculate-status | Edit task and recalculate status | no | Wait for S-01 |
 | S-04 | delete-task | Delete task from own list | no | Wait for S-01 |
