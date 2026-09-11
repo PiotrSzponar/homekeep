@@ -86,18 +86,22 @@ export interface MaintenanceTaskDatabase {
 const DATE_ONLY_PATTERN = /^(\d{4})-(\d{2})-(\d{2})$/;
 const MS_PER_DAY = 24 * 60 * 60 * 1000;
 
+export function formatUtcDateOnly(date = new Date()): string {
+  return date.toISOString().slice(0, 10);
+}
+
 export function computeNextDueDate(lastCompletedDate: string, recurrenceIntervalDays: number): string {
   assertPositiveRecurrenceInterval(recurrenceIntervalDays);
 
   const completedAt = parseDateOnly(lastCompletedDate);
   completedAt.setUTCDate(completedAt.getUTCDate() + recurrenceIntervalDays);
 
-  return formatDateOnly(completedAt);
+  return formatUtcDateOnly(completedAt);
 }
 
 export function classifyMaintenanceTaskStatus(
   nextDueDate: string,
-  todayDate = formatDateOnly(new Date()),
+  todayDate = formatUtcDateOnly(),
 ): MaintenanceTaskStatus {
   const daysUntilDue = diffDateOnlyInDays(todayDate, nextDueDate);
 
@@ -114,7 +118,7 @@ export function classifyMaintenanceTaskStatus(
 
 export function deriveMaintenanceTaskState(
   task: Pick<MaintenanceTaskRow, "last_completed_date" | "recurrence_interval_days">,
-  todayDate = formatDateOnly(new Date()),
+  todayDate = formatUtcDateOnly(),
 ): MaintenanceTaskDerivedState {
   const nextDueDate = computeNextDueDate(task.last_completed_date, task.recurrence_interval_days);
 
@@ -126,7 +130,7 @@ export function deriveMaintenanceTaskState(
 
 export function withMaintenanceTaskDerivedState(
   task: MaintenanceTaskRow,
-  todayDate = formatDateOnly(new Date()),
+  todayDate = formatUtcDateOnly(),
 ): MaintenanceTaskWithDerivedState {
   return {
     ...task,
@@ -136,7 +140,7 @@ export function withMaintenanceTaskDerivedState(
 
 export function toMaintenanceTaskDisplayItems(
   tasks: MaintenanceTaskRow[],
-  todayDate = formatDateOnly(new Date()),
+  todayDate = formatUtcDateOnly(),
 ): MaintenanceTaskDisplayItem[] {
   return tasks.map((task) => toMaintenanceTaskDisplayItem(task, todayDate)).sort(compareMaintenanceTaskDisplayItems);
 }
@@ -268,7 +272,7 @@ function parseDateOnly(date: string): Date {
   const [, year, month, day] = match;
   const parsed = new Date(Date.UTC(Number(year), Number(month) - 1, Number(day)));
 
-  if (formatDateOnly(parsed) !== date) {
+  if (formatUtcDateOnly(parsed) !== date) {
     throw new RangeError("Date must be a valid calendar date.");
   }
 
@@ -282,8 +286,4 @@ function isDateOnly(date: string): boolean {
   } catch {
     return false;
   }
-}
-
-function formatDateOnly(date: Date): string {
-  return date.toISOString().slice(0, 10);
 }
