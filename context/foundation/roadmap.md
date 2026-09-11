@@ -136,7 +136,7 @@ Foundations below assume these are present and do NOT re-scaffold them.
 
 ## Open Roadmap Questions
 
-- **F-01: (foundation) account-scoped task persistence contract exists so each vertical task slice can store, read, and verify only the signed-in homeowner's own tasks.** - Archived 2026-09-11 -> `context/archive/2026-09-11-owned-task-storage-contract/`. Lesson: -.
+None.
 
 ## Parked
 
@@ -152,4 +152,4 @@ None.
 
 ## Done
 
-None.
+- **F-01: (foundation) account-scoped task persistence contract exists so each vertical task slice can store, read, and verify only the signed-in homeowner's own tasks.** - Archived 2026-09-11 -> `context/archive/2026-09-11-owned-task-storage-contract/`. Lesson: -.
