@@ -9,6 +9,7 @@ import { createClient } from "@/lib/supabase";
 const { user } = Astro.locals;
 const supabase = createClient(Astro.request.headers, Astro.cookies);
 const taskCreated = Astro.url.searchParams.get("taskCreated") === "1";
+const taskCompleted = Astro.url.searchParams.get("taskCompleted") === "1";
 const taskError = Astro.url.searchParams.get("taskError");
 
 let tasks: MaintenanceTaskDisplayItem[] = [];
@@ -55,6 +56,14 @@ if (supabase && user?.id) {
         taskCreated && (
           <div class="rounded-md border border-emerald-500/30 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-100">
             Task saved. The list below reflects the latest data from Supabase.
+          </div>
+        )
+      }
+
+      {
+        taskCompleted && (
+          <div class="rounded-md border border-emerald-500/30 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-100">
+            Task marked completed. The list below reflects the latest data from Supabase.
           </div>
         )
       }

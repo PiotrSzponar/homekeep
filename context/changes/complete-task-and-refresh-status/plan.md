@@ -249,36 +249,36 @@ This slice does not add or change database schema. It depends on the existing `m
 
 #### Automated
 
-- [x] 1.1 `src/pages/api/tasks/complete.ts` exists and exports a POST handler.
-- [x] 1.2 The route calls `updateMaintenanceTask` with `context.locals.user.id`, not a browser-provided owner value.
-- [x] 1.3 The route does not read completion date, next due date, or status from form data.
-- [x] 1.4 Completion success redirects to `/dashboard?taskCompleted=1`.
-- [x] 1.5 Completion failure redirects to `/dashboard?taskError=<encoded generic message>`.
-- [x] 1.6 `npm run lint` passes.
-- [x] 1.7 `npm run build` passes.
+- [x] 1.1 `src/pages/api/tasks/complete.ts` exists and exports a POST handler. - 3d8def9
+- [x] 1.2 The route calls `updateMaintenanceTask` with `context.locals.user.id`, not a browser-provided owner value. - 3d8def9
+- [x] 1.3 The route does not read completion date, next due date, or status from form data. - 3d8def9
+- [x] 1.4 Completion success redirects to `/dashboard?taskCompleted=1`. - 3d8def9
+- [x] 1.5 Completion failure redirects to `/dashboard?taskError=<encoded generic message>`. - 3d8def9
+- [x] 1.6 `npm run lint` passes. - 3d8def9
+- [x] 1.7 `npm run build` passes. - 3d8def9
 
 #### Manual
 
-- [x] 1.8 Review confirms an anonymous completion POST cannot update a task.
-- [x] 1.9 Review confirms a forged task ID owned by another account receives only a generic dashboard error path.
+- [x] 1.8 Review confirms an anonymous completion POST cannot update a task. - 3d8def9
+- [x] 1.9 Review confirms a forged task ID owned by another account receives only a generic dashboard error path. - 3d8def9
 
 ### Phase 2: Dashboard Completion Control
 
 #### Automated
 
-- [ ] 2.1 `npm run lint` passes.
-- [ ] 2.2 `npm run build` passes.
-- [ ] 2.3 The completion form posts to `/api/tasks/complete` with only the task ID as task-specific browser input.
-- [ ] 2.4 Dashboard imports and task display still use `toMaintenanceTaskDisplayItems` rather than redefining status logic in markup.
+- [x] 2.1 `npm run lint` passes.
+- [x] 2.2 `npm run build` passes.
+- [x] 2.3 The completion form posts to `/api/tasks/complete` with only the task ID as task-specific browser input.
+- [x] 2.4 Dashboard imports and task display still use `toMaintenanceTaskDisplayItems` rather than redefining status logic in markup.
 
 #### Manual
 
-- [ ] 2.5 A signed-in user sees `Mark completed` on each saved task.
-- [ ] 2.6 Clicking `Mark completed` redirects to `/dashboard?taskCompleted=1`.
-- [ ] 2.7 The success banner appears after redirect.
-- [ ] 2.8 The completed row shows the app's current UTC date as `Last done`.
-- [ ] 2.9 The row's next due date and status reflect the app's current UTC completion date plus the existing recurrence interval.
-- [ ] 2.10 Clicking `Mark completed` again on the same day does not show an error.
+- [x] 2.5 A signed-in user sees `Mark completed` on each saved task.
+- [x] 2.6 Clicking `Mark completed` redirects to `/dashboard?taskCompleted=1`.
+- [x] 2.7 The success banner appears after redirect.
+- [x] 2.8 The completed row shows the app's current UTC date as `Last done`.
+- [x] 2.9 The row's next due date and status reflect the app's current UTC completion date plus the existing recurrence interval.
+- [x] 2.10 Clicking `Mark completed` again on the same day does not show an error.
 
 ### Phase 3: Verification And Closeout
 
