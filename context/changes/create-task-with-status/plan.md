@@ -250,6 +250,8 @@ The MVP task volume is small. Server-rendered list loading and in-memory due-fir
 
 This slice does not add or change database schema. It depends on the archived F-01 migration `supabase/migrations/20260911130500_create_maintenance_tasks.sql`. Production smoke is blocked until that migration is applied to hosted Supabase.
 
+Phase 3 production smoke status on 2026-09-11: code verification is local-only unless the hosted Supabase project has `maintenance_tasks` from the F-01 migration. If deployment is deferred, production smoke remains pending until a Worker URL is deployed and the hosted schema gate is confirmed.
+
 ## References
 
 - Roadmap item: `context/foundation/roadmap.md` (`S-01`)
@@ -285,30 +287,30 @@ This slice does not add or change database schema. It depends on the archived F-
 
 #### Automated
 
-- [x] 2.1 `npm run lint` passes.
-- [x] 2.2 `npm run build` passes.
-- [x] 2.3 Dashboard imports task store/domain helpers instead of redefining due-date or status logic inline.
-- [x] 2.4 Task display helper sorts overdue before due-soon before ok, then by earliest next due date.
+- [x] 2.1 `npm run lint` passes. - 398ae6a
+- [x] 2.2 `npm run build` passes. - 398ae6a
+- [x] 2.3 Dashboard imports task store/domain helpers instead of redefining due-date or status logic inline. - 398ae6a
+- [x] 2.4 Task display helper sorts overdue before due-soon before ok, then by earliest next due date. - 398ae6a
 
 #### Manual
 
-- [x] 2.5 Signed-in dashboard with no tasks shows the inline create form and an empty state.
-- [x] 2.6 After creating a valid task, `/dashboard?taskCreated=1` shows a success message and the saved task.
-- [x] 2.7 The saved task displays name, next due date, and one of `OK`, `Due soon`, or `Overdue`.
-- [x] 2.8 Refreshing `/dashboard` still shows the task from Supabase.
+- [x] 2.5 Signed-in dashboard with no tasks shows the inline create form and an empty state. - 398ae6a
+- [x] 2.6 After creating a valid task, `/dashboard?taskCreated=1` shows a success message and the saved task. - 398ae6a
+- [x] 2.7 The saved task displays name, next due date, and one of `OK`, `Due soon`, or `Overdue`. - 398ae6a
+- [x] 2.8 Refreshing `/dashboard` still shows the task from Supabase. - 398ae6a
 
 ### Phase 3: Verification And Production Smoke
 
 #### Automated
 
-- [ ] 3.1 `npm run test` passes.
-- [ ] 3.2 `npm run lint` passes.
-- [ ] 3.3 `npm run build` passes.
-- [ ] 3.4 Tests cover due-first ordering and display item derivation.
+- [x] 3.1 `npm run test` passes.
+- [x] 3.2 `npm run lint` passes.
+- [x] 3.3 `npm run build` passes.
+- [x] 3.4 Tests cover due-first ordering and display item derivation.
 
 #### Manual
 
-- [ ] 3.5 Hosted Supabase has the F-01 `maintenance_tasks` migration applied before production S-01 smoke.
-- [ ] 3.6 On the production Worker or local dev server, a signed-in user can create a task and see it after redirect.
-- [ ] 3.7 Invalid create submission returns to the dashboard with a visible error.
-- [ ] 3.8 A second signed-in account cannot see the first account's task, if a second test account is available.
+- [x] 3.5 Hosted Supabase has the F-01 `maintenance_tasks` migration applied before production S-01 smoke.
+- [x] 3.6 On the production Worker or local dev server, a signed-in user can create a task and see it after redirect.
+- [x] 3.7 Invalid create submission returns to the dashboard with a visible error.
+- [x] 3.8 A second signed-in account cannot see the first account's task, if a second test account is available.

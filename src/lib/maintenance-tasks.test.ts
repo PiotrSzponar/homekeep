@@ -4,6 +4,8 @@ import {
   classifyMaintenanceTaskStatus,
   computeNextDueDate,
   deriveMaintenanceTaskState,
+  type MaintenanceTaskRow,
+  toMaintenanceTaskDisplayItems,
   validateMaintenanceTaskWriteInput,
 } from "@/lib/maintenance-tasks";
 
@@ -53,4 +55,76 @@ describe("maintenance task contract", () => {
       },
     });
   });
+
+  it("maps stored task rows into display items with calculated state", () => {
+    expect(toMaintenanceTaskDisplayItems([taskRow({ last_completed_date: "2026-09-01" })], "2026-09-08")).toEqual([
+      {
+        id: "task-1",
+        name: "Task 1",
+        lastCompletedDate: "2026-09-01",
+        recurrenceIntervalDays: 14,
+        nextDueDate: "2026-09-15",
+        status: "due-soon",
+      },
+    ]);
+  });
+
+  it("sorts display items by overdue, due soon, ok, then earliest next due date", () => {
+    const displayItems = toMaintenanceTaskDisplayItems(
+      [
+        taskRow({
+          id: "ok-earlier",
+          name: "OK earlier",
+          last_completed_date: "2026-09-01",
+          recurrence_interval_days: 20,
+        }),
+        taskRow({
+          id: "due-soon-later",
+          name: "Due soon later",
+          last_completed_date: "2026-09-01",
+          recurrence_interval_days: 7,
+        }),
+        taskRow({
+          id: "overdue",
+          name: "Overdue",
+          last_completed_date: "2026-08-01",
+          recurrence_interval_days: 30,
+        }),
+        taskRow({
+          id: "due-soon-earlier",
+          name: "Due soon earlier",
+          last_completed_date: "2026-09-01",
+          recurrence_interval_days: 3,
+        }),
+        taskRow({
+          id: "ok-later",
+          name: "OK later",
+          last_completed_date: "2026-09-01",
+          recurrence_interval_days: 30,
+        }),
+      ],
+      "2026-09-01",
+    );
+
+    expect(displayItems.map((task) => task.id)).toEqual([
+      "overdue",
+      "due-soon-earlier",
+      "due-soon-later",
+      "ok-earlier",
+      "ok-later",
+    ]);
+  });
 });
+
+function taskRow(overrides: Partial<MaintenanceTaskRow> = {}): MaintenanceTaskRow {
+  return {
+    id: "task-1",
+    user_id: "user-1",
+    name: "Task 1",
+    last_completed_date: "2026-09-01",
+    recurrence_interval_days: 14,
+    created_at: "2026-09-01T00:00:00.000Z",
+    updated_at: "2026-09-01T00:00:00.000Z",
+    ...overrides,
+  };
+}
