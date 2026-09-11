@@ -4,6 +4,7 @@ import {
   classifyMaintenanceTaskStatus,
   computeNextDueDate,
   deriveMaintenanceTaskState,
+  formatUtcDateOnly,
   type MaintenanceTaskRow,
   toMaintenanceTaskDisplayItems,
   validateMaintenanceTaskWriteInput,
@@ -12,6 +13,10 @@ import {
 describe("maintenance task contract", () => {
   it("computes the next due date from the last completed date plus recurrence days", () => {
     expect(computeNextDueDate("2026-09-01", 30)).toBe("2026-10-01");
+  });
+
+  it("formats the app date as a UTC date-only value", () => {
+    expect(formatUtcDateOnly(new Date("2026-09-11T23:59:59.000Z"))).toBe("2026-09-11");
   });
 
   it("classifies a task as overdue after the next due date has passed", () => {

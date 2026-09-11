@@ -227,6 +227,10 @@ The MVP task volume is small. A single owner-scoped update followed by a dashboa
 
 This slice does not add or change database schema. It depends on the existing `maintenance_tasks` table and owner-only update policy from `supabase/migrations/20260911130500_create_maintenance_tasks.sql`.
 
+## Phase 3 Verification Notes
+
+Automated verification on 2026-09-11: `npm run test`, `npm run lint`, and `npm run build` passed. `npm run build` emitted Wrangler EPERM log-write messages under AppData while still exiting successfully. Manual verification confirmed the signed-in completion smoke path, refreshed date/status behavior, repeat same-day completion, generic invalid/inaccessible task error handling, and cross-account protection when a second account was available.
+
 ## References
 
 - Roadmap item: `context/foundation/roadmap.md` (`S-02`)
@@ -266,33 +270,33 @@ This slice does not add or change database schema. It depends on the existing `m
 
 #### Automated
 
-- [x] 2.1 `npm run lint` passes.
-- [x] 2.2 `npm run build` passes.
-- [x] 2.3 The completion form posts to `/api/tasks/complete` with only the task ID as task-specific browser input.
-- [x] 2.4 Dashboard imports and task display still use `toMaintenanceTaskDisplayItems` rather than redefining status logic in markup.
+- [x] 2.1 `npm run lint` passes. - d854df5
+- [x] 2.2 `npm run build` passes. - d854df5
+- [x] 2.3 The completion form posts to `/api/tasks/complete` with only the task ID as task-specific browser input. - d854df5
+- [x] 2.4 Dashboard imports and task display still use `toMaintenanceTaskDisplayItems` rather than redefining status logic in markup. - d854df5
 
 #### Manual
 
-- [x] 2.5 A signed-in user sees `Mark completed` on each saved task.
-- [x] 2.6 Clicking `Mark completed` redirects to `/dashboard?taskCompleted=1`.
-- [x] 2.7 The success banner appears after redirect.
-- [x] 2.8 The completed row shows the app's current UTC date as `Last done`.
-- [x] 2.9 The row's next due date and status reflect the app's current UTC completion date plus the existing recurrence interval.
-- [x] 2.10 Clicking `Mark completed` again on the same day does not show an error.
+- [x] 2.5 A signed-in user sees `Mark completed` on each saved task. - d854df5
+- [x] 2.6 Clicking `Mark completed` redirects to `/dashboard?taskCompleted=1`. - d854df5
+- [x] 2.7 The success banner appears after redirect. - d854df5
+- [x] 2.8 The completed row shows the app's current UTC date as `Last done`. - d854df5
+- [x] 2.9 The row's next due date and status reflect the app's current UTC completion date plus the existing recurrence interval. - d854df5
+- [x] 2.10 Clicking `Mark completed` again on the same day does not show an error. - d854df5
 
 ### Phase 3: Verification And Closeout
 
 #### Automated
 
-- [ ] 3.1 `npm run test` passes.
-- [ ] 3.2 `npm run lint` passes.
-- [ ] 3.3 `npm run build` passes.
-- [ ] 3.4 Tests cover any newly exported date-only helper used by the completion route.
+- [x] 3.1 `npm run test` passes.
+- [x] 3.2 `npm run lint` passes.
+- [x] 3.3 `npm run build` passes.
+- [x] 3.4 Tests cover any newly exported date-only helper used by the completion route.
 
 #### Manual
 
-- [ ] 3.5 Signed-in local or production smoke confirms marking a task completed updates `Last done` to the app's current UTC date.
-- [ ] 3.6 Smoke confirms the task's `Next due` and status update after redirect.
-- [ ] 3.7 Smoke confirms repeat completion on the same day remains successful.
-- [ ] 3.8 Smoke confirms an inaccessible or invalid task ID shows a generic dashboard error.
-- [ ] 3.9 If a second account is available, smoke confirms one account cannot complete another account's task.
+- [x] 3.5 Signed-in local or production smoke confirms marking a task completed updates `Last done` to the app's current UTC date.
+- [x] 3.6 Smoke confirms the task's `Next due` and status update after redirect.
+- [x] 3.7 Smoke confirms repeat completion on the same day remains successful.
+- [x] 3.8 Smoke confirms an inaccessible or invalid task ID shows a generic dashboard error.
+- [x] 3.9 If a second account is available, smoke confirms one account cannot complete another account's task.
