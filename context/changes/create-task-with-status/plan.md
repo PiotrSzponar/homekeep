@@ -270,32 +270,32 @@ This slice does not add or change database schema. It depends on the archived F-
 
 #### Automated
 
-- [x] 1.1 `/api/tasks/create` exists and exports a POST handler.
-- [x] 1.2 `src/middleware.ts` protects `/api/tasks`.
-- [x] 1.3 The create handler calls `createMaintenanceTask` with `context.locals.user.id`, not a form-provided owner value.
-- [x] 1.4 `npm run lint` passes.
-- [x] 1.5 `npm run build` passes.
+- [x] 1.1 `/api/tasks/create` exists and exports a POST handler. - 2f61ef0
+- [x] 1.2 `src/middleware.ts` protects `/api/tasks`. - 2f61ef0
+- [x] 1.3 The create handler calls `createMaintenanceTask` with `context.locals.user.id`, not a form-provided owner value. - 2f61ef0
+- [x] 1.4 `npm run lint` passes. - 2f61ef0
+- [x] 1.5 `npm run build` passes. - 2f61ef0
 
 #### Manual
 
-- [x] 1.6 Review confirms an anonymous task POST cannot create a task.
-- [x] 1.7 Review confirms invalid form data redirects back to `/dashboard` with a user-visible error path.
+- [x] 1.6 Review confirms an anonymous task POST cannot create a task. - 2f61ef0
+- [x] 1.7 Review confirms invalid form data redirects back to `/dashboard` with a user-visible error path. - 2f61ef0
 
 ### Phase 2: Dashboard Task Experience
 
 #### Automated
 
-- [ ] 2.1 `npm run lint` passes.
-- [ ] 2.2 `npm run build` passes.
-- [ ] 2.3 Dashboard imports task store/domain helpers instead of redefining due-date or status logic inline.
-- [ ] 2.4 Task display helper sorts overdue before due-soon before ok, then by earliest next due date.
+- [x] 2.1 `npm run lint` passes.
+- [x] 2.2 `npm run build` passes.
+- [x] 2.3 Dashboard imports task store/domain helpers instead of redefining due-date or status logic inline.
+- [x] 2.4 Task display helper sorts overdue before due-soon before ok, then by earliest next due date.
 
 #### Manual
 
-- [ ] 2.5 Signed-in dashboard with no tasks shows the inline create form and an empty state.
-- [ ] 2.6 After creating a valid task, `/dashboard?taskCreated=1` shows a success message and the saved task.
-- [ ] 2.7 The saved task displays name, next due date, and one of `OK`, `Due soon`, or `Overdue`.
-- [ ] 2.8 Refreshing `/dashboard` still shows the task from Supabase.
+- [x] 2.5 Signed-in dashboard with no tasks shows the inline create form and an empty state.
+- [x] 2.6 After creating a valid task, `/dashboard?taskCreated=1` shows a success message and the saved task.
+- [x] 2.7 The saved task displays name, next due date, and one of `OK`, `Due soon`, or `Overdue`.
+- [x] 2.8 Refreshing `/dashboard` still shows the task from Supabase.
 
 ### Phase 3: Verification And Production Smoke
 

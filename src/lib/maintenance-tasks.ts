@@ -51,6 +51,13 @@ export interface MaintenanceTaskDerivedState {
 
 export type MaintenanceTaskWithDerivedState = MaintenanceTaskRow & MaintenanceTaskDerivedState;
 
+export interface MaintenanceTaskDisplayItem extends MaintenanceTaskDerivedState {
+  id: string;
+  name: string;
+  lastCompletedDate: string;
+  recurrenceIntervalDays: number;
+}
+
 export interface MaintenanceTaskDatabase {
   public: {
     Tables: {
@@ -125,6 +132,56 @@ export function withMaintenanceTaskDerivedState(
     ...task,
     ...deriveMaintenanceTaskState(task, todayDate),
   };
+}
+
+export function toMaintenanceTaskDisplayItems(
+  tasks: MaintenanceTaskRow[],
+  todayDate = formatDateOnly(new Date()),
+): MaintenanceTaskDisplayItem[] {
+  return tasks.map((task) => toMaintenanceTaskDisplayItem(task, todayDate)).sort(compareMaintenanceTaskDisplayItems);
+}
+
+function toMaintenanceTaskDisplayItem(task: MaintenanceTaskRow, todayDate: string): MaintenanceTaskDisplayItem {
+  const derivedState = deriveMaintenanceTaskState(task, todayDate);
+
+  return {
+    id: task.id,
+    name: task.name,
+    lastCompletedDate: task.last_completed_date,
+    recurrenceIntervalDays: task.recurrence_interval_days,
+    nextDueDate: derivedState.nextDueDate,
+    status: derivedState.status,
+  };
+}
+
+function compareMaintenanceTaskDisplayItems(
+  first: MaintenanceTaskDisplayItem,
+  second: MaintenanceTaskDisplayItem,
+): number {
+  const statusDifference = statusSortOrder(first.status) - statusSortOrder(second.status);
+
+  if (statusDifference !== 0) {
+    return statusDifference;
+  }
+
+  const dateDifference = first.nextDueDate.localeCompare(second.nextDueDate);
+
+  if (dateDifference !== 0) {
+    return dateDifference;
+  }
+
+  return first.name.localeCompare(second.name);
+}
+
+function statusSortOrder(status: MaintenanceTaskStatus): number {
+  switch (status) {
+    case MAINTENANCE_TASK_STATUSES.overdue:
+      return 0;
+    case MAINTENANCE_TASK_STATUSES.dueSoon:
+      return 1;
+    case MAINTENANCE_TASK_STATUSES.ok:
+      return 2;
+  }
 }
 
 export function validateMaintenanceTaskWriteInput(

@@ -1,27 +1,88 @@
 ---
+import CreateTaskForm from "@/components/tasks/CreateTaskForm";
+import TaskList from "@/components/tasks/TaskList.astro";
 import Layout from "@/layouts/Layout.astro";
+import { toMaintenanceTaskDisplayItems, type MaintenanceTaskDisplayItem } from "@/lib/maintenance-tasks";
+import { listMaintenanceTasks, type MaintenanceTaskSupabaseClient } from "@/lib/maintenance-task-store";
+import { createClient } from "@/lib/supabase";
 
 const { user } = Astro.locals;
+const supabase = createClient(Astro.request.headers, Astro.cookies);
+const taskCreated = Astro.url.searchParams.get("taskCreated") === "1";
+const taskError = Astro.url.searchParams.get("taskError");
+
+let tasks: MaintenanceTaskDisplayItem[] = [];
+let dashboardError: string | null = null;
+
+if (supabase && user?.id) {
+  const result = await listMaintenanceTasks(supabase as MaintenanceTaskSupabaseClient, user.id);
+
+  if (result.error) {
+    dashboardError = result.error.message;
+  } else {
+    tasks = toMaintenanceTaskDisplayItems(result.data);
+  }
+} else if (!supabase) {
+  dashboardError = "Supabase is not configured.";
+}
 ---
 
 <Layout title="Dashboard">
-  <div class="bg-cosmic flex min-h-screen items-center justify-center p-4">
-    <div class="rounded-2xl border border-white/10 bg-white/10 p-8 text-center text-white backdrop-blur-xl">
-      <h1 class="mb-4 bg-gradient-to-r from-blue-200 to-purple-200 bg-clip-text text-3xl font-bold text-transparent">
-        Dashboard
-      </h1>
-      <p class="text-blue-100/80">
-        Welcome, <span class="font-semibold text-white">{user?.email}</span>
-      </p>
-      <p class="mt-2 text-sm text-blue-100/50">This page is only for authenticated users.</p>
-      <form method="POST" action="/api/auth/signout" class="mt-6">
-        <button
-          type="submit"
-          class="rounded-lg border border-white/20 bg-white/10 px-4 py-2 text-sm transition-colors hover:bg-white/20"
-        >
-          Sign out
-        </button>
-      </form>
+  <main class="min-h-screen bg-slate-950 text-slate-100">
+    <div class="mx-auto flex w-full max-w-6xl flex-col gap-8 px-4 py-8 sm:px-6 lg:px-8">
+      <header class="flex flex-col gap-4 border-b border-slate-800 pb-6 md:flex-row md:items-end md:justify-between">
+        <div>
+          <p class="text-sm font-medium text-emerald-300">HomeKeep dashboard</p>
+          <h1 class="mt-2 text-3xl font-semibold tracking-normal text-white">Maintenance tasks</h1>
+          <p class="mt-2 max-w-2xl text-sm leading-6 text-slate-300">
+            Track recurring work by last completed date and recurrence interval.
+          </p>
+        </div>
+        <div class="flex flex-col gap-3 text-sm text-slate-300 sm:flex-row sm:items-center">
+          <span class="max-w-full truncate">{user?.email}</span>
+          <form method="POST" action="/api/auth/signout">
+            <button
+              type="submit"
+              class="inline-flex h-9 items-center justify-center rounded-md border border-slate-700 px-3 text-sm font-medium text-slate-100 transition-colors hover:bg-slate-900"
+            >
+              Sign out
+            </button>
+          </form>
+        </div>
+      </header>
+
+      {
+        taskCreated && (
+          <div class="rounded-md border border-emerald-500/30 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-100">
+            Task saved. The list below reflects the latest data from Supabase.
+          </div>
+        )
+      }
+
+      {
+        taskError && (
+          <div class="rounded-md border border-rose-500/30 bg-rose-500/10 px-4 py-3 text-sm text-rose-100">
+            {taskError}
+          </div>
+        )
+      }
+
+      {
+        dashboardError && (
+          <div class="rounded-md border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-100">
+            {dashboardError}
+          </div>
+        )
+      }
+
+      <section class="grid gap-8 lg:grid-cols-[minmax(0,360px)_1fr] lg:items-start">
+        <div class="rounded-md border border-slate-800 bg-slate-900/70 p-5">
+          <h2 class="text-base font-semibold text-white">Create task</h2>
+          <CreateTaskForm />
+        </div>
+
+        <TaskList tasks={tasks} />
+      </section>
     </div>
-  </div>
+  </main>
 </Layout>
