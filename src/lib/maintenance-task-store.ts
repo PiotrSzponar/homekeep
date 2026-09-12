@@ -110,10 +110,19 @@ export async function deleteMaintenanceTask(
   userId: string,
   taskId: string,
 ): Promise<MaintenanceTaskStoreResult<null>> {
-  const { error } = await supabase.from("maintenance_tasks").delete().eq("id", taskId).eq("user_id", userId);
+  const { data, error } = await supabase
+    .from("maintenance_tasks")
+    .delete()
+    .eq("id", taskId)
+    .eq("user_id", userId)
+    .select("id");
 
   if (error) {
     return { data: null, error: { message: error.message } };
+  }
+
+  if (data.length !== 1) {
+    return { data: null, error: { message: "Unable to delete task." } };
   }
 
   return { data: null, error: null };

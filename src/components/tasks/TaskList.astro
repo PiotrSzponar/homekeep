@@ -66,15 +66,30 @@ const statusClasses: Record<MaintenanceTaskStatus, string> = {
                 >
                   {statusLabels[task.status]}
                 </span>
-                <form method="POST" action="/api/tasks/complete">
-                  <input type="hidden" name="taskId" value={task.id} />
-                  <button
-                    type="submit"
-                    class="inline-flex h-9 items-center justify-center rounded-md border border-emerald-500/40 px-3 text-sm font-medium text-emerald-100 transition-colors hover:bg-emerald-500/10 focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-slate-900 focus:outline-none"
+                <div class="flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:justify-end">
+                  <form method="POST" action="/api/tasks/complete">
+                    <input type="hidden" name="taskId" value={task.id} />
+                    <button
+                      type="submit"
+                      class="inline-flex h-9 w-full items-center justify-center rounded-md border border-emerald-500/40 px-3 text-sm font-medium text-emerald-100 transition-colors hover:bg-emerald-500/10 focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-slate-900 focus:outline-none sm:w-auto"
+                    >
+                      Mark completed
+                    </button>
+                  </form>
+                  <form
+                    method="POST"
+                    action="/api/tasks/delete"
+                    onsubmit="return confirm('Delete this task permanently?')"
                   >
-                    Mark completed
-                  </button>
-                </form>
+                    <input type="hidden" name="taskId" value={task.id} />
+                    <button
+                      type="submit"
+                      class="inline-flex h-9 w-full items-center justify-center rounded-md border border-rose-500/40 px-3 text-sm font-medium text-rose-100 transition-colors hover:bg-rose-500/10 focus:ring-2 focus:ring-rose-400 focus:ring-offset-2 focus:ring-offset-slate-900 focus:outline-none sm:w-auto"
+                    >
+                      Delete
+                    </button>
+                  </form>
+                </div>
               </div>
             </div>
           </li>
