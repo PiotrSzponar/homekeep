@@ -66,7 +66,7 @@ North star here means the smallest end-to-end slice whose successful delivery pr
 | S-02 | complete-task-and-refresh-status | mark a saved maintenance task as completed and see last completed date, next due date, and status update | S-01 | FR-005, FR-002, FR-006, Business Logic, NFR task visibility | done |
 | S-03 | edit-task-and-recalculate-status | edit an existing maintenance task and see the recalculated next due date and status | S-01 | FR-003, FR-002, FR-006, Business Logic, NFR task visibility | done |
 | S-04 | delete-task | delete an existing maintenance task from their own task list | S-01 | FR-004, FR-006, Access Control | done |
-| F-02 | shadcn-luma-design-system-foundation | (foundation) consistent HomeKeep UI primitives, theme tokens, and identity hooks exist for polish slices | - | MS-06, MS-08 | ready |
+| F-02 | shadcn-luma-design-system-foundation | (foundation) consistent HomeKeep UI primitives, theme tokens, and identity hooks exist for polish slices | - | MS-06, MS-08 | in-progress |
 | S-05 | task-form-language-and-validation-polish | create and edit tasks with consistent "Last completed" terminology, safe dates, and common repeat intervals | F-02 | US-01, FR-001, FR-003, MS-01, MS-02, MS-03 | proposed |
 | S-06 | dashboard-task-list-first-mobile-ux | scan tasks first on mobile and use clearer task actions and banners | F-02, S-05 | FR-002, FR-004, FR-005, MS-04, MS-05, MS-06 | proposed |
 | S-07 | unified-app-shell-auth-and-homepage | enter HomeKeep through dashboard or auth with consistent pages and no starter-facing branding | F-02, S-06 | FR-006, MS-07 | proposed |
@@ -121,7 +121,7 @@ Foundations below assumed these were present and did not re-scaffold them.
 - **Blockers:** -
 - **Unknowns:** -
 - **Risk:** The app already mixes starter styling with MVP dashboard styling; establishing shared tokens and primitives first reduces repeated one-off fixes.
-- **Status:** ready
+- **Status:** in-progress
 
 ## Slices
 
