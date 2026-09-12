@@ -26,3 +26,4 @@
 - Added the shadcn `empty` primitive for task-list empty states.
 - Removed the obsolete `bg-cosmic` utility and eliminated old starter palette references from React, Astro, and CSS UI files.
 - Replaced the direct `cn` package dependency with the local `cn()` helper backed by `clsx` and `tailwind-merge`.
+- Moved theme switching into the top header as a shadcn dropdown menu, following the official dark-mode toggle pattern adapted for Base UI's `render` trigger API.

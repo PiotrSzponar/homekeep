@@ -1,5 +1,5 @@
 ---
-import { CheckIcon, PencilIcon, TrashIcon } from "lucide-react";
+import { CheckIcon, PencilIcon, SaveIcon, TrashIcon } from "lucide-react";
 import { Badge } from "@/components/ui/badge";
 import { Button, buttonVariants } from "@/components/ui/button";
 import {
@@ -30,8 +30,8 @@ const statusLabels: Record<MaintenanceTaskStatus, string> = {
 };
 
 const statusVariants: Record<MaintenanceTaskStatus, "default" | "secondary" | "destructive"> = {
-  ok: "secondary",
-  "due-soon": "default",
+  ok: "outline",
+  "due-soon": "secondary",
   overdue: "destructive",
 };
 ---
@@ -90,20 +90,9 @@ const statusVariants: Record<MaintenanceTaskStatus, "default" | "secondary" | "d
                 <div class="flex flex-col gap-2 sm:flex-row sm:justify-end">
                   <form method="POST" action="/api/tasks/complete">
                     <input type="hidden" name="taskId" value={task.id} />
-                    <Button type="submit" variant="outline" size="sm" className="w-full sm:w-auto">
+                    <Button type="submit" className="w-full sm:w-auto">
                       <CheckIcon data-icon="inline-start" aria-hidden="true" />
                       Mark completed
-                    </Button>
-                  </form>
-                  <form
-                    method="POST"
-                    action="/api/tasks/delete"
-                    onsubmit="return confirm('Delete this task permanently?')"
-                  >
-                    <input type="hidden" name="taskId" value={task.id} />
-                    <Button type="submit" variant="destructive" size="sm" className="w-full sm:w-auto">
-                      <TrashIcon data-icon="inline-start" aria-hidden="true" />
-                      Delete
                     </Button>
                   </form>
                 </div>
@@ -112,13 +101,13 @@ const statusVariants: Record<MaintenanceTaskStatus, "default" | "secondary" | "d
 
                 <details>
                   <summary
-                    class:list={["cursor-pointer list-none", buttonVariants({ variant: "outline", size: "sm" })]}
+                    class:list={["list-none", buttonVariants({ variant: "outline" })]}
                   >
                     <PencilIcon data-icon="inline-start" aria-hidden="true" />
                     Edit task
                   </summary>
 
-                  <form method="POST" action="/api/tasks/update" class="mt-4">
+                  <form id="edit-task" method="POST" action="/api/tasks/update" class="mt-4">
                     <input type="hidden" name="taskId" value={task.id} />
 
                     <FieldGroup className="grid gap-4 sm:grid-cols-2">
@@ -156,10 +145,24 @@ const statusVariants: Record<MaintenanceTaskStatus, "default" | "secondary" | "d
                       </Field>
                     </FieldGroup>
 
-                    <Button type="submit" size="sm" className="mt-4">
+                  </form>
+
+                  <div class="flex justify-end gap-4 mt-4">
+                    <form
+                      method="POST"
+                      action="/api/tasks/delete"
+                      onsubmit="return confirm('Delete this task permanently?')"
+                    >
+                      <input type="hidden" name="taskId" value={task.id} />
+                      <Button type="submit" variant="destructive" className="w-full sm:w-auto">
+                        <TrashIcon />
+                      </Button>
+                    </form>
+                    <Button type="submit" form="edit-task">
+                      <SaveIcon data-icon="inline-start" aria-hidden="true" />
                       Save changes
                     </Button>
-                  </form>
+                  </div>
                 </details>
               </CardFooter>
             </Card>

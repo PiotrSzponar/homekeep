@@ -2,22 +2,18 @@ import { MonitorIcon, MoonIcon, SunIcon } from "lucide-react";
 import { useEffect, useSyncExternalStore } from "react";
 
 import { Button } from "@/components/ui/button";
-import { cn } from "@/lib/utils";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
 
 type ThemeMode = "light" | "dark" | "system";
 
 const STORAGE_KEY = "theme";
 const DARK_QUERY = "(prefers-color-scheme: dark)";
 const THEME_CHANGE_EVENT = "homekeep-theme-change";
-const MODES: {
-  value: ThemeMode;
-  label: string;
-  icon: typeof SunIcon;
-}[] = [
-  { value: "light", label: "Light", icon: SunIcon },
-  { value: "dark", label: "Dark", icon: MoonIcon },
-  { value: "system", label: "System", icon: MonitorIcon },
-];
 
 function getStoredTheme(): ThemeMode {
   if (typeof window === "undefined") {
@@ -47,7 +43,7 @@ function subscribeToTheme(onStoreChange: () => void) {
   };
 }
 
-function ThemeToggle({ className }: { className?: string }) {
+function ThemeToggle() {
   const theme = useSyncExternalStore(subscribeToTheme, getStoredTheme, getServerTheme);
 
   useEffect(() => {
@@ -75,30 +71,46 @@ function ThemeToggle({ className }: { className?: string }) {
   };
 
   return (
-    <div
-      aria-label="Theme"
-      className={cn(
-        "border-border bg-card text-card-foreground inline-flex rounded-4xl border p-1 shadow-sm",
-        className,
-      )}
-      role="group"
-    >
-      {MODES.map(({ value, label, icon: Icon }) => (
-        <Button
-          aria-label={label}
-          aria-pressed={theme === value}
-          key={value}
+    <DropdownMenu>
+      <DropdownMenuTrigger
+        render={
+          <Button variant="outline" size="icon" type="button" className="relative">
+            <SunIcon className="scale-100 rotate-0 transition-all dark:scale-0 dark:-rotate-90" />
+            <MoonIcon className="absolute scale-0 rotate-90 transition-all dark:scale-100 dark:rotate-0" />
+            <span className="sr-only">Toggle theme</span>
+          </Button>
+        }
+      />
+      <DropdownMenuContent align="end">
+        <DropdownMenuItem
           onClick={() => {
-            selectTheme(value);
+            selectTheme("light");
           }}
-          size="icon-sm"
-          type="button"
-          variant={theme === value ? "secondary" : "ghost"}
+          data-selected={theme === "light"}
         >
-          <Icon data-icon="inline-start" />
-        </Button>
-      ))}
-    </div>
+          <SunIcon data-icon="inline-start" aria-hidden="true" />
+          Light
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          onClick={() => {
+            selectTheme("dark");
+          }}
+          data-selected={theme === "dark"}
+        >
+          <MoonIcon data-icon="inline-start" aria-hidden="true" />
+          Dark
+        </DropdownMenuItem>
+        <DropdownMenuItem
+          onClick={() => {
+            selectTheme("system");
+          }}
+          data-selected={theme === "system"}
+        >
+          <MonitorIcon data-icon="inline-start" aria-hidden="true" />
+          System
+        </DropdownMenuItem>
+      </DropdownMenuContent>
+    </DropdownMenu>
   );
 }
 

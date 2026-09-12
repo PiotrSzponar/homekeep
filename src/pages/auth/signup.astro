@@ -1,6 +1,7 @@
 ---
 import AppBrand from "@/components/brand/AppBrand.astro";
 import SignUpForm from "@/components/auth/SignUpForm";
+import Topbar from "@/components/Topbar.astro";
 import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import Layout from "@/layouts/Layout.astro";
@@ -9,25 +10,22 @@ const error = Astro.url.searchParams.get("error");
 ---
 
 <Layout title="Sign up">
-  <main class="bg-background text-foreground flex min-h-screen items-center justify-center px-4 py-10">
-    <div class="flex w-full max-w-sm flex-col gap-6">
-      <AppBrand />
-
-      <Card>
-        <CardHeader>
-          <CardTitle>Create account</CardTitle>
-          <CardDescription>Start tracking recurring home maintenance.</CardDescription>
-        </CardHeader>
-        <CardContent>
-          <SignUpForm serverError={error} client:load />
-        </CardContent>
-        <CardFooter className="justify-center">
-          <p class="text-muted-foreground text-center text-sm">
-            Already have an account?
-            <a href="/auth/signin" class:list={[buttonVariants({ variant: "link", size: "sm" })]}>Sign in</a>
-          </p>
-        </CardFooter>
-      </Card>
-    </div>
+  <Topbar />
+  <main class="bg-background text-foreground flex min-h-[calc(100vh-4rem)] items-center justify-center px-4 py-10">
+    <Card className="w-full max-w-sm">
+      <CardHeader>
+        <CardTitle>Create account</CardTitle>
+        <CardDescription>Start tracking recurring home maintenance.</CardDescription>
+      </CardHeader>
+      <CardContent>
+        <SignUpForm serverError={error} client:load />
+      </CardContent>
+      <CardFooter className="justify-center">
+        <p class="text-muted-foreground text-center text-sm">
+          Already have an account?
+          <a href="/auth/signin" class:list={[buttonVariants({ variant: "link", size: "sm" })]}>Sign in</a>
+        </p>
+      </CardFooter>
+    </Card>
   </main>
 </Layout>

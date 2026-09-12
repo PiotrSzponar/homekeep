@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 
 export default function CreateTaskForm() {
   return (
-    <form method="POST" action="/api/tasks/create" className="flex flex-col gap-4">
+    <form method="POST" action="/api/tasks/create" className="flex flex-col gap-6">
       <FieldGroup>
         <Field>
           <FieldLabel htmlFor="name">Task name</FieldLabel>

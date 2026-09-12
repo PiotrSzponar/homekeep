@@ -1,8 +1,8 @@
 ---
 import CreateTaskForm from "@/components/tasks/CreateTaskForm";
 import TaskList from "@/components/tasks/TaskList.astro";
+import Topbar from "@/components/Topbar.astro";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Layout from "@/layouts/Layout.astro";
 import { toMaintenanceTaskDisplayItems, type MaintenanceTaskDisplayItem } from "@/lib/maintenance-tasks";
@@ -35,22 +35,8 @@ if (supabase && user?.id) {
 
 <Layout title="Dashboard">
   <main class="bg-background text-foreground min-h-screen">
+    <Topbar />
     <div class="mx-auto flex w-full max-w-6xl flex-col gap-8 px-4 py-8 sm:px-6 lg:px-8">
-      <header class="border-border flex flex-col gap-4 border-b pb-6 md:flex-row md:items-end md:justify-between">
-        <div>
-          <p class="text-primary text-sm font-medium">HomeKeep dashboard</p>
-          <h1 class="mt-2 text-3xl font-semibold tracking-normal">Maintenance tasks</h1>
-          <p class="text-muted-foreground mt-2 max-w-2xl text-sm leading-6">
-            Track recurring work by last completed date and recurrence interval.
-          </p>
-        </div>
-        <div class="text-muted-foreground flex flex-col gap-3 text-sm sm:flex-row sm:items-center">
-          <span class="max-w-full truncate">{user?.email}</span>
-          <form method="POST" action="/api/auth/signout">
-            <Button type="submit" variant="outline" size="sm">Sign out</Button>
-          </form>
-        </div>
-      </header>
 
       {
         taskCreated && (

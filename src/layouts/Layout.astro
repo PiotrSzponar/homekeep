@@ -1,7 +1,6 @@
 ---
 import "../styles/global.css";
 import Banner from "@/components/Banner.astro";
-import { ThemeToggle } from "@/components/ui/theme-toggle";
 import { missingConfigs } from "@/lib/config-status";
 import { HOMEKEEP_BRAND } from "@/lib/brand";
 
@@ -38,9 +37,6 @@ const { title = HOMEKEEP_BRAND.title } = Astro.props;
     <title>{title}</title>
   </head>
   <body>
-    <div class="pointer-events-none fixed right-3 bottom-3 sm:right-4 sm:bottom-4">
-      <ThemeToggle className="pointer-events-auto" client:load />
-    </div>
     {
       missingConfigs.map((cfg) => (
         <Banner variant="error">
