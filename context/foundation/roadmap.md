@@ -126,13 +126,13 @@ Foundations below assume these are present and do NOT re-scaffold them.
 
 ## Backlog Handoff
 
-| Roadmap ID | Change ID | Suggested issue title | Ready for `/10x-plan` | Notes |
+| Roadmap ID | Change ID | Suggested issue title | Status | Notes |
 | --- | --- | --- | --- | --- |
-| F-01 | owned-task-storage-contract | Establish owned task storage contract | yes | Run `/10x-plan owned-task-storage-contract` |
-| S-01 | create-task-with-status | Create task and show calculated status | yes | Run `/10x-plan create-task-with-status` |
-| S-02 | complete-task-and-refresh-status | Mark task completed and refresh status | no | Wait for S-01 |
-| S-03 | edit-task-and-recalculate-status | Edit task and recalculate status | no | Wait for S-01 |
-| S-04 | delete-task | Delete task from own list | no | Wait for S-01 |
+| F-01 | owned-task-storage-contract | Establish owned task storage contract | done | Archived 2026-09-11. |
+| S-01 | create-task-with-status | Create task and show calculated status | done | Archived 2026-09-11. |
+| S-02 | complete-task-and-refresh-status | Mark task completed and refresh status | done | Archived 2026-09-11. |
+| S-03 | edit-task-and-recalculate-status | Edit task and recalculate status | done | Archived 2026-09-12. |
+| S-04 | delete-task | Delete task from own list | done | Archived 2026-09-12. |
 
 ## Open Roadmap Questions
 
