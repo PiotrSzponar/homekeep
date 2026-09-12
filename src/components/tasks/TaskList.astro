@@ -66,17 +66,90 @@ const statusClasses: Record<MaintenanceTaskStatus, string> = {
                 >
                   {statusLabels[task.status]}
                 </span>
-                <form method="POST" action="/api/tasks/complete">
-                  <input type="hidden" name="taskId" value={task.id} />
-                  <button
-                    type="submit"
-                    class="inline-flex h-9 items-center justify-center rounded-md border border-emerald-500/40 px-3 text-sm font-medium text-emerald-100 transition-colors hover:bg-emerald-500/10 focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-slate-900 focus:outline-none"
+                <div class="flex w-full flex-col gap-2 sm:w-auto sm:flex-row sm:justify-end">
+                  <form method="POST" action="/api/tasks/complete">
+                    <input type="hidden" name="taskId" value={task.id} />
+                    <button
+                      type="submit"
+                      class="inline-flex h-9 w-full items-center justify-center rounded-md border border-emerald-500/40 px-3 text-sm font-medium text-emerald-100 transition-colors hover:bg-emerald-500/10 focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-slate-900 focus:outline-none sm:w-auto"
+                    >
+                      Mark completed
+                    </button>
+                  </form>
+                  <form
+                    method="POST"
+                    action="/api/tasks/delete"
+                    onsubmit="return confirm('Delete this task permanently?')"
                   >
-                    Mark completed
-                  </button>
-                </form>
+                    <input type="hidden" name="taskId" value={task.id} />
+                    <button
+                      type="submit"
+                      class="inline-flex h-9 w-full items-center justify-center rounded-md border border-rose-500/40 px-3 text-sm font-medium text-rose-100 transition-colors hover:bg-rose-500/10 focus:ring-2 focus:ring-rose-400 focus:ring-offset-2 focus:ring-offset-slate-900 focus:outline-none sm:w-auto"
+                    >
+                      Delete
+                    </button>
+                  </form>
+                </div>
               </div>
             </div>
+
+            <details class="mt-4 border-t border-slate-800 pt-4">
+              <summary class="inline-flex h-9 cursor-pointer list-none items-center justify-center rounded-md border border-slate-700 px-3 text-sm font-medium text-slate-100 transition-colors select-none hover:bg-slate-900 focus:ring-2 focus:ring-slate-400 focus:ring-offset-2 focus:ring-offset-slate-900 focus:outline-none">
+                Edit task
+              </summary>
+
+              <form method="POST" action="/api/tasks/update" class="mt-4 grid gap-4 sm:grid-cols-2">
+                <input type="hidden" name="taskId" value={task.id} />
+
+                <label class="flex flex-col gap-2 text-sm font-medium text-slate-200 sm:col-span-2">
+                  Task name
+                  <input
+                    name="name"
+                    value={task.name}
+                    required
+                    maxlength="120"
+                    class="h-10 rounded-md border border-slate-700 bg-slate-950 px-3 text-sm text-white transition-colors focus:border-emerald-400 focus:outline-none"
+                  />
+                </label>
+
+                <label class="flex flex-col gap-2 text-sm font-medium text-slate-200">
+                  Last completed
+                  <input
+                    type="date"
+                    name="lastCompletedDate"
+                    value={task.lastCompletedDate}
+                    required
+                    class="h-10 rounded-md border border-slate-700 bg-slate-950 px-3 text-sm text-white transition-colors focus:border-emerald-400 focus:outline-none"
+                  />
+                </label>
+
+                <label class="flex flex-col gap-2 text-sm font-medium text-slate-200">
+                  Repeat every
+                  <div class="flex items-center gap-2">
+                    <input
+                      type="number"
+                      name="recurrenceIntervalDays"
+                      value={task.recurrenceIntervalDays}
+                      required
+                      min="1"
+                      step="1"
+                      inputmode="numeric"
+                      class="h-10 min-w-0 flex-1 rounded-md border border-slate-700 bg-slate-950 px-3 text-sm text-white transition-colors focus:border-emerald-400 focus:outline-none"
+                    />
+                    <span class="text-sm text-slate-400">days</span>
+                  </div>
+                </label>
+
+                <div class="sm:col-span-2">
+                  <button
+                    type="submit"
+                    class="inline-flex h-9 items-center justify-center rounded-md bg-emerald-500 px-3 text-sm font-medium text-slate-950 transition-colors hover:bg-emerald-400 focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-slate-900 focus:outline-none"
+                  >
+                    Save changes
+                  </button>
+                </div>
+              </form>
+            </details>
           </li>
         ))}
       </ol>

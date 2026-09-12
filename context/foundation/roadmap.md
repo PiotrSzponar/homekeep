@@ -3,7 +3,7 @@ project: HomeKeep
 version: 1
 status: draft
 created: 2026-09-11
-updated: 2026-09-11
+updated: 2026-09-12
 prd_version: 1
 main_goal: speed
 top_blocker: time
@@ -44,8 +44,8 @@ North star here means the smallest end-to-end slice whose successful delivery pr
 | F-01 | owned-task-storage-contract | (foundation) account-scoped task persistence contract exists for vertical task slices | - | FR-006, Access Control, NFR account access | done |
 | S-01 | create-task-with-status | create a maintenance task and immediately see next due date plus current status | F-01 | US-01, FR-001, FR-002, FR-006, Business Logic, NFR task visibility | done |
 | S-02 | complete-task-and-refresh-status | mark a saved maintenance task as completed and see last completed date, next due date, and status update | S-01 | FR-005, FR-002, FR-006, Business Logic, NFR task visibility | done |
-| S-03 | edit-task-and-recalculate-status | edit an existing maintenance task and see the recalculated next due date and status | S-01 | FR-003, FR-002, FR-006, Business Logic, NFR task visibility | proposed |
-| S-04 | delete-task | delete an existing maintenance task from their own task list | S-01 | FR-004, FR-006, Access Control | proposed |
+| S-03 | edit-task-and-recalculate-status | edit an existing maintenance task and see the recalculated next due date and status | S-01 | FR-003, FR-002, FR-006, Business Logic, NFR task visibility | in-progress |
+| S-04 | delete-task | delete an existing maintenance task from their own task list | S-01 | FR-004, FR-006, Access Control | in-progress |
 
 ## Baseline
 
@@ -110,7 +110,7 @@ Foundations below assume these are present and do NOT re-scaffold them.
 - **Blockers:** -
 - **Unknowns:** -
 - **Risk:** Editing comes after the first create/view loop so recalculation has a known baseline; the risk is duplicating status logic instead of preserving one rule.
-- **Status:** proposed
+- **Status:** in-progress
 
 ### S-04: Delete task
 
@@ -122,7 +122,7 @@ Foundations below assume these are present and do NOT re-scaffold them.
 - **Blockers:** -
 - **Unknowns:** -
 - **Risk:** Deletion is independent after saved tasks exist; the risk is deleting across account boundaries or leaving the list visually stale.
-- **Status:** proposed
+- **Status:** in-progress
 
 ## Backlog Handoff
 

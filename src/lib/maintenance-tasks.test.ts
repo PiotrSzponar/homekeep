@@ -7,6 +7,7 @@ import {
   formatUtcDateOnly,
   type MaintenanceTaskRow,
   toMaintenanceTaskDisplayItems,
+  validateMaintenanceTaskUpdateInput,
   validateMaintenanceTaskWriteInput,
 } from "@/lib/maintenance-tasks";
 
@@ -57,6 +58,58 @@ describe("maintenance task contract", () => {
       success: false,
       errors: {
         recurrenceIntervalDays: "Recurrence interval must be a positive whole number of days.",
+      },
+    });
+  });
+
+  it("accepts and normalizes a full maintenance task update input", () => {
+    expect(
+      validateMaintenanceTaskUpdateInput({
+        name: "  Replace HVAC filter  ",
+        lastCompletedDate: "2026-09-01",
+        recurrenceIntervalDays: 30,
+      }),
+    ).toEqual({
+      success: true,
+      data: {
+        name: "Replace HVAC filter",
+        lastCompletedDate: "2026-09-01",
+        recurrenceIntervalDays: 30,
+      },
+    });
+  });
+
+  it("rejects invalid date-only values in update input", () => {
+    expect(
+      validateMaintenanceTaskUpdateInput({
+        lastCompletedDate: "2026-99-99",
+      }),
+    ).toEqual({
+      success: false,
+      errors: {
+        lastCompletedDate: "Last completed date must use YYYY-MM-DD format.",
+      },
+    });
+  });
+
+  it("rejects non-positive recurrence intervals in update input", () => {
+    expect(
+      validateMaintenanceTaskUpdateInput({
+        recurrenceIntervalDays: -1,
+      }),
+    ).toEqual({
+      success: false,
+      errors: {
+        recurrenceIntervalDays: "Recurrence interval must be a positive whole number of days.",
+      },
+    });
+  });
+
+  it("rejects empty update input", () => {
+    expect(validateMaintenanceTaskUpdateInput({})).toEqual({
+      success: false,
+      errors: {
+        name: "At least one task field must be provided.",
       },
     });
   });
