@@ -280,27 +280,27 @@ Prove the foundation on real surfaces while leaving larger UX polish to S-05 thr
 
 #### Automated
 
-- [x] 2.1 `npm run lint` passes with the new React primitives.
-- [x] 2.2 Existing imports of `Button` continue to compile without call-site changes.
-- [x] 2.3 No new primitive imports task store helpers, Supabase clients, or maintenance-task business logic.
+- [x] 2.1 `npm run lint` passes with the new React primitives. - d48810b
+- [x] 2.2 Existing imports of `Button` continue to compile without call-site changes. - d48810b
+- [x] 2.3 No new primitive imports task store helpers, Supabase clients, or maintenance-task business logic. - d48810b
 
 #### Manual
 
-- [x] 2.4 Primitives render correctly in both light and dark mode on the real consumer surfaces named in Phase 3.
-- [x] 2.5 Buttons, inputs, badges, alerts, and cards have stable sizing on narrow mobile widths.
-- [x] 2.6 Theme toggle icons and controls are understandable without visible instructional copy.
+- [x] 2.4 Primitives render correctly in both light and dark mode on the real consumer surfaces named in Phase 3. - d48810b
+- [x] 2.5 Buttons, inputs, badges, alerts, and cards have stable sizing on narrow mobile widths. - d48810b
+- [x] 2.6 Theme toggle icons and controls are understandable without visible instructional copy. - d48810b
 
 ### Phase 3: Thin Consumer Adoption and Verification
 
 #### Automated
 
-- [x] 3.1 `npm run lint` passes.
-- [x] 3.2 `npm run build` passes.
-- [x] 3.3 A text search for `bg-cosmic`, `purple-`, `slate-`, and starter title strings is reviewed, with any remaining matches tied to later slices.
+- [x] 3.1 `npm run lint` passes. - d48810b
+- [x] 3.2 `npm run build` passes. - d48810b
+- [x] 3.3 A text search for `bg-cosmic`, `purple-`, `slate-`, and starter title strings is reviewed, with any remaining matches tied to later slices. - d48810b
 
 #### Manual
 
-- [x] 3.4 Dashboard still loads for a signed-in user and task create/view/complete/edit/delete entry points remain visible.
-- [x] 3.5 Sign-in and sign-up fields, errors, and submission pending states still behave as before while rendering through shared primitives.
-- [x] 3.6 Light, dark, and system modes can be selected and persist after reload; system mode also responds to OS color-scheme changes while the page is open.
-- [x] 3.7 Narrow mobile viewport has no overlapping text or unstable button/control sizing on converted surfaces.
+- [x] 3.4 Dashboard still loads for a signed-in user and task create/view/complete/edit/delete entry points remain visible. - d48810b
+- [x] 3.5 Sign-in and sign-up fields, errors, and submission pending states still behave as before while rendering through shared primitives. - d48810b
+- [x] 3.6 Light, dark, and system modes can be selected and persist after reload; system mode also responds to OS color-scheme changes while the page is open. - d48810b
+- [x] 3.7 Narrow mobile viewport has no overlapping text or unstable button/control sizing on converted surfaces. - d48810b
