@@ -18,3 +18,11 @@
 
 - Remaining `bg-cosmic`, purple, and starter title references are intentionally deferred to S-07 homepage/auth/app-shell work.
 - Remaining task form/list raw `slate`/`emerald`/status color references are intentionally deferred to S-05 and S-06 task polish work.
+
+## Corrective UI Rebuild
+
+- User review found the Phase 3 proof too thin: `bg-cosmic`, starter colors, and bespoke UI styling still appeared across Astro and React surfaces.
+- Rebuilt the visible homepage, topbar, auth pages, dashboard alerts, task create form, task list, auth controls, and utility badges around the installed Base UI shadcn primitives and semantic Luma/Lime theme tokens.
+- Added the shadcn `empty` primitive for task-list empty states.
+- Removed the obsolete `bg-cosmic` utility and eliminated old starter palette references from React, Astro, and CSS UI files.
+- Replaced the direct `cn` package dependency with the local `cn()` helper backed by `clsx` and `tailwind-merge`.

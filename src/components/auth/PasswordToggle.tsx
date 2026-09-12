@@ -1,4 +1,6 @@
-import { Eye, EyeOff } from "lucide-react";
+import { EyeIcon, EyeOffIcon } from "lucide-react";
+
+import { Button } from "@/components/ui/button";
 
 interface PasswordToggleProps {
   visible: boolean;
@@ -6,14 +8,18 @@ interface PasswordToggleProps {
 }
 
 export function PasswordToggle({ visible, onToggle }: PasswordToggleProps) {
+  const Icon = visible ? EyeOffIcon : EyeIcon;
+
   return (
-    <button
+    <Button
       type="button"
       onClick={onToggle}
-      className="absolute top-1/2 right-3 -translate-y-1/2 text-white/40 transition-colors hover:text-white/70"
+      className="absolute top-1/2 right-1.5 -translate-y-1/2"
+      variant="ghost"
+      size="icon-sm"
       aria-label={visible ? "Hide password" : "Show password"}
     >
-      {visible ? <EyeOff className="size-4" /> : <Eye className="size-4" />}
-    </button>
+      <Icon data-icon="inline-start" aria-hidden="true" />
+    </Button>
   );
 }

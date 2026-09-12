@@ -1,16 +1,19 @@
 import type { ReactNode } from "react";
 import { useFormStatus } from "react-dom";
+import type { LucideIcon } from "lucide-react";
+
 import { Button } from "@/components/ui/button";
 import { Spinner } from "@/components/ui/spinner";
 
 interface SubmitButtonProps {
   pendingText: string;
-  icon: ReactNode;
+  icon: LucideIcon;
   children: ReactNode;
 }
 
 export function SubmitButton({ pendingText, icon, children }: SubmitButtonProps) {
   const { pending } = useFormStatus();
+  const Icon = icon;
 
   return (
     <Button type="submit" disabled={pending} className="w-full">
@@ -21,7 +24,7 @@ export function SubmitButton({ pendingText, icon, children }: SubmitButtonProps)
         </span>
       ) : (
         <span className="flex items-center gap-2">
-          {icon}
+          <Icon data-icon="inline-start" aria-hidden="true" />
           {children}
         </span>
       )}

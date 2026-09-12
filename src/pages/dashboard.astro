@@ -1,6 +1,7 @@
 ---
 import CreateTaskForm from "@/components/tasks/CreateTaskForm";
 import TaskList from "@/components/tasks/TaskList.astro";
+import { Alert, AlertDescription } from "@/components/ui/alert";
 import { Button } from "@/components/ui/button";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Layout from "@/layouts/Layout.astro";
@@ -53,49 +54,51 @@ if (supabase && user?.id) {
 
       {
         taskCreated && (
-          <div class="rounded-md border border-emerald-500/30 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-100">
-            Task saved. The list below reflects the latest data from Supabase.
-          </div>
+          <Alert role="status">
+            <AlertDescription>Task saved. The list below reflects the latest data from Supabase.</AlertDescription>
+          </Alert>
         )
       }
 
       {
         taskCompleted && (
-          <div class="rounded-md border border-emerald-500/30 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-100">
-            Task marked completed. The list below reflects the latest data from Supabase.
-          </div>
+          <Alert role="status">
+            <AlertDescription>
+              Task marked completed. The list below reflects the latest data from Supabase.
+            </AlertDescription>
+          </Alert>
         )
       }
 
       {
         taskDeleted && (
-          <div class="rounded-md border border-emerald-500/30 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-100">
-            Task deleted. The list below reflects the latest data from Supabase.
-          </div>
+          <Alert role="status">
+            <AlertDescription>Task deleted. The list below reflects the latest data from Supabase.</AlertDescription>
+          </Alert>
         )
       }
 
       {
         taskUpdated && (
-          <div class="rounded-md border border-emerald-500/30 bg-emerald-500/10 px-4 py-3 text-sm text-emerald-100">
-            Task updated. The list below reflects the latest data from Supabase.
-          </div>
+          <Alert role="status">
+            <AlertDescription>Task updated. The list below reflects the latest data from Supabase.</AlertDescription>
+          </Alert>
         )
       }
 
       {
         taskError && (
-          <div class="rounded-md border border-rose-500/30 bg-rose-500/10 px-4 py-3 text-sm text-rose-100">
-            {taskError}
-          </div>
+          <Alert variant="destructive">
+            <AlertDescription>{taskError}</AlertDescription>
+          </Alert>
         )
       }
 
       {
         dashboardError && (
-          <div class="rounded-md border border-amber-500/30 bg-amber-500/10 px-4 py-3 text-sm text-amber-100">
-            {dashboardError}
-          </div>
+          <Alert role="status">
+            <AlertDescription>{dashboardError}</AlertDescription>
+          </Alert>
         )
       }
 

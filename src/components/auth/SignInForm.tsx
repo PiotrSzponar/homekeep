@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Mail, Lock, LogIn } from "lucide-react";
+import { LockIcon, LogInIcon, MailIcon } from "lucide-react";
 import { FormField } from "@/components/auth/FormField";
 import { PasswordToggle } from "@/components/auth/PasswordToggle";
 import { SubmitButton } from "@/components/auth/SubmitButton";
@@ -40,7 +40,7 @@ export default function SignInForm({ serverError }: Props) {
   }
 
   return (
-    <form method="POST" action="/api/auth/signin" className="space-y-4" onSubmit={handleSubmit} noValidate>
+    <form method="POST" action="/api/auth/signin" className="flex flex-col gap-4" onSubmit={handleSubmit} noValidate>
       <FormField
         id="email"
         type="email"
@@ -52,7 +52,7 @@ export default function SignInForm({ serverError }: Props) {
         }}
         placeholder="you@example.com"
         error={errors.email}
-        icon={<Mail className="size-4" />}
+        icon={MailIcon}
       />
 
       <FormField
@@ -66,7 +66,7 @@ export default function SignInForm({ serverError }: Props) {
         }}
         placeholder="Your password"
         error={errors.password}
-        icon={<Lock className="size-4" />}
+        icon={LockIcon}
         endContent={
           <PasswordToggle
             visible={showPassword}
@@ -79,7 +79,7 @@ export default function SignInForm({ serverError }: Props) {
 
       <ServerError message={serverError} />
 
-      <SubmitButton pendingText="Signing in..." icon={<LogIn className="size-4" />}>
+      <SubmitButton pendingText="Signing in..." icon={LogInIcon}>
         Sign in
       </SubmitButton>
     </form>

@@ -1,4 +1,4 @@
-import { CircleAlert } from "lucide-react";
+import { CircleAlertIcon } from "lucide-react";
 
 import { Alert, AlertDescription } from "@/components/ui/alert";
 
@@ -11,7 +11,7 @@ export function ServerError({ message }: ServerErrorProps) {
 
   return (
     <Alert variant="destructive">
-      <CircleAlert aria-hidden="true" />
+      <CircleAlertIcon aria-hidden="true" />
       <AlertDescription>{message}</AlertDescription>
     </Alert>
   );

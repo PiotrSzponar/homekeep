@@ -1,5 +1,5 @@
 import type { ReactNode } from "react";
-import { CircleAlert } from "lucide-react";
+import { CircleAlertIcon, type LucideIcon } from "lucide-react";
 
 import { Field, FieldError, FieldLabel } from "@/components/ui/field";
 import { Input } from "@/components/ui/input";
@@ -15,7 +15,7 @@ interface FormFieldProps {
   placeholder?: string;
   error?: string;
   hint?: ReactNode;
-  icon: ReactNode;
+  icon: LucideIcon;
   endContent?: ReactNode;
 }
 
@@ -32,11 +32,15 @@ export function FormField({
   icon,
   endContent,
 }: FormFieldProps) {
+  const Icon = icon;
+
   return (
     <Field data-invalid={!!error}>
       <FieldLabel htmlFor={id}>{label}</FieldLabel>
       <div className="relative">
-        <span className="text-muted-foreground absolute top-1/2 left-3 size-4 -translate-y-1/2">{icon}</span>
+        <span className="text-muted-foreground pointer-events-none absolute top-1/2 left-3 flex size-4 -translate-y-1/2 items-center justify-center [&_svg]:size-4">
+          <Icon aria-hidden="true" />
+        </span>
         <Input
           aria-invalid={!!error}
           id={id}
@@ -53,7 +57,7 @@ export function FormField({
       </div>
       {error ? (
         <FieldError className="flex items-center gap-1 text-xs">
-          <CircleAlert className="size-3" aria-hidden="true" />
+          <CircleAlertIcon className="size-3" aria-hidden="true" />
           {error}
         </FieldError>
       ) : (
