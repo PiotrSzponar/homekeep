@@ -45,7 +45,7 @@ North star here means the smallest end-to-end slice whose successful delivery pr
 | S-01 | create-task-with-status | create a maintenance task and immediately see next due date plus current status | F-01 | US-01, FR-001, FR-002, FR-006, Business Logic, NFR task visibility | done |
 | S-02 | complete-task-and-refresh-status | mark a saved maintenance task as completed and see last completed date, next due date, and status update | S-01 | FR-005, FR-002, FR-006, Business Logic, NFR task visibility | done |
 | S-03 | edit-task-and-recalculate-status | edit an existing maintenance task and see the recalculated next due date and status | S-01 | FR-003, FR-002, FR-006, Business Logic, NFR task visibility | done |
-| S-04 | delete-task | delete an existing maintenance task from their own task list | S-01 | FR-004, FR-006, Access Control | in-progress |
+| S-04 | delete-task | delete an existing maintenance task from their own task list | S-01 | FR-004, FR-006, Access Control | done |
 
 ## Baseline
 
@@ -122,7 +122,7 @@ Foundations below assume these are present and do NOT re-scaffold them.
 - **Blockers:** -
 - **Unknowns:** -
 - **Risk:** Deletion is independent after saved tasks exist; the risk is deleting across account boundaries or leaving the list visually stale.
-- **Status:** in-progress
+- **Status:** done
 
 ## Backlog Handoff
 
@@ -152,6 +152,7 @@ None.
 
 ## Done
 
+- **S-04: user can delete an existing maintenance task from their own task list.** - Archived 2026-09-12 -> `context/archive/2026-09-12-delete-task/`. Lesson: -.
 - **S-03: user can edit an existing maintenance task and see the recalculated next due date and current status.** - Archived 2026-09-12 -> `context/archive/2026-09-12-edit-task-and-recalculate-status/`. Lesson: -.
 - **F-01: (foundation) account-scoped task persistence contract exists so each vertical task slice can store, read, and verify only the signed-in homeowner's own tasks.** - Archived 2026-09-11 -> `context/archive/2026-09-11-owned-task-storage-contract/`. Lesson: -.
 - **S-01: user can create a maintenance task by entering name, last completed date, and recurrence interval, then see the saved task with calculated next due date and one current status.** - Archived 2026-09-11 -> `context/archive/2026-09-11-create-task-with-status/`. Lesson: -.
