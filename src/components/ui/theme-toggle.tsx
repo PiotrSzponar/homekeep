@@ -1,5 +1,5 @@
 import { MonitorIcon, MoonIcon, SunIcon } from "lucide-react";
-import { useEffect, useState } from "react";
+import { useEffect, useSyncExternalStore } from "react";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -8,6 +8,7 @@ type ThemeMode = "light" | "dark" | "system";
 
 const STORAGE_KEY = "theme";
 const DARK_QUERY = "(prefers-color-scheme: dark)";
+const THEME_CHANGE_EVENT = "homekeep-theme-change";
 const MODES: {
   value: ThemeMode;
   label: string;
@@ -27,15 +28,31 @@ function getStoredTheme(): ThemeMode {
   return storedTheme === "light" || storedTheme === "dark" || storedTheme === "system" ? storedTheme : "system";
 }
 
+function getServerTheme(): ThemeMode {
+  return "system";
+}
+
 function applyTheme(theme: ThemeMode) {
   const prefersDark = window.matchMedia(DARK_QUERY).matches;
   document.documentElement.classList.toggle("dark", theme === "dark" || (theme === "system" && prefersDark));
 }
 
+function subscribeToTheme(onStoreChange: () => void) {
+  window.addEventListener(THEME_CHANGE_EVENT, onStoreChange);
+  window.addEventListener("storage", onStoreChange);
+
+  return () => {
+    window.removeEventListener(THEME_CHANGE_EVENT, onStoreChange);
+    window.removeEventListener("storage", onStoreChange);
+  };
+}
+
 function ThemeToggle({ className }: { className?: string }) {
-  const [theme, setTheme] = useState<ThemeMode>(getStoredTheme);
+  const theme = useSyncExternalStore(subscribeToTheme, getStoredTheme, getServerTheme);
 
   useEffect(() => {
+    applyTheme(theme);
+
     if (theme !== "system") {
       return;
     }
@@ -53,8 +70,8 @@ function ThemeToggle({ className }: { className?: string }) {
 
   const selectTheme = (nextTheme: ThemeMode) => {
     window.localStorage.setItem(STORAGE_KEY, nextTheme);
-    setTheme(nextTheme);
     applyTheme(nextTheme);
+    window.dispatchEvent(new Event(THEME_CHANGE_EVENT));
   };
 
   return (
