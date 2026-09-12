@@ -266,41 +266,41 @@ Prove the foundation on real surfaces while leaving larger UX polish to S-05 thr
 
 #### Automated
 
-- [x] 1.1 `npx skills add shadcn/ui` has been run with Base UI selected as the base target, or its approval/failure/no-op result is documented without blocking repo-local implementation.
-- [x] 1.2 `components.json` remains valid JSON and still points shadcn at `src/styles/global.css`.
-- [x] 1.3 `npm run lint` passes after config and token changes.
+- [x] 1.1 `npx skills add shadcn/ui` has been run with Base UI selected as the base target, or its approval/failure/no-op result is documented without blocking repo-local implementation. - 4cfb789
+- [x] 1.2 `components.json` remains valid JSON and still points shadcn at `src/styles/global.css`. - 4cfb789
+- [x] 1.3 `npm run lint` passes after config and token changes. - 4cfb789
 
 #### Manual
 
-- [x] 1.4 First page paint respects system preference without a visible light/dark flash.
-- [x] 1.5 The app no longer depends on `bg-cosmic` for new foundation surfaces.
-- [x] 1.6 Existing pages still render without changing task data or auth behavior.
+- [x] 1.4 First page paint respects system preference without a visible light/dark flash. - 4cfb789
+- [x] 1.5 The app no longer depends on `bg-cosmic` for new foundation surfaces. - 4cfb789
+- [x] 1.6 Existing pages still render without changing task data or auth behavior. - 4cfb789
 
 ### Phase 2: Core UI Primitives and Identity Hooks
 
 #### Automated
 
-- [ ] 2.1 `npm run lint` passes with the new React primitives.
-- [ ] 2.2 Existing imports of `Button` continue to compile without call-site changes.
-- [ ] 2.3 No new primitive imports task store helpers, Supabase clients, or maintenance-task business logic.
+- [x] 2.1 `npm run lint` passes with the new React primitives.
+- [x] 2.2 Existing imports of `Button` continue to compile without call-site changes.
+- [x] 2.3 No new primitive imports task store helpers, Supabase clients, or maintenance-task business logic.
 
 #### Manual
 
-- [ ] 2.4 Primitives render correctly in both light and dark mode on the real consumer surfaces named in Phase 3.
-- [ ] 2.5 Buttons, inputs, badges, alerts, and cards have stable sizing on narrow mobile widths.
-- [ ] 2.6 Theme toggle icons and controls are understandable without visible instructional copy.
+- [x] 2.4 Primitives render correctly in both light and dark mode on the real consumer surfaces named in Phase 3.
+- [x] 2.5 Buttons, inputs, badges, alerts, and cards have stable sizing on narrow mobile widths.
+- [x] 2.6 Theme toggle icons and controls are understandable without visible instructional copy.
 
 ### Phase 3: Thin Consumer Adoption and Verification
 
 #### Automated
 
-- [ ] 3.1 `npm run lint` passes.
-- [ ] 3.2 `npm run build` passes.
-- [ ] 3.3 A text search for `bg-cosmic`, `purple-`, `slate-`, and starter title strings is reviewed, with any remaining matches tied to later slices.
+- [x] 3.1 `npm run lint` passes.
+- [x] 3.2 `npm run build` passes.
+- [x] 3.3 A text search for `bg-cosmic`, `purple-`, `slate-`, and starter title strings is reviewed, with any remaining matches tied to later slices.
 
 #### Manual
 
-- [ ] 3.4 Dashboard still loads for a signed-in user and task create/view/complete/edit/delete entry points remain visible.
-- [ ] 3.5 Sign-in and sign-up fields, errors, and submission pending states still behave as before while rendering through shared primitives.
-- [ ] 3.6 Light, dark, and system modes can be selected and persist after reload; system mode also responds to OS color-scheme changes while the page is open.
-- [ ] 3.7 Narrow mobile viewport has no overlapping text or unstable button/control sizing on converted surfaces.
+- [x] 3.4 Dashboard still loads for a signed-in user and task create/view/complete/edit/delete entry points remain visible.
+- [x] 3.5 Sign-in and sign-up fields, errors, and submission pending states still behave as before while rendering through shared primitives.
+- [x] 3.6 Light, dark, and system modes can be selected and persist after reload; system mode also responds to OS color-scheme changes while the page is open.
+- [x] 3.7 Narrow mobile viewport has no overlapping text or unstable button/control sizing on converted surfaces.
