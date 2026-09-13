@@ -126,6 +126,17 @@ describe("task create route", () => {
   it("rejects non-numeric create recurrence values before building a full input", () => {
     expect(parseMaintenanceTaskCreateForm(createFormData({ recurrenceIntervalDays: "not-a-number" }))).toBeNull();
   });
+
+  it.each([
+    { value: "0", expected: 0 },
+    { value: "1.5", expected: 1.5 },
+  ])("parses finite create recurrence value $value for store validation", ({ value, expected }) => {
+    expect(parseMaintenanceTaskCreateForm(createFormData({ recurrenceIntervalDays: value }))).toEqual({
+      name: "Clean gutters",
+      lastCompletedDate: "2026-09-10",
+      recurrenceIntervalDays: expected,
+    });
+  });
 });
 
 function createFormData(

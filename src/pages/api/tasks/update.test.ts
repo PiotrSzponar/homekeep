@@ -99,8 +99,27 @@ describe("task update route", () => {
     expect(parseMaintenanceTaskUpdateForm(updateFormData({ recurrenceIntervalDays: "" }))).toBeNull();
   });
 
+  it("rejects blank task fields before building a full edit input", () => {
+    expect(parseMaintenanceTaskUpdateForm(updateFormData({ name: "" }))).toBeNull();
+    expect(parseMaintenanceTaskUpdateForm(updateFormData({ lastCompletedDate: "" }))).toBeNull();
+  });
+
   it("rejects non-numeric recurrence values before building a full edit input", () => {
     expect(parseMaintenanceTaskUpdateForm(updateFormData({ recurrenceIntervalDays: "not-a-number" }))).toBeNull();
+  });
+
+  it.each([
+    { value: "0", expected: 0 },
+    { value: "1.5", expected: 1.5 },
+  ])("parses finite edit recurrence value $value for store validation", ({ value, expected }) => {
+    expect(parseMaintenanceTaskUpdateForm(updateFormData({ recurrenceIntervalDays: value }))).toEqual({
+      taskId: "task-1",
+      input: {
+        name: "Clean gutters",
+        lastCompletedDate: "2026-09-10",
+        recurrenceIntervalDays: expected,
+      },
+    });
   });
 });
 

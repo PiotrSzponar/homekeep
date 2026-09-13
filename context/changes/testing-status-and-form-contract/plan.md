@@ -202,20 +202,20 @@ The project now fails CI when the Phase 1 Vitest contracts regress, and future a
 
 #### Automated
 
-- [x] 1.1 Combined overdue boundary test passes
-- [x] 1.2 Combined due-soon boundary test passes
-- [x] 1.3 Combined OK boundary test passes
-- [x] 1.4 Focused maintenance task test command passes
+- [x] 1.1 Combined overdue boundary test passes - 63a32a4
+- [x] 1.2 Combined due-soon boundary test passes - 63a32a4
+- [x] 1.3 Combined OK boundary test passes - 63a32a4
+- [x] 1.4 Focused maintenance task test command passes - 63a32a4
 
 ### Phase 2: Client/Server Form Contract Parity
 
 #### Automated
 
-- [ ] 2.1 Client form rule tests cover defaults and recurrence presets
-- [ ] 2.2 Client form rule tests cover valid and invalid input matrix
-- [ ] 2.3 Server validation tests cover matching valid and invalid input matrix
-- [ ] 2.4 Create/update parser parity tests cover normalization and parser-owned rejection
-- [ ] 2.5 Focused form and route test commands pass
+- [x] 2.1 Client form rule tests cover defaults and recurrence presets
+- [x] 2.2 Client form rule tests cover valid and invalid input matrix
+- [x] 2.3 Server validation tests cover matching valid and invalid input matrix
+- [x] 2.4 Create/update parser parity tests cover normalization and parser-owned rejection
+- [x] 2.5 Focused form and route test commands pass
 
 ### Phase 3: CI Test Gate and Cookbook Update
 

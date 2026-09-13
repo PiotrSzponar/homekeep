@@ -192,6 +192,56 @@ describe("maintenance task contract", () => {
     });
   });
 
+  it.each([
+    {
+      name: "blank name",
+      writeInput: { name: "   " },
+      updateInput: { name: "   " },
+      expectedErrors: { name: "Task name is required." },
+    },
+    {
+      name: "invalid calendar date",
+      writeInput: { lastCompletedDate: "2026-02-31" },
+      updateInput: { lastCompletedDate: "2026-02-31" },
+      expectedErrors: { lastCompletedDate: "Last completed date must use YYYY-MM-DD format." },
+    },
+    {
+      name: "future last completed date",
+      writeInput: { lastCompletedDate: "2026-09-14" },
+      updateInput: { lastCompletedDate: "2026-09-14" },
+      expectedErrors: { lastCompletedDate: "Last completed date cannot be in the future." },
+    },
+    {
+      name: "zero recurrence",
+      writeInput: { recurrenceIntervalDays: 0 },
+      updateInput: { recurrenceIntervalDays: 0 },
+      expectedErrors: { recurrenceIntervalDays: "Recurrence interval must be a positive whole number of days." },
+    },
+    {
+      name: "decimal recurrence",
+      writeInput: { recurrenceIntervalDays: 1.5 },
+      updateInput: { recurrenceIntervalDays: 1.5 },
+      expectedErrors: { recurrenceIntervalDays: "Recurrence interval must be a positive whole number of days." },
+    },
+  ])("rejects matching invalid $name in write and update inputs", ({ writeInput, updateInput, expectedErrors }) => {
+    const validWriteInput = {
+      name: "Replace HVAC filter",
+      lastCompletedDate: "2026-09-13",
+      recurrenceIntervalDays: 30,
+    };
+
+    expect(
+      validateMaintenanceTaskWriteInput({ ...validWriteInput, ...writeInput }, { todayDate: "2026-09-13" }),
+    ).toEqual({
+      success: false,
+      errors: expectedErrors,
+    });
+    expect(validateMaintenanceTaskUpdateInput(updateInput, { todayDate: "2026-09-13" })).toEqual({
+      success: false,
+      errors: expectedErrors,
+    });
+  });
+
   it("accepts and normalizes a full maintenance task update input", () => {
     expect(
       validateMaintenanceTaskUpdateInput({
