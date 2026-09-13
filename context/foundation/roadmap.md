@@ -69,7 +69,7 @@ North star here means the smallest end-to-end slice whose successful delivery pr
 | F-02 | shadcn-luma-design-system-foundation     | (foundation) consistent HomeKeep UI primitives, theme tokens, and identity hooks exist for polish slices    | -             | MS-06, MS-08                                                       | done     |
 | S-05 | task-form-language-and-validation-polish | create and edit tasks with consistent "Last completed" terminology, safe dates, and common repeat intervals | F-02          | US-01, FR-001, FR-003, MS-01, MS-02, MS-03                         | in-progress |
 | S-06 | dashboard-mobile-ux-improvements         | use a mobile-optimized dashboard with clearer task creation, banners, and task action buttons               | F-02, S-05    | FR-002, FR-004, FR-005, MS-04, MS-05, MS-06                        | in-progress |
-| S-07 | unified-app-shell-auth-and-homepage      | enter HomeKeep through dashboard or auth with consistent pages and no starter-facing branding               | F-02, S-06    | FR-006, MS-07                                                      | proposed |
+| S-07 | unified-app-shell-auth-and-homepage      | enter HomeKeep through dashboard or auth with consistent pages and no starter-facing branding               | F-02, S-06    | FR-006, MS-07                                                      | in-progress |
 | S-08 | homekeep-visual-identity-assets          | see lightweight HomeKeep identity and favicon based on the house-heart mark                                 | F-02          | MS-08                                                              | proposed |
 
 ## Baseline
@@ -210,7 +210,7 @@ Foundations below assumed these were present and did not re-scaffold them.
 - **Blockers:** -
 - **Unknowns:** -
 - **Risk:** The risk is changing route behavior in a way that weakens auth protection; keep middleware as the owner of protected dashboard and task routes.
-- **Status:** proposed
+- **Status:** in-progress
 
 ### S-08: HomeKeep visual identity assets
 
@@ -236,7 +236,7 @@ Foundations below assumed these were present and did not re-scaffold them.
 | F-02       | shadcn-luma-design-system-foundation     | Establish HomeKeep design-system foundation                     | done     | Implemented 2026-09-13; future UI work should extend the shadcn/Base UI Luma/Lime baseline instead of creating a new design-system setup task. |
 | S-05       | task-form-language-and-validation-polish | Polish task form terminology, validation, and recurrence inputs | planning | Plan against the existing F-02 shadcn/Luma/Lime baseline.                                                                                      |
 | S-06       | dashboard-mobile-ux-improvements         | Improve dashboard mobile UX and task actions                    | planning | Plan against the existing F-02 shadcn/Luma/Lime baseline after S-05. Mobile task actions should order as Mark completed, Delete, Edit task.     |
-| S-07       | unified-app-shell-auth-and-homepage      | Unify app shell, auth pages, and root entry flow                | proposed | Re-scope before planning; F-02 already removed starter-facing visual styling and established shared shell primitives.                          |
+| S-07       | unified-app-shell-auth-and-homepage      | Unify app shell, auth pages, and root entry flow                | in-progress | Re-scope before planning; F-02 already removed starter-facing visual styling and established shared shell primitives.                          |
 | S-08       | homekeep-visual-identity-assets          | Add HomeKeep mark and favicon                                   | proposed | Plan after F-02 is implemented; no README/template image work.                                                                                 |
 
 ## Open Roadmap Questions

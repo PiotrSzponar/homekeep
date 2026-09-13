@@ -4,27 +4,45 @@ import Topbar from "@/components/Topbar.astro";
 import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
 import Layout from "@/layouts/Layout.astro";
+import { shouldRedirectAuthPageToDashboard } from "@/lib/auth-navigation";
 
 const error = Astro.url.searchParams.get("error");
+
+function redirect(path: string) {
+  Astro.response.status = 302;
+  Astro.response.headers.set("Location", path);
+}
+
+const shouldRedirect = shouldRedirectAuthPageToDashboard(Astro.locals.user);
+
+if (shouldRedirect) {
+  redirect("/dashboard");
+}
 ---
 
-<Layout title="Sign in">
-  <Topbar />
-  <main class="bg-background text-foreground flex min-h-[calc(100vh-4rem)] items-center justify-center px-4 py-10">
-    <Card className="w-full max-w-sm">
-      <CardHeader>
-        <CardTitle>Sign in</CardTitle>
-        <CardDescription>Open your maintenance dashboard.</CardDescription>
-      </CardHeader>
-      <CardContent>
-        <SignInForm serverError={error} client:load />
-      </CardContent>
-      <CardFooter className="justify-center">
-        <p class="text-muted-foreground text-center text-sm">
-          Don't have an account?
-          <a href="/auth/signup" class:list={[buttonVariants({ variant: "link", size: "sm" })]}>Sign up</a>
-        </p>
-      </CardFooter>
-    </Card>
-  </main>
-</Layout>
+{
+  !shouldRedirect && (
+    <Layout title="Sign in">
+      <Topbar />
+      <main class="bg-background text-foreground flex min-h-[calc(100vh-4rem)] items-center justify-center px-4 py-10">
+        <Card className="w-full max-w-sm">
+          <CardHeader>
+            <CardTitle>Sign in</CardTitle>
+            <CardDescription>Open your maintenance dashboard.</CardDescription>
+          </CardHeader>
+          <CardContent>
+            <SignInForm serverError={error} client:load />
+          </CardContent>
+          <CardFooter className="justify-center">
+            <p class="text-muted-foreground text-center text-sm">
+              Don't have an account?
+              <a href="/auth/signup" class:list={[buttonVariants({ variant: "link", size: "sm" })]}>
+                Sign up
+              </a>
+            </p>
+          </CardFooter>
+        </Card>
+      </main>
+    </Layout>
+  )
+}
