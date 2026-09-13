@@ -198,7 +198,7 @@ Foundations below assumed these were present and did not re-scaffold them.
 - **Unknowns:** -
 - **Mobile action order:** task action buttons should appear in this order on mobile: Mark completed, Delete, Edit task. Desktop may keep a layout optimized for wider scanning.
 - **Risk:** The risk is making mobile actions denser while accidentally making destructive deletion too easy; keep confirmation behavior and visual hierarchy clear.
-- **Status:** in-progress
+- **Status:** done
 
 ### S-07: Unified app shell, auth, and homepage
 
@@ -257,6 +257,7 @@ None.
 - **M-1: First usable maintenance loop** - Closed 2026-09-12. Delivered account-scoped create, view, complete, edit, and delete for maintenance tasks.
 
 ## Done
+- **S-06: use a mobile-optimized dashboard with clearer task creation, banners, and task action buttons** - Archived 2026-09-13 -> `context/archive/2026-09-13-dashboard-mobile-ux-improvements/`. Lesson: -.
 - **S-05: create and edit tasks with consistent "Last completed" terminology, safe dates, and common repeat intervals** - Archived 2026-09-13 -> `context/archive/2026-09-13-task-form-language-and-validation-polish/`. Lesson: -.
 - **F-02: (foundation) consistent HomeKeep UI primitives, theme tokens, and identity hooks exist for the polish slices.** - Archived 2026-09-13 -> `context/archive/2026-09-12-shadcn-luma-design-system-foundation/`. Lesson: -.
 

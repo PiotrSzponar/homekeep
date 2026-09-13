@@ -1,8 +1,9 @@
 ---
 change_id: dashboard-mobile-ux-improvements
-status: impl_reviewed
+status: archived
 created: 2026-09-13
 updated: 2026-09-13
+archived_at: 2026-09-13T15:34:21Z
 roadmap_id: S-06
 ---
 
