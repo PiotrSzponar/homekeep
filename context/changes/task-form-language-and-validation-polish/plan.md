@@ -324,33 +324,33 @@ Wire the shared form behavior into the real dashboard flows.
 
 #### Automated
 
-- [x] 2.1 `npm run lint` passes.
-- [x] 2.2 Shared task-form helpers are imported by both create and edit task form paths.
-- [x] 2.3 A search of touched task form files finds no `bg-cosmic`, raw starter palette classes, or direct `cn` package imports.
+- [x] 2.1 `npm run lint` passes. - c06a30d
+- [x] 2.2 Shared task-form helpers are imported by both create and edit task form paths. - c06a30d
+- [x] 2.3 A search of touched task form files finds no `bg-cosmic`, raw starter palette classes, or direct `cn` package imports. - c06a30d
 
 #### Manual
 
-- [x] 2.4 Create form shows today's browser-local date by default.
-- [x] 2.5 Create and edit date inputs prevent picking dates after today's browser-local date.
-- [x] 2.6 Empty task name, missing date, future date, blank recurrence, non-numeric recurrence, zero recurrence, and decimal recurrence show inline errors before submit.
-- [x] 2.7 Presets show 1 month, Half a year, and 1 year; selecting each posts 30, 180, and 365 respectively.
-- [x] 2.8 A custom recurrence day value remains possible and understandable.
+- [x] 2.4 Create form shows today's browser-local date by default. - c06a30d
+- [x] 2.5 Create and edit date inputs prevent picking dates after today's browser-local date. - c06a30d
+- [x] 2.6 Empty task name, missing date, future date, blank recurrence, non-numeric recurrence, zero recurrence, and decimal recurrence show inline errors before submit. - c06a30d
+- [x] 2.7 Presets show 1 month, Half a year, and 1 year; selecting each posts 30, 180, and 365 respectively. - c06a30d
+- [x] 2.8 A custom recurrence day value remains possible and understandable. - c06a30d
 
 ### Phase 3: Create/Edit Integration and UX Verification
 
 #### Automated
 
-- [x] 3.1 `npm run test -- src/lib/maintenance-tasks.test.ts src/pages/api/tasks/create.test.ts src/pages/api/tasks/update.test.ts` passes.
-- [x] 3.2 `npm run lint` passes.
-- [x] 3.3 `npm run build` passes.
-- [x] 3.4 `rg -n "id=\"edit-task\"|form=\"edit-task\"" src/components/tasks` returns no duplicate static edit-form targets.
-- [x] 3.5 Task form React components that rely on browser-local defaults or inline validation are rendered from Astro with client hydration directives.
+- [x] 3.1 `npm run test -- src/lib/maintenance-tasks.test.ts src/pages/api/tasks/create.test.ts src/pages/api/tasks/update.test.ts` passes. - c06a30d
+- [x] 3.2 `npm run lint` passes. - c06a30d
+- [x] 3.3 `npm run build` passes. - c06a30d
+- [x] 3.4 `rg -n "id=\"edit-task\"|form=\"edit-task\"" src/components/tasks` returns no duplicate static edit-form targets. - c06a30d
+- [x] 3.5 Task form React components that rely on browser-local defaults or inline validation are rendered from Astro with client hydration directives. - c06a30d
 
 #### Manual
 
-- [x] 3.6 Create a task using the default today date and the 1 month preset; the saved task shows the expected next due date and status.
-- [x] 3.7 Edit an existing task using the Half a year preset; the task updates and recalculates after redirect.
-- [x] 3.8 Edit an existing task using a custom recurrence value; the task updates and recalculates after redirect.
-- [x] 3.9 Attempt to submit create and edit forms with a future date; the form stays on the page and shows inline date feedback.
-- [x] 3.10 Task complete and delete actions still work from the task list.
-- [x] 3.11 Converted form controls render cleanly on mobile and desktop in light and dark themes.
+- [x] 3.6 Create a task using the default today date and the 1 month preset; the saved task shows the expected next due date and status. - c06a30d
+- [x] 3.7 Edit an existing task using the Half a year preset; the task updates and recalculates after redirect. - c06a30d
+- [x] 3.8 Edit an existing task using a custom recurrence value; the task updates and recalculates after redirect. - c06a30d
+- [x] 3.9 Attempt to submit create and edit forms with a future date; the form stays on the page and shows inline date feedback. - c06a30d
+- [x] 3.10 Task complete and delete actions still work from the task list. - c06a30d
+- [x] 3.11 Converted form controls render cleanly on mobile and desktop in light and dark themes. - c06a30d
