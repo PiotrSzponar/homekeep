@@ -16,8 +16,8 @@
 
 ## Phase 3
 
-- Remaining `bg-cosmic`, purple, and starter title references are intentionally deferred to S-07 homepage/auth/app-shell work.
-- Remaining task form/list raw `slate`/`emerald`/status color references are intentionally deferred to S-05 and S-06 task polish work.
+- Original Phase 3 implementation used a thin proof of the foundation and deferred several visible UI surfaces to later polish slices.
+- That proved too weak for the intended foundation. The corrective rebuild below supersedes the deferral and makes the installed shadcn/Luma/Lime system the baseline for all current visible UI surfaces.
 
 ## Corrective UI Rebuild
 

@@ -3,10 +3,10 @@ project: HomeKeep
 version: 2
 status: draft
 created: 2026-09-11
-updated: 2026-09-12
+updated: 2026-09-13
 prd_version: 1
 main_goal: polish
-top_blocker: design-system-consistency
+top_blocker: task-form-and-mobile-polish
 milestone_id: mvp-polish-consistency
 milestone_seq: 2
 milestone_status: open
@@ -59,24 +59,25 @@ North star here means the smallest end-to-end slice whose successful delivery pr
 
 ## At a glance
 
-| ID | Change ID | Outcome (user can ...) | Prerequisites | PRD refs | Status |
-| --- | --- | --- | --- | --- | --- |
-| F-01 | owned-task-storage-contract | (foundation) account-scoped task persistence contract exists for vertical task slices | - | FR-006, Access Control, NFR account access | done |
-| S-01 | create-task-with-status | create a maintenance task and immediately see next due date plus current status | F-01 | US-01, FR-001, FR-002, FR-006, Business Logic, NFR task visibility | done |
-| S-02 | complete-task-and-refresh-status | mark a saved maintenance task as completed and see last completed date, next due date, and status update | S-01 | FR-005, FR-002, FR-006, Business Logic, NFR task visibility | done |
-| S-03 | edit-task-and-recalculate-status | edit an existing maintenance task and see the recalculated next due date and status | S-01 | FR-003, FR-002, FR-006, Business Logic, NFR task visibility | done |
-| S-04 | delete-task | delete an existing maintenance task from their own task list | S-01 | FR-004, FR-006, Access Control | done |
-| F-02 | shadcn-luma-design-system-foundation | (foundation) consistent HomeKeep UI primitives, theme tokens, and identity hooks exist for polish slices | - | MS-06, MS-08 | in-progress |
-| S-05 | task-form-language-and-validation-polish | create and edit tasks with consistent "Last completed" terminology, safe dates, and common repeat intervals | F-02 | US-01, FR-001, FR-003, MS-01, MS-02, MS-03 | proposed |
-| S-06 | dashboard-task-list-first-mobile-ux | scan tasks first on mobile and use clearer task actions and banners | F-02, S-05 | FR-002, FR-004, FR-005, MS-04, MS-05, MS-06 | proposed |
-| S-07 | unified-app-shell-auth-and-homepage | enter HomeKeep through dashboard or auth with consistent pages and no starter-facing branding | F-02, S-06 | FR-006, MS-07 | proposed |
-| S-08 | homekeep-visual-identity-assets | see lightweight HomeKeep identity and favicon based on the house-heart mark | F-02 | MS-08 | proposed |
+| ID   | Change ID                                | Outcome (user can ...)                                                                                      | Prerequisites | PRD refs                                                           | Status   |
+| ---- | ---------------------------------------- | ----------------------------------------------------------------------------------------------------------- | ------------- | ------------------------------------------------------------------ | -------- |
+| F-01 | owned-task-storage-contract              | (foundation) account-scoped task persistence contract exists for vertical task slices                       | -             | FR-006, Access Control, NFR account access                         | done     |
+| S-01 | create-task-with-status                  | create a maintenance task and immediately see next due date plus current status                             | F-01          | US-01, FR-001, FR-002, FR-006, Business Logic, NFR task visibility | done     |
+| S-02 | complete-task-and-refresh-status         | mark a saved maintenance task as completed and see last completed date, next due date, and status update    | S-01          | FR-005, FR-002, FR-006, Business Logic, NFR task visibility        | done     |
+| S-03 | edit-task-and-recalculate-status         | edit an existing maintenance task and see the recalculated next due date and status                         | S-01          | FR-003, FR-002, FR-006, Business Logic, NFR task visibility        | done     |
+| S-04 | delete-task                              | delete an existing maintenance task from their own task list                                                | S-01          | FR-004, FR-006, Access Control                                     | done     |
+| F-02 | shadcn-luma-design-system-foundation     | (foundation) consistent HomeKeep UI primitives, theme tokens, and identity hooks exist for polish slices    | -             | MS-06, MS-08                                                       | done     |
+| S-05 | task-form-language-and-validation-polish | create and edit tasks with consistent "Last completed" terminology, safe dates, and common repeat intervals | F-02          | US-01, FR-001, FR-003, MS-01, MS-02, MS-03                         | proposed |
+| S-06 | dashboard-task-list-first-mobile-ux      | scan tasks first on mobile and use clearer task actions and banners                                         | F-02, S-05    | FR-002, FR-004, FR-005, MS-04, MS-05, MS-06                        | proposed |
+| S-07 | unified-app-shell-auth-and-homepage      | enter HomeKeep through dashboard or auth with consistent pages and no starter-facing branding               | F-02, S-06    | FR-006, MS-07                                                      | proposed |
+| S-08 | homekeep-visual-identity-assets          | see lightweight HomeKeep identity and favicon based on the house-heart mark                                 | F-02          | MS-08                                                              | proposed |
 
 ## Baseline
 
-What's already in place in the codebase as of `2026-09-12`.
+What's already in place in the codebase as of `2026-09-13`.
 
-- **Frontend:** present - Astro, React, TypeScript, Tailwind 4, Lucide, `components.json`, and shadcn-style button primitives exist.
+- **Frontend:** present - Astro, React, TypeScript, Tailwind 4, Lucide, `components.json`, and shadcn/Base UI primitives exist.
+- **UI foundation:** present - shadcn/ui is configured as `base-luma` with the Luma preset, Lime theme tokens, Base UI primitives, Lucide icons, semantic Tailwind v4 CSS variables in `src/styles/global.css`, a top-header theme dropdown, and HomeKeep-specific page/shell styling.
 - **Backend / API:** present - auth and task API routes exist under `src/pages/api/`.
 - **Data:** present for MVP - Supabase task storage, ownership filtering, and derived status helpers exist.
 - **Auth:** present - Supabase SSR client, auth handlers, and protected dashboard middleware are wired.
@@ -120,8 +121,9 @@ Foundations below assumed these were present and did not re-scaffold them.
 - **Parallel with:** -
 - **Blockers:** -
 - **Unknowns:** -
-- **Risk:** The app already mixes starter styling with MVP dashboard styling; establishing shared tokens and primitives first reduces repeated one-off fixes.
-- **Status:** in-progress
+- **Risk:** Completed as a foundation because the app mixed starter styling with MVP dashboard styling; shared tokens and primitives now prevent repeated one-off fixes in downstream polish work.
+- **Implementation baseline:** `components.json` uses `style: "base-luma"`; `src/styles/global.css` owns Luma/Lime semantic tokens; `src/components/ui/` owns Base UI shadcn primitives; visible Astro/React UI surfaces should compose those primitives and avoid raw starter palette utilities.
+- **Status:** done
 
 ## Slices
 
@@ -223,18 +225,18 @@ Foundations below assumed these were present and did not re-scaffold them.
 
 ## Backlog Handoff
 
-| Roadmap ID | Change ID | Suggested issue title | Status | Notes |
-| --- | --- | --- | --- | --- |
-| F-01 | owned-task-storage-contract | Establish owned task storage contract | done | Archived 2026-09-11. |
-| S-01 | create-task-with-status | Create task and show calculated status | done | Archived 2026-09-11. |
-| S-02 | complete-task-and-refresh-status | Mark task completed and refresh status | done | Archived 2026-09-11. |
-| S-03 | edit-task-and-recalculate-status | Edit task and recalculate status | done | Archived 2026-09-12. |
-| S-04 | delete-task | Delete task from own list | done | Archived 2026-09-12. |
-| F-02 | shadcn-luma-design-system-foundation | Establish HomeKeep design-system foundation | ready | Plan this first; include UI/shadcn research before implementation. |
-| S-05 | task-form-language-and-validation-polish | Polish task form terminology, validation, and recurrence inputs | proposed | Plan after F-02 is implemented. |
-| S-06 | dashboard-task-list-first-mobile-ux | Make dashboard task list mobile-first and actions clearer | proposed | Plan after F-02 and S-05 are implemented. |
-| S-07 | unified-app-shell-auth-and-homepage | Unify app shell, auth pages, and root entry flow | proposed | Plan after F-02 and S-06 are implemented. |
-| S-08 | homekeep-visual-identity-assets | Add HomeKeep mark and favicon | proposed | Plan after F-02 is implemented; no README/template image work. |
+| Roadmap ID | Change ID                                | Suggested issue title                                           | Status   | Notes                                                                                                                                          |
+| ---------- | ---------------------------------------- | --------------------------------------------------------------- | -------- | ---------------------------------------------------------------------------------------------------------------------------------------------- |
+| F-01       | owned-task-storage-contract              | Establish owned task storage contract                           | done     | Archived 2026-09-11.                                                                                                                           |
+| S-01       | create-task-with-status                  | Create task and show calculated status                          | done     | Archived 2026-09-11.                                                                                                                           |
+| S-02       | complete-task-and-refresh-status         | Mark task completed and refresh status                          | done     | Archived 2026-09-11.                                                                                                                           |
+| S-03       | edit-task-and-recalculate-status         | Edit task and recalculate status                                | done     | Archived 2026-09-12.                                                                                                                           |
+| S-04       | delete-task                              | Delete task from own list                                       | done     | Archived 2026-09-12.                                                                                                                           |
+| F-02       | shadcn-luma-design-system-foundation     | Establish HomeKeep design-system foundation                     | done     | Implemented 2026-09-13; future UI work should extend the shadcn/Base UI Luma/Lime baseline instead of creating a new design-system setup task. |
+| S-05       | task-form-language-and-validation-polish | Polish task form terminology, validation, and recurrence inputs | proposed | Plan against the existing F-02 shadcn/Luma/Lime baseline.                                                                                      |
+| S-06       | dashboard-task-list-first-mobile-ux      | Make dashboard task list mobile-first and actions clearer       | proposed | Plan against the existing F-02 shadcn/Luma/Lime baseline after S-05.                                                                           |
+| S-07       | unified-app-shell-auth-and-homepage      | Unify app shell, auth pages, and root entry flow                | proposed | Re-scope before planning; F-02 already removed starter-facing visual styling and established shared shell primitives.                          |
+| S-08       | homekeep-visual-identity-assets          | Add HomeKeep mark and favicon                                   | proposed | Plan after F-02 is implemented; no README/template image work.                                                                                 |
 
 ## Open Roadmap Questions
 
@@ -255,6 +257,7 @@ None.
 
 ## Done
 
+- **F-02: (foundation) consistent HomeKeep UI primitives, theme tokens, and identity hooks exist for the polish slices.** - Implemented 2026-09-13 -> `context/changes/shadcn-luma-design-system-foundation/`. Lesson: document foundational UI choices in `tech-stack.md`, roadmap prerequisites, and AGENTS before downstream polish work.
 - **S-04: user can delete an existing maintenance task from their own task list.** - Archived 2026-09-12 -> `context/archive/2026-09-12-delete-task/`. Lesson: -.
 - **S-03: user can edit an existing maintenance task and see the recalculated next due date and current status.** - Archived 2026-09-12 -> `context/archive/2026-09-12-edit-task-and-recalculate-status/`. Lesson: -.
 - **F-01: (foundation) account-scoped task persistence contract exists so each vertical task slice can store, read, and verify only the signed-in homeowner's own tasks.** - Archived 2026-09-11 -> `context/archive/2026-09-11-owned-task-storage-contract/`. Lesson: -.
