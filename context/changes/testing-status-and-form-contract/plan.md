@@ -221,11 +221,11 @@ The project now fails CI when the Phase 1 Vitest contracts regress, and future a
 
 #### Automated
 
-- [x] 3.1 CI workflow runs npm run test
-- [x] 3.2 Full npm run test passes
-- [x] 3.3 npm run lint passes
-- [x] 3.4 npm run build passes
+- [x] 3.1 CI workflow runs npm run test - 8d98c49
+- [x] 3.2 Full npm run test passes - 8d98c49
+- [x] 3.3 npm run lint passes - 8d98c49
+- [x] 3.4 npm run build passes - 8d98c49
 
 #### Manual
 
-- [x] 3.5 Phase 1 cookbook entries document the reference test locations and commands
+- [x] 3.5 Phase 1 cookbook entries document the reference test locations and commands - 8d98c49
