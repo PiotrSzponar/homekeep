@@ -70,7 +70,7 @@ North star here means the smallest end-to-end slice whose successful delivery pr
 | S-05 | task-form-language-and-validation-polish | create and edit tasks with consistent "Last completed" terminology, safe dates, and common repeat intervals | F-02          | US-01, FR-001, FR-003, MS-01, MS-02, MS-03                         | in-progress |
 | S-06 | dashboard-mobile-ux-improvements         | use a mobile-optimized dashboard with clearer task creation, banners, and task action buttons               | F-02, S-05    | FR-002, FR-004, FR-005, MS-04, MS-05, MS-06                        | in-progress |
 | S-07 | unified-app-shell-auth-and-homepage      | enter HomeKeep through dashboard or auth with consistent pages and no starter-facing branding               | F-02, S-06    | FR-006, MS-07                                                      | in-progress |
-| S-08 | homekeep-visual-identity-assets          | see lightweight HomeKeep identity and favicon based on the house-heart mark                                 | F-02          | MS-08                                                              | proposed |
+| S-08 | homekeep-visual-identity-assets          | see lightweight HomeKeep identity and favicon based on the house-heart mark                                 | F-02          | MS-08                                                              | in-progress |
 
 ## Baseline
 
@@ -222,7 +222,7 @@ Foundations below assumed these were present and did not re-scaffold them.
 - **Blockers:** -
 - **Unknowns:** -
 - **Risk:** The risk is spending polish time on brand collateral; keep this limited to app identity and favicon, excluding README/template images.
-- **Status:** proposed
+- **Status:** in-progress
 
 ## Backlog Handoff
 

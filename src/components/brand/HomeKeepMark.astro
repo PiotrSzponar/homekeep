@@ -1,0 +1,30 @@
+---
+interface Props {
+  class?: string;
+  decorative?: boolean;
+  title?: string;
+}
+
+const { class: className, decorative = true, title = "HomeKeep" } = Astro.props;
+const titleId = "homekeep-mark-title";
+---
+
+<svg
+  class:list={[className]}
+  viewBox="0 0 32 32"
+  fill="none"
+  xmlns="http://www.w3.org/2000/svg"
+  aria-hidden={decorative ? "true" : undefined}
+  role={decorative ? undefined : "img"}
+  aria-labelledby={decorative ? undefined : titleId}
+>
+  {!decorative && <title id={titleId}>{title}</title>}
+  <rect width="32" height="32" rx="9" class="fill-primary"></rect>
+  <path
+    class="fill-primary-foreground"
+    d="M7.6 15.1 16 8l8.4 7.1v8.7a2.2 2.2 0 0 1-2.2 2.2H9.8a2.2 2.2 0 0 1-2.2-2.2v-8.7Z"></path>
+  <path
+    class="fill-primary"
+    d="M16 23.2s-5.1-2.9-5.1-6.3c0-1.7 1.1-2.9 2.7-2.9 1 0 1.9.6 2.4 1.4.5-.8 1.4-1.4 2.4-1.4 1.6 0 2.7 1.2 2.7 2.9 0 3.4-5.1 6.3-5.1 6.3Z"
+  ></path>
+</svg>

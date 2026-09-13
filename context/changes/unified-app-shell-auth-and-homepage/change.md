@@ -1,6 +1,6 @@
 ---
 change_id: unified-app-shell-auth-and-homepage
-status: implemented
+status: impl_reviewed
 created: 2026-09-13
 updated: 2026-09-13
 roadmap_id: S-07
