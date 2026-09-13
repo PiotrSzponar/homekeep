@@ -1,8 +1,9 @@
 ---
 change_id: homekeep-visual-identity-assets
-status: impl_reviewed
+status: archived
 created: 2026-09-13
 updated: 2026-09-13
+archived_at: 2026-09-13T15:35:02Z
 ---
 
 # HomeKeep Visual Identity Assets
