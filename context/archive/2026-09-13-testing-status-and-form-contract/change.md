@@ -1,10 +1,10 @@
 ---
 change_id: testing-status-and-form-contract
 title: Test status and task form contracts
-status: impl_reviewed
+status: archived
 created: 2026-09-13
-updated: 2026-09-13
-archived_at: null
+updated: 2026-09-14
+archived_at: 2026-09-13T22:31:10Z
 ---
 
 ## Notes
