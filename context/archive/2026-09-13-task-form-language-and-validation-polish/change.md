@@ -1,8 +1,9 @@
 ---
 change_id: task-form-language-and-validation-polish
-status: impl_reviewed
+status: archived
 created: 2026-09-13
 updated: 2026-09-13
+archived_at: 2026-09-13T15:33:31Z
 roadmap_id: S-05
 ---
 
