@@ -257,6 +257,7 @@ None.
 - **M-1: First usable maintenance loop** - Closed 2026-09-12. Delivered account-scoped create, view, complete, edit, and delete for maintenance tasks.
 
 ## Done
+- **F-02: (foundation) consistent HomeKeep UI primitives, theme tokens, and identity hooks exist for the polish slices.** - Archived 2026-09-13 -> `context/archive/2026-09-12-shadcn-luma-design-system-foundation/`. Lesson: -.
 
 - **F-02: (foundation) consistent HomeKeep UI primitives, theme tokens, and identity hooks exist for the polish slices.** - Implemented 2026-09-13 -> `context/changes/shadcn-luma-design-system-foundation/`. Lesson: document foundational UI choices in `tech-stack.md`, roadmap prerequisites, and AGENTS before downstream polish work.
 - **S-04: user can delete an existing maintenance task from their own task list.** - Archived 2026-09-12 -> `context/archive/2026-09-12-delete-task/`. Lesson: -.
