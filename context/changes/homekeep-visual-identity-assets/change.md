@@ -1,6 +1,6 @@
 ---
 change_id: homekeep-visual-identity-assets
-status: implementing
+status: implemented
 created: 2026-09-13
 updated: 2026-09-13
 ---

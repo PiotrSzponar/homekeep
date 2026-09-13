@@ -276,12 +276,12 @@ Verify the new identity assets in the running app before marking the slice compl
 
 #### Automated
 
-- [x] 3.1 `npm run lint` passes.
-- [x] 3.2 `npm run build` passes.
-- [x] 3.3 File checks confirm `public/favicon.svg` and 32x32 `public/favicon.png` are present.
+- [x] 3.1 `npm run lint` passes. - 5366f60
+- [x] 3.2 `npm run build` passes. - 5366f60
+- [x] 3.3 File checks confirm `public/favicon.svg` and 32x32 `public/favicon.png` are present. - 5366f60
 
 #### Manual
 
-- [x] 3.4 Desktop light and dark screenshots show a polished, non-overlapping topbar brand lockup.
-- [x] 3.5 Mobile light and dark screenshots show the mark and text fit without shrinking or layout shift.
-- [x] 3.6 User explicitly approves the house-heart mark and favicon direction.
+- [x] 3.4 Desktop light and dark screenshots show a polished, non-overlapping topbar brand lockup. - 5366f60
+- [x] 3.5 Mobile light and dark screenshots show the mark and text fit without shrinking or layout shift. - 5366f60
+- [x] 3.6 User explicitly approves the house-heart mark and favicon direction. - 5366f60
