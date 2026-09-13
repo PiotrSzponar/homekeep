@@ -248,29 +248,29 @@ Verify the new identity assets in the running app before marking the slice compl
 
 #### Automated
 
-- [x] 1.1 `public/favicon.svg` exists and contains an SVG root with a square viewBox.
-- [x] 1.2 `public/favicon.png` exists and is 32x32.
-- [x] 1.3 `npm run lint` passes after adding the mark source and favicon links.
+- [x] 1.1 `public/favicon.svg` exists and contains an SVG root with a square viewBox. - 6e13119
+- [x] 1.2 `public/favicon.png` exists and is 32x32. - 6e13119
+- [x] 1.3 `npm run lint` passes after adding the mark source and favicon links. - 6e13119
 
 #### Manual
 
-- [x] 1.4 The house-heart mark is recognizable at favicon size in light and dark browser chrome where the browser supports it.
-- [x] 1.5 The favicon and app mark clearly look related because they use the same shape language.
-- [x] 1.6 `public/template.png` remains unchanged.
+- [x] 1.4 The house-heart mark is recognizable at favicon size in light and dark browser chrome where the browser supports it. - 6e13119
+- [x] 1.5 The favicon and app mark clearly look related because they use the same shape language. - 6e13119
+- [x] 1.6 `public/template.png` remains unchanged. - 6e13119
 
 ### Phase 2: Topbar Lockup Integration
 
 #### Automated
 
-- [ ] 2.1 `npm run lint` passes.
-- [ ] 2.2 `rg -n ">HK<|HK" src/components/brand src/layouts src/pages` returns no remaining user-facing placeholder mark usage.
-- [ ] 2.3 `rg -n "bg-cosmic|purple-|blue-|slate-|emerald-|rose-|amber-|sky-|text-white" src/components/brand src/layouts` returns no prohibited palette regressions in touched UI files.
+- [x] 2.1 `npm run lint` passes.
+- [x] 2.2 `rg -n ">HK<|HK" src/components/brand src/layouts src/pages` returns no remaining user-facing placeholder mark usage.
+- [x] 2.3 `rg -n "bg-cosmic|purple-|blue-|slate-|emerald-|rose-|amber-|sky-|text-white" src/components/brand src/layouts` returns no prohibited palette regressions in touched UI files.
 
 #### Manual
 
-- [ ] 2.4 Topbar mark, name, and tagline render cleanly on mobile and desktop.
-- [ ] 2.5 The current compact behavior still hides the tagline when `compact` is true.
-- [ ] 2.6 The mark is legible in light and dark themes.
+- [x] 2.4 Topbar mark, name, and tagline render cleanly on mobile and desktop.
+- [x] 2.5 The current compact behavior still hides the tagline when `compact` is true.
+- [x] 2.6 The mark is legible in light and dark themes.
 
 ### Phase 3: Visual QA and Review
 
