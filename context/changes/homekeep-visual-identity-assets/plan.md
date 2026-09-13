@@ -262,26 +262,26 @@ Verify the new identity assets in the running app before marking the slice compl
 
 #### Automated
 
-- [x] 2.1 `npm run lint` passes.
-- [x] 2.2 `rg -n ">HK<|HK" src/components/brand src/layouts src/pages` returns no remaining user-facing placeholder mark usage.
-- [x] 2.3 `rg -n "bg-cosmic|purple-|blue-|slate-|emerald-|rose-|amber-|sky-|text-white" src/components/brand src/layouts` returns no prohibited palette regressions in touched UI files.
+- [x] 2.1 `npm run lint` passes. - 025409a
+- [x] 2.2 `rg -n ">HK<|HK" src/components/brand src/layouts src/pages` returns no remaining user-facing placeholder mark usage. - 025409a
+- [x] 2.3 `rg -n "bg-cosmic|purple-|blue-|slate-|emerald-|rose-|amber-|sky-|text-white" src/components/brand src/layouts` returns no prohibited palette regressions in touched UI files. - 025409a
 
 #### Manual
 
-- [x] 2.4 Topbar mark, name, and tagline render cleanly on mobile and desktop.
-- [x] 2.5 The current compact behavior still hides the tagline when `compact` is true.
-- [x] 2.6 The mark is legible in light and dark themes.
+- [x] 2.4 Topbar mark, name, and tagline render cleanly on mobile and desktop. - 025409a
+- [x] 2.5 The current compact behavior still hides the tagline when `compact` is true. - 025409a
+- [x] 2.6 The mark is legible in light and dark themes. - 025409a
 
 ### Phase 3: Visual QA and Review
 
 #### Automated
 
-- [ ] 3.1 `npm run lint` passes.
-- [ ] 3.2 `npm run build` passes.
-- [ ] 3.3 File checks confirm `public/favicon.svg` and 32x32 `public/favicon.png` are present.
+- [x] 3.1 `npm run lint` passes.
+- [x] 3.2 `npm run build` passes.
+- [x] 3.3 File checks confirm `public/favicon.svg` and 32x32 `public/favicon.png` are present.
 
 #### Manual
 
-- [ ] 3.4 Desktop light and dark screenshots show a polished, non-overlapping topbar brand lockup.
-- [ ] 3.5 Mobile light and dark screenshots show the mark and text fit without shrinking or layout shift.
-- [ ] 3.6 User explicitly approves the house-heart mark and favicon direction.
+- [x] 3.4 Desktop light and dark screenshots show a polished, non-overlapping topbar brand lockup.
+- [x] 3.5 Mobile light and dark screenshots show the mark and text fit without shrinking or layout shift.
+- [x] 3.6 User explicitly approves the house-heart mark and favicon direction.
