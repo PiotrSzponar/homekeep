@@ -210,7 +210,7 @@ Foundations below assumed these were present and did not re-scaffold them.
 - **Blockers:** -
 - **Unknowns:** -
 - **Risk:** The risk is changing route behavior in a way that weakens auth protection; keep middleware as the owner of protected dashboard and task routes.
-- **Status:** in-progress
+- **Status:** done
 
 ### S-08: HomeKeep visual identity assets
 
@@ -257,6 +257,7 @@ None.
 - **M-1: First usable maintenance loop** - Closed 2026-09-12. Delivered account-scoped create, view, complete, edit, and delete for maintenance tasks.
 
 ## Done
+- **S-07: enter HomeKeep through dashboard or auth with consistent pages and no starter-facing branding** - Archived 2026-09-13 -> `context/archive/2026-09-13-unified-app-shell-auth-and-homepage/`. Lesson: -.
 - **S-06: use a mobile-optimized dashboard with clearer task creation, banners, and task action buttons** - Archived 2026-09-13 -> `context/archive/2026-09-13-dashboard-mobile-ux-improvements/`. Lesson: -.
 - **S-05: create and edit tasks with consistent "Last completed" terminology, safe dates, and common repeat intervals** - Archived 2026-09-13 -> `context/archive/2026-09-13-task-form-language-and-validation-polish/`. Lesson: -.
 - **F-02: (foundation) consistent HomeKeep UI primitives, theme tokens, and identity hooks exist for the polish slices.** - Archived 2026-09-13 -> `context/archive/2026-09-12-shadcn-luma-design-system-foundation/`. Lesson: -.
