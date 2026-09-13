@@ -246,33 +246,33 @@ Verify that the mobile changes integrate cleanly with the existing S-05 dashboar
 
 #### Automated
 
-- [x] 1.1 `npm run lint` passes.
-- [x] 1.2 `rg -n "CreateTaskForm client:load" src/pages/dashboard.astro` returns no direct dashboard usage because the wrapper owns hydration.
-- [x] 1.3 The new create wrapper imports and renders `CreateTaskForm`; it does not duplicate `name`, `lastCompletedDate`, or `recurrenceIntervalDays` inputs.
+- [x] 1.1 `npm run lint` passes. — b71f5f4
+- [x] 1.2 `rg -n "CreateTaskForm client:load" src/pages/dashboard.astro` returns no direct dashboard usage because the wrapper owns hydration. — b71f5f4
+- [x] 1.3 The new create wrapper imports and renders `CreateTaskForm`; it does not duplicate `name`, `lastCompletedDate`, or `recurrenceIntervalDays` inputs. — b71f5f4
 
 #### Manual
 
-- [x] 1.4 On a mobile viewport with at least one task, an obvious compact create trigger appears before the task list, the create form body is hidden until opened, and saved tasks remain immediately reachable.
-- [x] 1.5 On a mobile viewport with no tasks, the create form is visible without first opening a trigger.
-- [x] 1.6 On desktop, the create form remains visible in the dashboard layout.
-- [x] 1.7 Dashboard success/error banners appear as they did before this slice.
+- [x] 1.4 On a mobile viewport with at least one task, an obvious compact create trigger appears before the task list, the create form body is hidden until opened, and saved tasks remain immediately reachable. — b71f5f4
+- [x] 1.5 On a mobile viewport with no tasks, the create form is visible without first opening a trigger. — b71f5f4
+- [x] 1.6 On desktop, the create form remains visible in the dashboard layout. — b71f5f4
+- [x] 1.7 Dashboard success/error banners appear as they did before this slice. — b71f5f4
 
 ### Phase 2: Mobile Task Action Ordering
 
 #### Automated
 
-- [ ] 2.1 `npm run lint` passes.
-- [ ] 2.2 `npm run build` passes.
-- [ ] 2.3 `rg -n 'action="/api/tasks/(complete|delete)"|action="/api/tasks/update"' src/components/tasks` confirms existing task action routes are still present.
-- [ ] 2.4 `rg -n 'Mark completed|Delete|Edit task' src/components/tasks/TaskActions.tsx` confirms all three task action labels remain available.
+- [x] 2.1 `npm run lint` passes.
+- [x] 2.2 `npm run build` passes.
+- [x] 2.3 `rg -n 'action="/api/tasks/(complete|delete)"|action="/api/tasks/update"' src/components/tasks` confirms existing task action routes are still present.
+- [x] 2.4 `rg -n 'Mark completed|Delete|Edit task' src/components/tasks/TaskActions.tsx` confirms all three task action labels remain available.
 
 #### Manual
 
-- [ ] 2.5 On mobile, each task card shows actions in this order: Mark completed, Delete, Edit task.
-- [ ] 2.6 On desktop, task actions remain visually clear and do not need to match the mobile order.
-- [ ] 2.7 Delete cancellation prevents the delete POST.
-- [ ] 2.8 Mark completed still updates the task after redirect.
-- [ ] 2.9 Edit task still opens the edit form and saving changes still updates the task after redirect.
+- [x] 2.5 On mobile, each task card shows actions in this order: Mark completed, Delete, Edit task.
+- [x] 2.6 On desktop, task actions remain visually clear and do not need to match the mobile order.
+- [x] 2.7 Delete cancellation prevents the delete POST.
+- [x] 2.8 Mark completed still updates the task after redirect.
+- [x] 2.9 Edit task still opens the edit form and saving changes still updates the task after redirect.
 
 ### Phase 3: Responsive QA and Polish Guardrails
 

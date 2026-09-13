@@ -72,7 +72,7 @@ if (supabase && user?.id) {
 
       {
         taskError && (
-          <Alert variant="destructive">
+          <Alert role="status" variant="destructive">
             <AlertDescription>{taskError}</AlertDescription>
           </Alert>
         )
@@ -80,7 +80,7 @@ if (supabase && user?.id) {
 
       {
         dashboardError && (
-          <Alert role="status">
+          <Alert role="status" variant="destructive">
             <AlertDescription>{dashboardError}</AlertDescription>
           </Alert>
         )

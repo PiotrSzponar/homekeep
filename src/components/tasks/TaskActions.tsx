@@ -16,21 +16,15 @@ export default function TaskActions({ task }: TaskActionsProps) {
   return (
     <div className="flex flex-col gap-4">
       <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <div className="flex flex-col gap-2 sm:flex-row">
-          <Button
-            type="button"
-            variant="outline"
-            className="w-full sm:w-auto"
-            aria-controls={editPanelId}
-            aria-expanded={isEditing}
-            onClick={() => {
-              setIsEditing((currentValue) => !currentValue);
-            }}
-          >
-            <PencilIcon data-icon="inline-start" aria-hidden="true" />
-            Edit task
+        <form method="POST" action="/api/tasks/complete" className="sm:order-2">
+          <input type="hidden" name="taskId" value={task.id} />
+          <Button type="submit" className="w-full sm:w-auto">
+            <CheckIcon data-icon="inline-start" aria-hidden="true" />
+            Mark completed
           </Button>
+        </form>
 
+        <div className="flex flex-col gap-2 sm:order-1 sm:flex-row">
           <form
             method="POST"
             action="/api/tasks/delete"
@@ -46,15 +40,21 @@ export default function TaskActions({ task }: TaskActionsProps) {
               Delete
             </Button>
           </form>
-        </div>
 
-        <form method="POST" action="/api/tasks/complete">
-          <input type="hidden" name="taskId" value={task.id} />
-          <Button type="submit" className="w-full sm:w-auto">
-            <CheckIcon data-icon="inline-start" aria-hidden="true" />
-            Mark completed
+          <Button
+            type="button"
+            variant="outline"
+            className="w-full sm:w-auto"
+            aria-controls={editPanelId}
+            aria-expanded={isEditing}
+            onClick={() => {
+              setIsEditing((currentValue) => !currentValue);
+            }}
+          >
+            <PencilIcon data-icon="inline-start" aria-hidden="true" />
+            Edit task
           </Button>
-        </form>
+        </div>
       </div>
 
       {isEditing && (
