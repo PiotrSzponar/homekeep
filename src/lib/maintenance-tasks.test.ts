@@ -47,6 +47,46 @@ describe("maintenance task contract", () => {
     });
   });
 
+  it.each([
+    {
+      name: "overdue",
+      lastCompletedDate: "2026-09-01",
+      recurrenceIntervalDays: 11,
+      expectedNextDueDate: "2026-09-12",
+      expectedStatus: "overdue",
+    },
+    {
+      name: "due-soon boundary",
+      lastCompletedDate: "2026-09-01",
+      recurrenceIntervalDays: 19,
+      expectedNextDueDate: "2026-09-20",
+      expectedStatus: "due-soon",
+    },
+    {
+      name: "ok boundary",
+      lastCompletedDate: "2026-09-01",
+      recurrenceIntervalDays: 20,
+      expectedNextDueDate: "2026-09-21",
+      expectedStatus: "ok",
+    },
+  ])(
+    "derives $name status from last completed date plus recurrence interval",
+    ({ lastCompletedDate, recurrenceIntervalDays, expectedNextDueDate, expectedStatus }) => {
+      expect(
+        deriveMaintenanceTaskState(
+          {
+            last_completed_date: lastCompletedDate,
+            recurrence_interval_days: recurrenceIntervalDays,
+          },
+          "2026-09-13",
+        ),
+      ).toEqual({
+        nextDueDate: expectedNextDueDate,
+        status: expectedStatus,
+      });
+    },
+  );
+
   it("accepts past and current last-completed dates at helper-level validation", () => {
     expect(
       validateMaintenanceTaskWriteInput(
