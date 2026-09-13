@@ -261,32 +261,32 @@ Verify that the mobile changes integrate cleanly with the existing S-05 dashboar
 
 #### Automated
 
-- [x] 2.1 `npm run lint` passes.
-- [x] 2.2 `npm run build` passes.
-- [x] 2.3 `rg -n 'action="/api/tasks/(complete|delete)"|action="/api/tasks/update"' src/components/tasks` confirms existing task action routes are still present.
-- [x] 2.4 `rg -n 'Mark completed|Delete|Edit task' src/components/tasks/TaskActions.tsx` confirms all three task action labels remain available.
+- [x] 2.1 `npm run lint` passes. — c4ada59
+- [x] 2.2 `npm run build` passes. — c4ada59
+- [x] 2.3 `rg -n 'action="/api/tasks/(complete|delete)"|action="/api/tasks/update"' src/components/tasks` confirms existing task action routes are still present. — c4ada59
+- [x] 2.4 `rg -n 'Mark completed|Delete|Edit task' src/components/tasks/TaskActions.tsx` confirms all three task action labels remain available. — c4ada59
 
 #### Manual
 
-- [x] 2.5 On mobile, each task card shows actions in this order: Mark completed, Delete, Edit task.
-- [x] 2.6 On desktop, task actions remain visually clear and do not need to match the mobile order.
-- [x] 2.7 Delete cancellation prevents the delete POST.
-- [x] 2.8 Mark completed still updates the task after redirect.
-- [x] 2.9 Edit task still opens the edit form and saving changes still updates the task after redirect.
+- [x] 2.5 On mobile, each task card shows actions in this order: Mark completed, Delete, Edit task. — c4ada59
+- [x] 2.6 On desktop, task actions remain visually clear and do not need to match the mobile order. — c4ada59
+- [x] 2.7 Delete cancellation prevents the delete POST. — c4ada59
+- [x] 2.8 Mark completed still updates the task after redirect. — c4ada59
+- [x] 2.9 Edit task still opens the edit form and saving changes still updates the task after redirect. — c4ada59
 
 ### Phase 3: Responsive QA and Polish Guardrails
 
 #### Automated
 
-- [ ] 3.1 `npm run lint` passes.
-- [ ] 3.2 `npm run build` passes.
-- [ ] 3.3 `rg -n "bg-cosmic|purple-|blue-|slate-|emerald-|rose-|amber-|sky-|text-white" src/pages/dashboard.astro src/components/tasks` returns no matches.
-- [ ] 3.4 `rg -n "TaskActions.*client:load|CreateTaskPanel.*client:load|CreateTaskForm client:load" src/pages/dashboard.astro src/components/tasks` confirms hydrated islands are still in the expected places.
+- [x] 3.1 `npm run lint` passes.
+- [x] 3.2 `npm run build` passes.
+- [x] 3.3 `rg -n "bg-cosmic|purple-|blue-|slate-|emerald-|rose-|amber-|sky-|text-white" src/pages/dashboard.astro src/components/tasks` returns no matches.
+- [x] 3.4 `rg -n "TaskActions.*client:load|CreateTaskPanel.*client:load|CreateTaskForm client:load" src/pages/dashboard.astro src/components/tasks` confirms hydrated islands are still in the expected places.
 
 #### Manual
 
-- [ ] 3.5 Mobile viewport with tasks: compact create trigger appears first, create form body is collapsed, and saved tasks remain immediately reachable.
-- [ ] 3.6 Mobile viewport without tasks: create form is visible immediately.
-- [ ] 3.7 Mobile task actions follow Mark completed, Delete, Edit task.
-- [ ] 3.8 Desktop dashboard still shows a usable create surface and task list without awkward spacing.
-- [ ] 3.9 Light and dark themes render the create trigger, task actions, and edit panel clearly.
+- [x] 3.5 Mobile viewport with tasks: compact create trigger appears first, create form body is collapsed, and saved tasks remain immediately reachable.
+- [x] 3.6 Mobile viewport without tasks: create form is visible immediately.
+- [x] 3.7 Mobile task actions follow Mark completed, Delete, Edit task.
+- [x] 3.8 Desktop dashboard still shows a usable create surface and task list without awkward spacing.
+- [x] 3.9 Light and dark themes render the create trigger, task actions, and edit panel clearly.
