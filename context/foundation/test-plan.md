@@ -114,11 +114,46 @@ relevant rollout phase ships; before that, it points to the rollout phase.
 
 ### 6.1 Adding a status/date unit test
 
-TBD - see Phase 1 for date boundary and status classification patterns.
+Add status/date tests in `src/lib/maintenance-tasks.test.ts`.
+
+Use Vitest with a fixed `todayDate` and call the combined business contract
+(`deriveMaintenanceTaskState(...)` or `toMaintenanceTaskDisplayItems(...)`)
+when the risk is "last completed + recurrence -> next due + status". Expected
+dates and statuses must be literal, hand-counted values; do not generate
+expected values with `computeNextDueDate(...)` or another production helper.
+
+Reference command:
+
+```bash
+npm run test -- src/lib/maintenance-tasks.test.ts
+```
 
 ### 6.2 Adding a task form integration test
 
-TBD - see Phase 1 for create/edit form parity and validation patterns.
+Keep task form contract tests at pure Vitest unit/integration level until a
+later rollout deliberately adds DOM tooling.
+
+- Client-side string/default/preset rules live in
+  `src/components/tasks/task-form-rules.test.ts`.
+- Server-side write/update validation lives in
+  `src/lib/maintenance-tasks.test.ts`.
+- Create/update parser normalization and parser-owned rejection live in
+  `src/pages/api/tasks/create.test.ts` and
+  `src/pages/api/tasks/update.test.ts`.
+
+Use a small shared-risk matrix: valid normalized input, blank name, invalid
+calendar date, future last completed date with fixed today, blank recurrence,
+nonnumeric recurrence, zero recurrence, negative recurrence, and decimal
+recurrence. Keep parser tests focused on form decoding; store/server validation
+owns finite-but-invalid values such as `0` and `1.5`.
+
+Reference commands:
+
+```bash
+npm run test -- src/components/tasks/task-form-rules.test.ts
+npm run test -- src/lib/maintenance-tasks.test.ts
+npm run test -- src/pages/api/tasks/create.test.ts src/pages/api/tasks/update.test.ts
+```
 
 ### 6.3 Adding a task API ownership or mutation test
 
@@ -134,7 +169,10 @@ TBD - see Phase 3 for dashboard mobile action and selective review patterns.
 
 ### 6.6 Per-rollout-phase notes
 
-TBD - append 2-3 lines after each rollout phase lands.
+- Phase 1 added Vitest coverage for status/date boundaries and task form
+  contract parity without DOM, Playwright, or browser e2e infrastructure.
+- CI now runs `npm run test`; keep new Phase 1-style tests inside the existing
+  unit/integration suite unless a later rollout changes the test layer.
 
 ## 7. What We Deliberately Don't Test
 

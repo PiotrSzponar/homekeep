@@ -211,21 +211,21 @@ The project now fails CI when the Phase 1 Vitest contracts regress, and future a
 
 #### Automated
 
-- [x] 2.1 Client form rule tests cover defaults and recurrence presets
-- [x] 2.2 Client form rule tests cover valid and invalid input matrix
-- [x] 2.3 Server validation tests cover matching valid and invalid input matrix
-- [x] 2.4 Create/update parser parity tests cover normalization and parser-owned rejection
-- [x] 2.5 Focused form and route test commands pass
+- [x] 2.1 Client form rule tests cover defaults and recurrence presets - d5a0bf7
+- [x] 2.2 Client form rule tests cover valid and invalid input matrix - d5a0bf7
+- [x] 2.3 Server validation tests cover matching valid and invalid input matrix - d5a0bf7
+- [x] 2.4 Create/update parser parity tests cover normalization and parser-owned rejection - d5a0bf7
+- [x] 2.5 Focused form and route test commands pass - d5a0bf7
 
 ### Phase 3: CI Test Gate and Cookbook Update
 
 #### Automated
 
-- [ ] 3.1 CI workflow runs npm run test
-- [ ] 3.2 Full npm run test passes
-- [ ] 3.3 npm run lint passes
-- [ ] 3.4 npm run build passes
+- [x] 3.1 CI workflow runs npm run test
+- [x] 3.2 Full npm run test passes
+- [x] 3.3 npm run lint passes
+- [x] 3.4 npm run build passes
 
 #### Manual
 
-- [ ] 3.5 Phase 1 cookbook entries document the reference test locations and commands
+- [x] 3.5 Phase 1 cookbook entries document the reference test locations and commands
