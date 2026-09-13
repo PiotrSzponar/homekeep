@@ -355,18 +355,18 @@ Remove implementation/vendor wording from visible messages and verify the full a
 
 #### Automated
 
-- [x] 3.1 `npm run test -- src/lib/auth-navigation.test.ts` passes.
-- [x] 3.2 `npm run lint` passes.
-- [x] 3.3 `npm run build` passes.
-- [x] 3.4 `rg -n "latest data from Supabase|Supabase is not configured|10x-astro-starter|10x Astro Starter" src/pages src/components src/lib` returns no user-facing matches. Remaining type names/imports such as `MaintenanceTaskSupabaseClient` are allowed because they are source-only.
-- [x] 3.5 `rg -n 'taskCreated|taskCompleted|taskDeleted|taskUpdated|taskError' src/pages/dashboard.astro` confirms query contracts are still present.
+- [x] 3.1 `npm run test -- src/lib/auth-navigation.test.ts` passes. — a3ef392
+- [x] 3.2 `npm run lint` passes. — a3ef392
+- [x] 3.3 `npm run build` passes. — a3ef392
+- [x] 3.4 `rg -n "latest data from Supabase|Supabase is not configured|10x-astro-starter|10x Astro Starter" src/pages src/components src/lib` returns no user-facing matches. Remaining type names/imports such as `MaintenanceTaskSupabaseClient` are allowed because they are source-only. — a3ef392
+- [x] 3.5 `rg -n 'taskCreated|taskCompleted|taskDeleted|taskUpdated|taskError' src/pages/dashboard.astro` confirms query contracts are still present. — a3ef392
 
 #### Manual
 
-- [x] 3.6 Full signed-out loop: `/` -> sign up -> confirm-email -> sign in remains understandable.
-- [x] 3.7 Full signed-in loop: sign in -> dashboard -> `/` redirects to dashboard.
-- [x] 3.8 Signed-in auth-page visits redirect to dashboard without loops.
-- [x] 3.9 Sign out returns to the compact public entry page.
-- [x] 3.10 Missing-config banner and auth fallback messages are user-facing and provider-neutral.
-- [x] 3.11 Dashboard task success messages confirm the outcome without implementation wording.
-- [x] 3.12 Mobile and desktop screenshots show no overlapping text or unstable controls on homepage, auth pages, and dashboard shell.
+- [x] 3.6 Full signed-out loop: `/` -> sign up -> confirm-email -> sign in remains understandable. — a3ef392
+- [x] 3.7 Full signed-in loop: sign in -> dashboard -> `/` redirects to dashboard. — a3ef392
+- [x] 3.8 Signed-in auth-page visits redirect to dashboard without loops. — a3ef392
+- [x] 3.9 Sign out returns to the compact public entry page. — a3ef392
+- [x] 3.10 Missing-config banner and auth fallback messages are user-facing and provider-neutral. — a3ef392
+- [x] 3.11 Dashboard task success messages confirm the outcome without implementation wording. — a3ef392
+- [x] 3.12 Mobile and desktop screenshots show no overlapping text or unstable controls on homepage, auth pages, and dashboard shell. — a3ef392
