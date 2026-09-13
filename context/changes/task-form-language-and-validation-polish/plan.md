@@ -309,48 +309,48 @@ Wire the shared form behavior into the real dashboard flows.
 
 #### Automated
 
-- [x] 1.1 `npm run test -- src/lib/maintenance-tasks.test.ts src/pages/api/tasks/create.test.ts src/pages/api/tasks/update.test.ts` passes.
-- [x] 1.2 Future `lastCompletedDate` is rejected by both write and update validation.
-- [x] 1.3 Create and update parser tests cover missing, blank, and non-numeric recurrence fallback.
-- [x] 1.4 Existing next-due and status calculation tests still pass without changed expected values.
-- [x] 1.5 `npm run lint` passes.
+- [x] 1.1 `npm run test -- src/lib/maintenance-tasks.test.ts src/pages/api/tasks/create.test.ts src/pages/api/tasks/update.test.ts` passes - 2296981
+- [x] 1.2 Future `lastCompletedDate` is rejected by both write and update validation - 2296981
+- [x] 1.3 Create and update parser tests cover missing, blank, and non-numeric recurrence fallback - 2296981
+- [x] 1.4 Existing next-due and status calculation tests still pass without changed expected values - 2296981
+- [x] 1.5 `npm run lint` passes - 2296981
 
 #### Manual
 
-- [x] 1.6 A tampered create submission with a future date redirects back to `/dashboard` with the existing `taskError` dashboard fallback behavior.
-- [x] 1.7 A tampered update submission with a future date redirects back to `/dashboard` with the existing generic task error behavior.
+- [x] 1.6 A tampered create submission with a future date redirects back to `/dashboard` with the existing `taskError` dashboard fallback behavior - 2296981
+- [x] 1.7 A tampered update submission with a future date redirects back to `/dashboard` with the existing generic task error behavior - 2296981
 
 ### Phase 2: Shared Task Form UX
 
 #### Automated
 
-- [ ] 2.1 `npm run lint` passes.
-- [ ] 2.2 Shared task-form helpers are imported by both create and edit task form paths.
-- [ ] 2.3 A search of touched task form files finds no `bg-cosmic`, raw starter palette classes, or direct `cn` package imports.
+- [x] 2.1 `npm run lint` passes.
+- [x] 2.2 Shared task-form helpers are imported by both create and edit task form paths.
+- [x] 2.3 A search of touched task form files finds no `bg-cosmic`, raw starter palette classes, or direct `cn` package imports.
 
 #### Manual
 
-- [ ] 2.4 Create form shows today's browser-local date by default.
-- [ ] 2.5 Create and edit date inputs prevent picking dates after today's browser-local date.
-- [ ] 2.6 Empty task name, missing date, future date, blank recurrence, non-numeric recurrence, zero recurrence, and decimal recurrence show inline errors before submit.
-- [ ] 2.7 Presets show 1 month, Half a year, and 1 year; selecting each posts 30, 180, and 365 respectively.
-- [ ] 2.8 A custom recurrence day value remains possible and understandable.
+- [x] 2.4 Create form shows today's browser-local date by default.
+- [x] 2.5 Create and edit date inputs prevent picking dates after today's browser-local date.
+- [x] 2.6 Empty task name, missing date, future date, blank recurrence, non-numeric recurrence, zero recurrence, and decimal recurrence show inline errors before submit.
+- [x] 2.7 Presets show 1 month, Half a year, and 1 year; selecting each posts 30, 180, and 365 respectively.
+- [x] 2.8 A custom recurrence day value remains possible and understandable.
 
 ### Phase 3: Create/Edit Integration and UX Verification
 
 #### Automated
 
-- [ ] 3.1 `npm run test -- src/lib/maintenance-tasks.test.ts src/pages/api/tasks/create.test.ts src/pages/api/tasks/update.test.ts` passes.
-- [ ] 3.2 `npm run lint` passes.
-- [ ] 3.3 `npm run build` passes.
-- [ ] 3.4 `rg -n "id=\"edit-task\"|form=\"edit-task\"" src/components/tasks` returns no duplicate static edit-form targets.
-- [ ] 3.5 Task form React components that rely on browser-local defaults or inline validation are rendered from Astro with client hydration directives.
+- [x] 3.1 `npm run test -- src/lib/maintenance-tasks.test.ts src/pages/api/tasks/create.test.ts src/pages/api/tasks/update.test.ts` passes.
+- [x] 3.2 `npm run lint` passes.
+- [x] 3.3 `npm run build` passes.
+- [x] 3.4 `rg -n "id=\"edit-task\"|form=\"edit-task\"" src/components/tasks` returns no duplicate static edit-form targets.
+- [x] 3.5 Task form React components that rely on browser-local defaults or inline validation are rendered from Astro with client hydration directives.
 
 #### Manual
 
-- [ ] 3.6 Create a task using the default today date and the 1 month preset; the saved task shows the expected next due date and status.
-- [ ] 3.7 Edit an existing task using the Half a year preset; the task updates and recalculates after redirect.
-- [ ] 3.8 Edit an existing task using a custom recurrence value; the task updates and recalculates after redirect.
-- [ ] 3.9 Attempt to submit create and edit forms with a future date; the form stays on the page and shows inline date feedback.
-- [ ] 3.10 Task complete and delete actions still work from the task list.
-- [ ] 3.11 Converted form controls render cleanly on mobile and desktop in light and dark themes.
+- [x] 3.6 Create a task using the default today date and the 1 month preset; the saved task shows the expected next due date and status.
+- [x] 3.7 Edit an existing task using the Half a year preset; the task updates and recalculates after redirect.
+- [x] 3.8 Edit an existing task using a custom recurrence value; the task updates and recalculates after redirect.
+- [x] 3.9 Attempt to submit create and edit forms with a future date; the form stays on the page and shows inline date feedback.
+- [x] 3.10 Task complete and delete actions still work from the task list.
+- [x] 3.11 Converted form controls render cleanly on mobile and desktop in light and dark themes.
