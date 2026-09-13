@@ -68,7 +68,7 @@ North star here means the smallest end-to-end slice whose successful delivery pr
 | S-04 | delete-task                              | delete an existing maintenance task from their own task list                                                | S-01          | FR-004, FR-006, Access Control                                     | done     |
 | F-02 | shadcn-luma-design-system-foundation     | (foundation) consistent HomeKeep UI primitives, theme tokens, and identity hooks exist for polish slices    | -             | MS-06, MS-08                                                       | done     |
 | S-05 | task-form-language-and-validation-polish | create and edit tasks with consistent "Last completed" terminology, safe dates, and common repeat intervals | F-02          | US-01, FR-001, FR-003, MS-01, MS-02, MS-03                         | in-progress |
-| S-06 | dashboard-task-list-first-mobile-ux      | scan tasks first on mobile and use clearer task actions and banners                                         | F-02, S-05    | FR-002, FR-004, FR-005, MS-04, MS-05, MS-06                        | proposed |
+| S-06 | dashboard-mobile-ux-improvements         | use a mobile-optimized dashboard with clearer task creation, banners, and task action buttons               | F-02, S-05    | FR-002, FR-004, FR-005, MS-04, MS-05, MS-06                        | in-progress |
 | S-07 | unified-app-shell-auth-and-homepage      | enter HomeKeep through dashboard or auth with consistent pages and no starter-facing branding               | F-02, S-06    | FR-006, MS-07                                                      | proposed |
 | S-08 | homekeep-visual-identity-assets          | see lightweight HomeKeep identity and favicon based on the house-heart mark                                 | F-02          | MS-08                                                              | proposed |
 
@@ -187,17 +187,18 @@ Foundations below assumed these were present and did not re-scaffold them.
 - **Risk:** The risk is making the UI easier while accidentally changing the recurrence contract; keep persisted recurrence as days.
 - **Status:** in-progress
 
-### S-06: Dashboard task-list-first mobile UX
+### S-06: Dashboard mobile UX improvements
 
-- **Outcome:** user can scan tasks first on mobile, open creation only when needed, and act on tasks through clearer icon-supported controls and concise banners.
-- **Change ID:** dashboard-task-list-first-mobile-ux
+- **Outcome:** user can use a mobile-optimized dashboard where task scanning, task creation, route-level banners, and task actions are easier to operate on narrow screens.
+- **Change ID:** dashboard-mobile-ux-improvements
 - **PRD refs:** FR-002, FR-004, FR-005, MS-04, MS-05, MS-06
 - **Prerequisites:** F-02, S-05
 - **Parallel with:** S-08
 - **Blockers:** -
 - **Unknowns:** -
-- **Risk:** The risk is hiding creation too deeply; the mobile add-task control must remain obvious while the task list gets priority.
-- **Status:** proposed
+- **Mobile action order:** task action buttons should appear in this order on mobile: Mark completed, Delete, Edit task. Desktop may keep a layout optimized for wider scanning.
+- **Risk:** The risk is making mobile actions denser while accidentally making destructive deletion too easy; keep confirmation behavior and visual hierarchy clear.
+- **Status:** in-progress
 
 ### S-07: Unified app shell, auth, and homepage
 
@@ -234,7 +235,7 @@ Foundations below assumed these were present and did not re-scaffold them.
 | S-04       | delete-task                              | Delete task from own list                                       | done     | Archived 2026-09-12.                                                                                                                           |
 | F-02       | shadcn-luma-design-system-foundation     | Establish HomeKeep design-system foundation                     | done     | Implemented 2026-09-13; future UI work should extend the shadcn/Base UI Luma/Lime baseline instead of creating a new design-system setup task. |
 | S-05       | task-form-language-and-validation-polish | Polish task form terminology, validation, and recurrence inputs | planning | Plan against the existing F-02 shadcn/Luma/Lime baseline.                                                                                      |
-| S-06       | dashboard-task-list-first-mobile-ux      | Make dashboard task list mobile-first and actions clearer       | proposed | Plan against the existing F-02 shadcn/Luma/Lime baseline after S-05.                                                                           |
+| S-06       | dashboard-mobile-ux-improvements         | Improve dashboard mobile UX and task actions                    | planning | Plan against the existing F-02 shadcn/Luma/Lime baseline after S-05. Mobile task actions should order as Mark completed, Delete, Edit task.     |
 | S-07       | unified-app-shell-auth-and-homepage      | Unify app shell, auth pages, and root entry flow                | proposed | Re-scope before planning; F-02 already removed starter-facing visual styling and established shared shell primitives.                          |
 | S-08       | homekeep-visual-identity-assets          | Add HomeKeep mark and favicon                                   | proposed | Plan after F-02 is implemented; no README/template image work.                                                                                 |
 

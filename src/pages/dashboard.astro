@@ -1,9 +1,8 @@
 ---
-import CreateTaskForm from "@/components/tasks/CreateTaskForm";
+import CreateTaskPanel from "@/components/tasks/CreateTaskPanel";
 import TaskList from "@/components/tasks/TaskList.astro";
 import Topbar from "@/components/Topbar.astro";
 import { Alert, AlertDescription } from "@/components/ui/alert";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import Layout from "@/layouts/Layout.astro";
 import { toMaintenanceTaskDisplayItems, type MaintenanceTaskDisplayItem } from "@/lib/maintenance-tasks";
 import { listMaintenanceTasks, type MaintenanceTaskSupabaseClient } from "@/lib/maintenance-task-store";
@@ -88,14 +87,7 @@ if (supabase && user?.id) {
       }
 
       <section class="grid gap-8 lg:grid-cols-[minmax(0,360px)_1fr] lg:items-start">
-        <Card size="sm">
-          <CardHeader>
-            <CardTitle>Create task</CardTitle>
-          </CardHeader>
-          <CardContent>
-            <CreateTaskForm client:load />
-          </CardContent>
-        </Card>
+        <CreateTaskPanel hasTasks={tasks.length > 0} client:load />
 
         <TaskList tasks={tasks} />
       </section>
