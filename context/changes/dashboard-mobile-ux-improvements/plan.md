@@ -278,15 +278,15 @@ Verify that the mobile changes integrate cleanly with the existing S-05 dashboar
 
 #### Automated
 
-- [x] 3.1 `npm run lint` passes.
-- [x] 3.2 `npm run build` passes.
-- [x] 3.3 `rg -n "bg-cosmic|purple-|blue-|slate-|emerald-|rose-|amber-|sky-|text-white" src/pages/dashboard.astro src/components/tasks` returns no matches.
-- [x] 3.4 `rg -n "TaskActions.*client:load|CreateTaskPanel.*client:load|CreateTaskForm client:load" src/pages/dashboard.astro src/components/tasks` confirms hydrated islands are still in the expected places.
+- [x] 3.1 `npm run lint` passes. — cf584bf
+- [x] 3.2 `npm run build` passes. — cf584bf
+- [x] 3.3 `rg -n "bg-cosmic|purple-|blue-|slate-|emerald-|rose-|amber-|sky-|text-white" src/pages/dashboard.astro src/components/tasks` returns no matches. — cf584bf
+- [x] 3.4 `rg -n "TaskActions.*client:load|CreateTaskPanel.*client:load|CreateTaskForm client:load" src/pages/dashboard.astro src/components/tasks` confirms hydrated islands are still in the expected places. — cf584bf
 
 #### Manual
 
-- [x] 3.5 Mobile viewport with tasks: compact create trigger appears first, create form body is collapsed, and saved tasks remain immediately reachable.
-- [x] 3.6 Mobile viewport without tasks: create form is visible immediately.
-- [x] 3.7 Mobile task actions follow Mark completed, Delete, Edit task.
-- [x] 3.8 Desktop dashboard still shows a usable create surface and task list without awkward spacing.
-- [x] 3.9 Light and dark themes render the create trigger, task actions, and edit panel clearly.
+- [x] 3.5 Mobile viewport with tasks: compact create trigger appears first, create form body is collapsed, and saved tasks remain immediately reachable. — cf584bf
+- [x] 3.6 Mobile viewport without tasks: create form is visible immediately. — cf584bf
+- [x] 3.7 Mobile task actions follow Mark completed, Delete, Edit task. — cf584bf
+- [x] 3.8 Desktop dashboard still shows a usable create surface and task list without awkward spacing. — cf584bf
+- [x] 3.9 Light and dark themes render the create trigger, task actions, and edit panel clearly. — cf584bf
