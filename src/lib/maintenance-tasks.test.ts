@@ -47,6 +47,96 @@ describe("maintenance task contract", () => {
     });
   });
 
+  it("accepts past and current last-completed dates at helper-level validation", () => {
+    expect(
+      validateMaintenanceTaskWriteInput(
+        {
+          name: "Replace HVAC filter",
+          lastCompletedDate: "2026-09-12",
+          recurrenceIntervalDays: 30,
+        },
+        { todayDate: "2026-09-13" },
+      ),
+    ).toEqual({
+      success: true,
+      data: {
+        name: "Replace HVAC filter",
+        lastCompletedDate: "2026-09-12",
+        recurrenceIntervalDays: 30,
+      },
+    });
+
+    expect(
+      validateMaintenanceTaskWriteInput(
+        {
+          name: "Replace HVAC filter",
+          lastCompletedDate: "2026-09-13",
+          recurrenceIntervalDays: 30,
+        },
+        { todayDate: "2026-09-13" },
+      ),
+    ).toEqual({
+      success: true,
+      data: {
+        name: "Replace HVAC filter",
+        lastCompletedDate: "2026-09-13",
+        recurrenceIntervalDays: 30,
+      },
+    });
+  });
+
+  it("rejects future last-completed dates in full write input", () => {
+    expect(
+      validateMaintenanceTaskWriteInput(
+        {
+          name: "Replace HVAC filter",
+          lastCompletedDate: "2026-09-14",
+          recurrenceIntervalDays: 30,
+        },
+        { todayDate: "2026-09-13" },
+      ),
+    ).toEqual({
+      success: false,
+      errors: {
+        lastCompletedDate: "Last completed date cannot be in the future.",
+      },
+    });
+  });
+
+  it("rejects invalid date formats and invalid calendar dates", () => {
+    expect(
+      validateMaintenanceTaskWriteInput(
+        {
+          name: "Replace HVAC filter",
+          lastCompletedDate: "09/13/2026",
+          recurrenceIntervalDays: 30,
+        },
+        { todayDate: "2026-09-13" },
+      ),
+    ).toEqual({
+      success: false,
+      errors: {
+        lastCompletedDate: "Last completed date must use YYYY-MM-DD format.",
+      },
+    });
+
+    expect(
+      validateMaintenanceTaskWriteInput(
+        {
+          name: "Replace HVAC filter",
+          lastCompletedDate: "2026-02-31",
+          recurrenceIntervalDays: 30,
+        },
+        { todayDate: "2026-09-13" },
+      ),
+    ).toEqual({
+      success: false,
+      errors: {
+        lastCompletedDate: "Last completed date must use YYYY-MM-DD format.",
+      },
+    });
+  });
+
   it("rejects invalid recurrence intervals at helper-level validation", () => {
     expect(
       validateMaintenanceTaskWriteInput({
@@ -88,6 +178,22 @@ describe("maintenance task contract", () => {
       success: false,
       errors: {
         lastCompletedDate: "Last completed date must use YYYY-MM-DD format.",
+      },
+    });
+  });
+
+  it("rejects future last-completed dates in update input", () => {
+    expect(
+      validateMaintenanceTaskUpdateInput(
+        {
+          lastCompletedDate: "2026-09-14",
+        },
+        { todayDate: "2026-09-13" },
+      ),
+    ).toEqual({
+      success: false,
+      errors: {
+        lastCompletedDate: "Last completed date cannot be in the future.",
       },
     });
   });

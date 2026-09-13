@@ -44,6 +44,10 @@ export type MaintenanceTaskValidationErrors = Partial<Record<keyof MaintenanceTa
 export type MaintenanceTaskValidationResult<TInput extends MaintenanceTaskUpdateInput> =
   { success: true; data: TInput } | { success: false; errors: MaintenanceTaskValidationErrors };
 
+export interface MaintenanceTaskValidationContext {
+  todayDate?: string;
+}
+
 export interface MaintenanceTaskDerivedState {
   nextDueDate: string;
   status: MaintenanceTaskStatus;
@@ -190,8 +194,9 @@ function statusSortOrder(status: MaintenanceTaskStatus): number {
 
 export function validateMaintenanceTaskWriteInput(
   input: MaintenanceTaskWriteInput,
+  context: MaintenanceTaskValidationContext = {},
 ): MaintenanceTaskValidationResult<MaintenanceTaskWriteInput> {
-  const errors = validateMaintenanceTaskFields(input);
+  const errors = validateMaintenanceTaskFields(input, context);
 
   if (Object.keys(errors).length > 0) {
     return { success: false, errors };
@@ -209,8 +214,9 @@ export function validateMaintenanceTaskWriteInput(
 
 export function validateMaintenanceTaskUpdateInput(
   input: MaintenanceTaskUpdateInput,
+  context: MaintenanceTaskValidationContext = {},
 ): MaintenanceTaskValidationResult<MaintenanceTaskUpdateInput> {
-  const errors = validateMaintenanceTaskFields(input);
+  const errors = validateMaintenanceTaskFields(input, context);
 
   if (Object.keys(input).length === 0) {
     errors.name = "At least one task field must be provided.";
@@ -230,15 +236,23 @@ export function validateMaintenanceTaskUpdateInput(
   };
 }
 
-function validateMaintenanceTaskFields(input: MaintenanceTaskUpdateInput): MaintenanceTaskValidationErrors {
+function validateMaintenanceTaskFields(
+  input: MaintenanceTaskUpdateInput,
+  context: MaintenanceTaskValidationContext,
+): MaintenanceTaskValidationErrors {
   const errors: MaintenanceTaskValidationErrors = {};
+  const todayDate = context.todayDate ?? formatUtcDateOnly();
 
   if (input.name?.trim().length === 0) {
     errors.name = "Task name is required.";
   }
 
-  if (input.lastCompletedDate !== undefined && !isDateOnly(input.lastCompletedDate)) {
-    errors.lastCompletedDate = "Last completed date must use YYYY-MM-DD format.";
+  if (input.lastCompletedDate !== undefined) {
+    if (!isDateOnly(input.lastCompletedDate)) {
+      errors.lastCompletedDate = "Last completed date must use YYYY-MM-DD format.";
+    } else if (isFutureDateOnly(input.lastCompletedDate, todayDate)) {
+      errors.lastCompletedDate = "Last completed date cannot be in the future.";
+    }
   }
 
   if (input.recurrenceIntervalDays !== undefined && !isPositiveRecurrenceInterval(input.recurrenceIntervalDays)) {
@@ -286,4 +300,8 @@ function isDateOnly(date: string): boolean {
   } catch {
     return false;
   }
+}
+
+function isFutureDateOnly(date: string, todayDate: string): boolean {
+  return parseDateOnly(date).getTime() > parseDateOnly(todayDate).getTime();
 }

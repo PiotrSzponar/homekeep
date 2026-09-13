@@ -98,6 +98,10 @@ describe("task update route", () => {
   it("rejects blank recurrence values before building a full edit input", () => {
     expect(parseMaintenanceTaskUpdateForm(updateFormData({ recurrenceIntervalDays: "" }))).toBeNull();
   });
+
+  it("rejects non-numeric recurrence values before building a full edit input", () => {
+    expect(parseMaintenanceTaskUpdateForm(updateFormData({ recurrenceIntervalDays: "not-a-number" }))).toBeNull();
+  });
 });
 
 function updateFormData(

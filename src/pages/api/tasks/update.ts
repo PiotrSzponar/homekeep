@@ -56,12 +56,18 @@ export function parseMaintenanceTaskUpdateForm(form: FormData): ParsedMaintenanc
     return null;
   }
 
+  const recurrenceIntervalDays = Number(recurrenceIntervalDaysValue);
+
+  if (!Number.isFinite(recurrenceIntervalDays)) {
+    return null;
+  }
+
   return {
     taskId,
     input: {
       name,
       lastCompletedDate,
-      recurrenceIntervalDays: Number(recurrenceIntervalDaysValue),
+      recurrenceIntervalDays,
     },
   };
 }

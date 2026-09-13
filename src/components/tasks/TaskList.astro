@@ -100,9 +100,7 @@ const statusVariants: Record<MaintenanceTaskStatus, "default" | "secondary" | "d
                 <Separator />
 
                 <details>
-                  <summary
-                    class:list={["list-none", buttonVariants({ variant: "outline" })]}
-                  >
+                  <summary class:list={["list-none", buttonVariants({ variant: "outline" })]}>
                     <PencilIcon data-icon="inline-start" aria-hidden="true" />
                     Edit task
                   </summary>
@@ -144,10 +142,9 @@ const statusVariants: Record<MaintenanceTaskStatus, "default" | "secondary" | "d
                         </div>
                       </Field>
                     </FieldGroup>
-
                   </form>
 
-                  <div class="flex justify-end gap-4 mt-4">
+                  <div class="mt-4 flex justify-end gap-4">
                     <form
                       method="POST"
                       action="/api/tasks/delete"
