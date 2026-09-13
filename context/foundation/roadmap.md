@@ -67,10 +67,10 @@ North star here means the smallest end-to-end slice whose successful delivery pr
 | S-03 | edit-task-and-recalculate-status         | edit an existing maintenance task and see the recalculated next due date and status                         | S-01          | FR-003, FR-002, FR-006, Business Logic, NFR task visibility        | done     |
 | S-04 | delete-task                              | delete an existing maintenance task from their own task list                                                | S-01          | FR-004, FR-006, Access Control                                     | done     |
 | F-02 | shadcn-luma-design-system-foundation     | (foundation) consistent HomeKeep UI primitives, theme tokens, and identity hooks exist for polish slices    | -             | MS-06, MS-08                                                       | done     |
-| S-05 | task-form-language-and-validation-polish | create and edit tasks with consistent "Last completed" terminology, safe dates, and common repeat intervals | F-02          | US-01, FR-001, FR-003, MS-01, MS-02, MS-03                         | done|
-| S-06 | dashboard-mobile-ux-improvements         | use a mobile-optimized dashboard with clearer task creation, banners, and task action buttons               | F-02, S-05    | FR-002, FR-004, FR-005, MS-04, MS-05, MS-06                        | in-progress |
-| S-07 | unified-app-shell-auth-and-homepage      | enter HomeKeep through dashboard or auth with consistent pages and no starter-facing branding               | F-02, S-06    | FR-006, MS-07                                                      | in-progress |
-| S-08 | homekeep-visual-identity-assets          | see lightweight HomeKeep identity and favicon based on the house-heart mark                                 | F-02          | MS-08                                                              | in-progress |
+| S-05 | task-form-language-and-validation-polish | create and edit tasks with consistent "Last completed" terminology, safe dates, and common repeat intervals | F-02          | US-01, FR-001, FR-003, MS-01, MS-02, MS-03                         | done     |
+| S-06 | dashboard-mobile-ux-improvements         | use a mobile-optimized dashboard with clearer task creation, banners, and task action buttons               | F-02, S-05    | FR-002, FR-004, FR-005, MS-04, MS-05, MS-06                        | done     |
+| S-07 | unified-app-shell-auth-and-homepage      | enter HomeKeep through dashboard or auth with consistent pages and no starter-facing branding               | F-02, S-06    | FR-006, MS-07                                                      | done     |
+| S-08 | homekeep-visual-identity-assets          | see lightweight HomeKeep identity and favicon based on the house-heart mark                                 | F-02          | MS-08                                                              | done     |
 
 ## Baseline
 
