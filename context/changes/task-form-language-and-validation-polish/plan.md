@@ -36,6 +36,10 @@ The roadmap item defines the product scope: consistent "Last completed" terminol
 | Server fallback | Generic dashboard banner if invalid data reaches an API route | Plan interview |
 | Visual baseline | Use F-02 shadcn/Luma/Lime primitives and semantic theme tokens | Roadmap / AGENTS |
 
+### Decision Update
+
+After implementation, the recurrence preset set changed by explicit user request: use 30, 90, and 365 days labelled as 1 month, 3 months, and 1 year. Older plan wording that mentions Half a year / 180 days is superseded by this update; persisted recurrence remains day-based.
+
 ## Scope
 
 ### In Scope
