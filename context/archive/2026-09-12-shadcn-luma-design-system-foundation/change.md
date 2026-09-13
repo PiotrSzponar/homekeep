@@ -1,8 +1,9 @@
 ---
 change_id: shadcn-luma-design-system-foundation
-status: implemented
+status: archived
 created: 2026-09-12
 updated: 2026-09-13
+archived_at: 2026-09-13T15:29:20Z
 ---
 
 # shadcn/Luma Design-System Foundation
