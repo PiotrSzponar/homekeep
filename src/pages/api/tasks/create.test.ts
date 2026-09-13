@@ -79,7 +79,7 @@ describe("task create route", () => {
     expect(response.headers.get("Location")).toBe("/auth/signin");
   });
 
-  it("redirects to sign in when Supabase is not configured", async () => {
+  it("redirects to sign in when the app data service is unavailable", async () => {
     mockCreateClient.mockReturnValueOnce(null);
 
     const response = await POST(

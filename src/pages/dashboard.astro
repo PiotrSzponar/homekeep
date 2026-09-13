@@ -28,7 +28,7 @@ if (supabase && user?.id) {
     tasks = toMaintenanceTaskDisplayItems(result.data);
   }
 } else if (!supabase) {
-  dashboardError = "Supabase is not configured.";
+  dashboardError = "HomeKeep is not fully configured. Task data is temporarily unavailable.";
 }
 ---
 
@@ -37,7 +37,7 @@ if (supabase && user?.id) {
     {
       taskCreated && (
         <Alert role="status">
-          <AlertDescription>Task saved. The list below reflects the latest data from Supabase.</AlertDescription>
+          <AlertDescription>Task saved. Your dashboard is up to date.</AlertDescription>
         </Alert>
       )
     }
@@ -45,9 +45,7 @@ if (supabase && user?.id) {
     {
       taskCompleted && (
         <Alert role="status">
-          <AlertDescription>
-            Task marked completed. The list below reflects the latest data from Supabase.
-          </AlertDescription>
+          <AlertDescription>Task marked completed. Your dashboard is up to date.</AlertDescription>
         </Alert>
       )
     }
@@ -55,7 +53,7 @@ if (supabase && user?.id) {
     {
       taskDeleted && (
         <Alert role="status">
-          <AlertDescription>Task deleted. The list below reflects the latest data from Supabase.</AlertDescription>
+          <AlertDescription>Task deleted. Your dashboard is up to date.</AlertDescription>
         </Alert>
       )
     }
@@ -63,7 +61,7 @@ if (supabase && user?.id) {
     {
       taskUpdated && (
         <Alert role="status">
-          <AlertDescription>Task updated. The list below reflects the latest data from Supabase.</AlertDescription>
+          <AlertDescription>Task updated. Your dashboard is up to date.</AlertDescription>
         </Alert>
       )
     }

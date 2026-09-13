@@ -336,37 +336,37 @@ Remove implementation/vendor wording from visible messages and verify the full a
 
 #### Automated
 
-- [x] 2.1 `npm run lint` passes.
-- [x] 2.2 `npm run build` passes.
-- [x] 2.3 `rg -n "bg-cosmic|purple-|blue-|slate-|emerald-|rose-|amber-|sky-|text-white" src/pages src/components` returns no app-UI regressions in touched files.
-- [x] 2.4 `rg -n "10x Astro Starter|template|starter" src/pages src/components src/layouts` returns no user-facing starter-branding matches.
-- [x] 2.5 `rg -n "Topbar" src/pages src/components` shows Topbar usage is centralized through the shared shell or intentionally limited to the shell component.
+- [x] 2.1 `npm run lint` passes. — bdc2d8a
+- [x] 2.2 `npm run build` passes. — bdc2d8a
+- [x] 2.3 `rg -n "bg-cosmic|purple-|blue-|slate-|emerald-|rose-|amber-|sky-|text-white" src/pages src/components` returns no app-UI regressions in touched files. — bdc2d8a
+- [x] 2.4 `rg -n "10x Astro Starter|template|starter" src/pages src/components src/layouts` returns no user-facing starter-branding matches. — bdc2d8a
+- [x] 2.5 `rg -n "Topbar" src/pages src/components` shows Topbar usage is centralized through the shared shell or intentionally limited to the shell component. — bdc2d8a
 
 #### Manual
 
-- [x] 2.6 Homepage, sign-in, sign-up, confirm-email, and dashboard share consistent top navigation and page spacing.
-- [x] 2.7 Signed-out Topbar shows Sign in only, plus the theme toggle.
-- [x] 2.8 Public homepage body still offers a clear create-account path.
-- [x] 2.9 Dashboard task creation/list layout from S-06 remains intact on mobile and desktop.
-- [x] 2.10 Auth forms remain centered and usable on mobile and desktop.
-- [x] 2.11 Light, dark, and system themes render all unified shell surfaces cleanly.
+- [x] 2.6 Homepage, sign-in, sign-up, confirm-email, and dashboard share consistent top navigation and page spacing. — bdc2d8a
+- [x] 2.7 Signed-out Topbar shows Sign in only, plus the theme toggle. — bdc2d8a
+- [x] 2.8 Public homepage body still offers a clear create-account path. — bdc2d8a
+- [x] 2.9 Dashboard task creation/list layout from S-06 remains intact on mobile and desktop. — bdc2d8a
+- [x] 2.10 Auth forms remain centered and usable on mobile and desktop. — bdc2d8a
+- [x] 2.11 Light, dark, and system themes render all unified shell surfaces cleanly. — bdc2d8a
 
 ### Phase 3: User-Facing Copy and Final Route QA
 
 #### Automated
 
-- [ ] 3.1 `npm run test -- src/lib/auth-navigation.test.ts` passes.
-- [ ] 3.2 `npm run lint` passes.
-- [ ] 3.3 `npm run build` passes.
-- [ ] 3.4 `rg -n "latest data from Supabase|Supabase is not configured|10x-astro-starter|10x Astro Starter" src/pages src/components src/lib` returns no user-facing matches. Remaining type names/imports such as `MaintenanceTaskSupabaseClient` are allowed because they are source-only.
-- [ ] 3.5 `rg -n 'taskCreated|taskCompleted|taskDeleted|taskUpdated|taskError' src/pages/dashboard.astro` confirms query contracts are still present.
+- [x] 3.1 `npm run test -- src/lib/auth-navigation.test.ts` passes.
+- [x] 3.2 `npm run lint` passes.
+- [x] 3.3 `npm run build` passes.
+- [x] 3.4 `rg -n "latest data from Supabase|Supabase is not configured|10x-astro-starter|10x Astro Starter" src/pages src/components src/lib` returns no user-facing matches. Remaining type names/imports such as `MaintenanceTaskSupabaseClient` are allowed because they are source-only.
+- [x] 3.5 `rg -n 'taskCreated|taskCompleted|taskDeleted|taskUpdated|taskError' src/pages/dashboard.astro` confirms query contracts are still present.
 
 #### Manual
 
-- [ ] 3.6 Full signed-out loop: `/` -> sign up -> confirm-email -> sign in remains understandable.
-- [ ] 3.7 Full signed-in loop: sign in -> dashboard -> `/` redirects to dashboard.
-- [ ] 3.8 Signed-in auth-page visits redirect to dashboard without loops.
-- [ ] 3.9 Sign out returns to the compact public entry page.
-- [ ] 3.10 Missing-config banner and auth fallback messages are user-facing and provider-neutral.
-- [ ] 3.11 Dashboard task success messages confirm the outcome without implementation wording.
-- [ ] 3.12 Mobile and desktop screenshots show no overlapping text or unstable controls on homepage, auth pages, and dashboard shell.
+- [x] 3.6 Full signed-out loop: `/` -> sign up -> confirm-email -> sign in remains understandable.
+- [x] 3.7 Full signed-in loop: sign in -> dashboard -> `/` redirects to dashboard.
+- [x] 3.8 Signed-in auth-page visits redirect to dashboard without loops.
+- [x] 3.9 Sign out returns to the compact public entry page.
+- [x] 3.10 Missing-config banner and auth fallback messages are user-facing and provider-neutral.
+- [x] 3.11 Dashboard task success messages confirm the outcome without implementation wording.
+- [x] 3.12 Mobile and desktop screenshots show no overlapping text or unstable controls on homepage, auth pages, and dashboard shell.

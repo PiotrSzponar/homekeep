@@ -44,7 +44,7 @@ describe("delete task route", () => {
     expect(response.headers.get("Location")).toBe("/auth/signin");
   });
 
-  it("redirects with a generic task error when Supabase is not configured", async () => {
+  it("redirects with a generic task error when the app data service is unavailable", async () => {
     createClientMock.mockReturnValue(null);
     const context = routeContext({ taskId: "task-1" });
 
