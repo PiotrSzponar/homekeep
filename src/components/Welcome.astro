@@ -1,6 +1,5 @@
 ---
 import { CalendarCheckIcon, CheckCircle2Icon, ClockIcon, ShieldCheckIcon } from "lucide-react";
-import Topbar from "@/components/Topbar.astro";
 import { Badge } from "@/components/ui/badge";
 import { buttonVariants } from "@/components/ui/button";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
@@ -8,99 +7,95 @@ import { Separator } from "@/components/ui/separator";
 import { HOMEKEEP_BRAND } from "@/lib/brand";
 ---
 
-<div class="bg-background text-foreground min-h-screen">
-  <Topbar />
-
-  <main class="mx-auto flex w-full max-w-6xl flex-col gap-10 px-4 py-10 sm:px-6 lg:px-8">
-    <section class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_380px] lg:items-center">
-      <div class="flex flex-col gap-6">
-        <Badge variant="secondary" className="w-fit">Home maintenance tracker</Badge>
-        <div class="flex max-w-3xl flex-col gap-4">
-          <h1 class="font-heading text-foreground text-4xl leading-tight font-semibold tracking-normal sm:text-5xl">
-            {HOMEKEEP_BRAND.name}
-          </h1>
-          <p class="text-muted-foreground max-w-2xl text-base leading-7 sm:text-lg">
-            Keep recurring home maintenance visible, current, and tied to the date each task was last completed.
-          </p>
-        </div>
-        <div class="flex flex-col gap-3 sm:flex-row">
-          <a href="/dashboard" class:list={[buttonVariants({ variant: "default", size: "lg" })]}> Open dashboard </a>
-          <a href="/auth/signup" class:list={[buttonVariants({ variant: "outline", size: "lg" })]}> Create account </a>
-        </div>
+<>
+  <section class="grid gap-8 lg:grid-cols-[minmax(0,1fr)_380px] lg:items-center">
+    <div class="flex flex-col gap-6">
+      <Badge variant="secondary" className="w-fit">Home maintenance tracker</Badge>
+      <div class="flex max-w-3xl flex-col gap-4">
+        <h1 class="font-heading text-foreground text-4xl leading-tight font-semibold tracking-normal sm:text-5xl">
+          {HOMEKEEP_BRAND.name}
+        </h1>
+        <p class="text-muted-foreground max-w-2xl text-base leading-7 sm:text-lg">
+          Keep recurring home maintenance visible, current, and tied to the date each task was last completed.
+        </p>
       </div>
+      <div class="flex flex-col gap-3 sm:flex-row">
+        <a href="/dashboard" class:list={[buttonVariants({ variant: "default", size: "lg" })]}> Open dashboard </a>
+        <a href="/auth/signup" class:list={[buttonVariants({ variant: "outline", size: "lg" })]}> Create account </a>
+      </div>
+    </div>
 
-      <Card>
-        <CardHeader>
-          <CardTitle>Today</CardTitle>
-          <CardDescription>Example maintenance snapshot</CardDescription>
-        </CardHeader>
-        <CardContent className="flex flex-col gap-4">
-          <div class="flex items-center justify-between gap-4">
-            <div class="min-w-0">
-              <p class="text-foreground truncate text-sm font-medium">HVAC filter</p>
-              <p class="text-muted-foreground mt-1 text-sm">Due in 4 days</p>
-            </div>
-            <Badge>Due soon</Badge>
+    <Card>
+      <CardHeader>
+        <CardTitle>Today</CardTitle>
+        <CardDescription>Example maintenance snapshot</CardDescription>
+      </CardHeader>
+      <CardContent className="flex flex-col gap-4">
+        <div class="flex items-center justify-between gap-4">
+          <div class="min-w-0">
+            <p class="text-foreground truncate text-sm font-medium">HVAC filter</p>
+            <p class="text-muted-foreground mt-1 text-sm">Due in 4 days</p>
           </div>
-          <Separator />
-          <div class="flex items-center justify-between gap-4">
-            <div class="min-w-0">
-              <p class="text-foreground truncate text-sm font-medium">Smoke detector test</p>
-              <p class="text-muted-foreground mt-1 text-sm">Completed this week</p>
-            </div>
-            <Badge variant="secondary">OK</Badge>
-          </div>
-          <Separator />
-          <div class="flex items-center justify-between gap-4">
-            <div class="min-w-0">
-              <p class="text-foreground truncate text-sm font-medium">Gutter inspection</p>
-              <p class="text-muted-foreground mt-1 text-sm">Past due</p>
-            </div>
-            <Badge variant="destructive">Overdue</Badge>
-          </div>
-        </CardContent>
-      </Card>
-    </section>
-
-    <section class="grid gap-4 md:grid-cols-3">
-      <Card size="sm">
-        <CardHeader>
-          <CalendarCheckIcon aria-hidden="true" className="text-primary mb-2" />
-          <CardTitle>Recurring schedule</CardTitle>
-          <CardDescription>Next due dates come from last completed date plus recurrence interval.</CardDescription>
-        </CardHeader>
-      </Card>
-
-      <Card size="sm">
-        <CardHeader>
-          <ClockIcon aria-hidden="true" className="text-primary mb-2" />
-          <CardTitle>Simple status</CardTitle>
-          <CardDescription>Tasks are OK, due soon within 7 days, or overdue.</CardDescription>
-        </CardHeader>
-      </Card>
-
-      <Card size="sm">
-        <CardHeader>
-          <ShieldCheckIcon aria-hidden="true" className="text-primary mb-2" />
-          <CardTitle>Private by default</CardTitle>
-          <CardDescription>Signed-in homeowners see and manage only their own task list.</CardDescription>
-        </CardHeader>
-      </Card>
-    </section>
-
-    <Card size="sm">
-      <CardContent className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <div class="flex items-start gap-3">
-          <CheckCircle2Icon aria-hidden="true" className="text-primary mt-0.5" />
-          <div>
-            <p class="text-foreground text-sm font-medium">Built for the HomeKeep MVP</p>
-            <p class="text-muted-foreground mt-1 text-sm">
-              Create, update, complete, and delete maintenance tasks from the protected dashboard.
-            </p>
-          </div>
+          <Badge>Due soon</Badge>
         </div>
-        <a href="/auth/signin" class:list={[buttonVariants({ variant: "outline", size: "sm" })]}> Sign in </a>
+        <Separator />
+        <div class="flex items-center justify-between gap-4">
+          <div class="min-w-0">
+            <p class="text-foreground truncate text-sm font-medium">Smoke detector test</p>
+            <p class="text-muted-foreground mt-1 text-sm">Completed this week</p>
+          </div>
+          <Badge variant="secondary">OK</Badge>
+        </div>
+        <Separator />
+        <div class="flex items-center justify-between gap-4">
+          <div class="min-w-0">
+            <p class="text-foreground truncate text-sm font-medium">Gutter inspection</p>
+            <p class="text-muted-foreground mt-1 text-sm">Past due</p>
+          </div>
+          <Badge variant="destructive">Overdue</Badge>
+        </div>
       </CardContent>
     </Card>
-  </main>
-</div>
+  </section>
+
+  <section class="grid gap-4 md:grid-cols-3">
+    <Card size="sm">
+      <CardHeader>
+        <CalendarCheckIcon aria-hidden="true" className="text-primary mb-2" />
+        <CardTitle>Recurring schedule</CardTitle>
+        <CardDescription>Next due dates come from last completed date plus recurrence interval.</CardDescription>
+      </CardHeader>
+    </Card>
+
+    <Card size="sm">
+      <CardHeader>
+        <ClockIcon aria-hidden="true" className="text-primary mb-2" />
+        <CardTitle>Simple status</CardTitle>
+        <CardDescription>Tasks are OK, due soon within 7 days, or overdue.</CardDescription>
+      </CardHeader>
+    </Card>
+
+    <Card size="sm">
+      <CardHeader>
+        <ShieldCheckIcon aria-hidden="true" className="text-primary mb-2" />
+        <CardTitle>Private by default</CardTitle>
+        <CardDescription>Signed-in homeowners see and manage only their own task list.</CardDescription>
+      </CardHeader>
+    </Card>
+  </section>
+
+  <Card size="sm">
+    <CardContent className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+      <div class="flex items-start gap-3">
+        <CheckCircle2Icon aria-hidden="true" className="text-primary mt-0.5" />
+        <div>
+          <p class="text-foreground text-sm font-medium">Built for the HomeKeep MVP</p>
+          <p class="text-muted-foreground mt-1 text-sm">
+            Create, update, complete, and delete maintenance tasks from the protected dashboard.
+          </p>
+        </div>
+      </div>
+      <a href="/auth/signin" class:list={[buttonVariants({ variant: "outline", size: "sm" })]}> Sign in </a>
+    </CardContent>
+  </Card>
+</>

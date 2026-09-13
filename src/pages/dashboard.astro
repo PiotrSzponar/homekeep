@@ -1,7 +1,7 @@
 ---
 import CreateTaskPanel from "@/components/tasks/CreateTaskPanel";
 import TaskList from "@/components/tasks/TaskList.astro";
-import Topbar from "@/components/Topbar.astro";
+import AppShell from "@/components/AppShell.astro";
 import { Alert, AlertDescription } from "@/components/ui/alert";
 import Layout from "@/layouts/Layout.astro";
 import { toMaintenanceTaskDisplayItems, type MaintenanceTaskDisplayItem } from "@/lib/maintenance-tasks";
@@ -33,64 +33,61 @@ if (supabase && user?.id) {
 ---
 
 <Layout title="Dashboard">
-  <main class="bg-background text-foreground min-h-screen">
-    <Topbar />
-    <div class="mx-auto flex w-full max-w-6xl flex-col gap-8 px-4 py-8 sm:px-6 lg:px-8">
-      {
-        taskCreated && (
-          <Alert role="status">
-            <AlertDescription>Task saved. The list below reflects the latest data from Supabase.</AlertDescription>
-          </Alert>
-        )
-      }
+  <AppShell>
+    {
+      taskCreated && (
+        <Alert role="status">
+          <AlertDescription>Task saved. The list below reflects the latest data from Supabase.</AlertDescription>
+        </Alert>
+      )
+    }
 
-      {
-        taskCompleted && (
-          <Alert role="status">
-            <AlertDescription>
-              Task marked completed. The list below reflects the latest data from Supabase.
-            </AlertDescription>
-          </Alert>
-        )
-      }
+    {
+      taskCompleted && (
+        <Alert role="status">
+          <AlertDescription>
+            Task marked completed. The list below reflects the latest data from Supabase.
+          </AlertDescription>
+        </Alert>
+      )
+    }
 
-      {
-        taskDeleted && (
-          <Alert role="status">
-            <AlertDescription>Task deleted. The list below reflects the latest data from Supabase.</AlertDescription>
-          </Alert>
-        )
-      }
+    {
+      taskDeleted && (
+        <Alert role="status">
+          <AlertDescription>Task deleted. The list below reflects the latest data from Supabase.</AlertDescription>
+        </Alert>
+      )
+    }
 
-      {
-        taskUpdated && (
-          <Alert role="status">
-            <AlertDescription>Task updated. The list below reflects the latest data from Supabase.</AlertDescription>
-          </Alert>
-        )
-      }
+    {
+      taskUpdated && (
+        <Alert role="status">
+          <AlertDescription>Task updated. The list below reflects the latest data from Supabase.</AlertDescription>
+        </Alert>
+      )
+    }
 
-      {
-        taskError && (
-          <Alert role="status" variant="destructive">
-            <AlertDescription>{taskError}</AlertDescription>
-          </Alert>
-        )
-      }
+    {
+      taskError && (
+        <Alert role="status" variant="destructive">
+          <AlertDescription>{taskError}</AlertDescription>
+        </Alert>
+      )
+    }
 
-      {
-        dashboardError && (
-          <Alert role="status" variant="destructive">
-            <AlertDescription>{dashboardError}</AlertDescription>
-          </Alert>
-        )
-      }
+    {
+      dashboardError && (
+        <Alert role="status" variant="destructive">
+          <AlertDescription>{dashboardError}</AlertDescription>
+        </Alert>
+      )
+    }
 
-      <section class="grid gap-8 lg:grid-cols-[minmax(0,360px)_1fr] lg:items-start">
-        <CreateTaskPanel hasTasks={tasks.length > 0} client:load />
+    <section class="grid gap-8 lg:grid-cols-[minmax(0,360px)_1fr] lg:items-start">
+      <CreateTaskPanel hasTasks={tasks.length > 0} client:load />
 
-        <TaskList tasks={tasks} />
-      </section>
-    </div>
-  </main>
+      <TaskList tasks={tasks} />
+    </section>
+  </AppShell>
 </Layout>

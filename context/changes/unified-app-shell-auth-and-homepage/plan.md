@@ -318,38 +318,38 @@ Remove implementation/vendor wording from visible messages and verify the full a
 
 #### Automated
 
-- [x] 1.1 `npm run test -- src/lib/auth-navigation.test.ts` passes.
-- [x] 1.2 `npm run lint` passes.
-- [x] 1.3 `rg -n 'Astro.redirect\\("/dashboard"\\)|redirect\\("/dashboard"\\)' src/pages/index.astro src/pages/auth/signin.astro src/pages/auth/signup.astro` confirms root/sign-in/sign-up signed-in redirects are present.
-- [x] 1.4 `rg -n 'PROTECTED_ROUTES|"/dashboard"|"/api/tasks"' src/middleware.ts` confirms dashboard/task protection remains middleware-owned.
+- [x] 1.1 `npm run test -- src/lib/auth-navigation.test.ts` passes. — 4505d48
+- [x] 1.2 `npm run lint` passes. — 4505d48
+- [x] 1.3 `rg -n 'Astro.redirect\\("/dashboard"\\)|redirect\\("/dashboard"\\)' src/pages/index.astro src/pages/auth/signin.astro src/pages/auth/signup.astro` confirms root/sign-in/sign-up signed-in redirects are present. — 4505d48
+- [x] 1.4 `rg -n 'PROTECTED_ROUTES|"/dashboard"|"/api/tasks"' src/middleware.ts` confirms dashboard/task protection remains middleware-owned. — 4505d48
 
 #### Manual
 
-- [x] 1.5 Signed-out visit to `/` renders the public HomeKeep entry page.
-- [x] 1.6 Signed-in visit to `/` redirects to `/dashboard`.
-- [x] 1.7 Signed-in visit to `/auth/signin` redirects to `/dashboard`.
-- [x] 1.8 Signed-in visit to `/auth/signup` redirects to `/dashboard`.
-- [x] 1.9 Signed-out visit to `/auth/signin` and `/auth/signup` still renders the expected forms.
-- [x] 1.10 `/auth/confirm-email` remains reachable after sign-up.
+- [x] 1.5 Signed-out visit to `/` renders the public HomeKeep entry page. — 4505d48
+- [x] 1.6 Signed-in visit to `/` redirects to `/dashboard`. — 4505d48
+- [x] 1.7 Signed-in visit to `/auth/signin` redirects to `/dashboard`. — 4505d48
+- [x] 1.8 Signed-in visit to `/auth/signup` redirects to `/dashboard`. — 4505d48
+- [x] 1.9 Signed-out visit to `/auth/signin` and `/auth/signup` still renders the expected forms. — 4505d48
+- [x] 1.10 `/auth/confirm-email` remains reachable after sign-up. — 4505d48
 
 ### Phase 2: Shared Shell and Compact Public Entry
 
 #### Automated
 
-- [ ] 2.1 `npm run lint` passes.
-- [ ] 2.2 `npm run build` passes.
-- [ ] 2.3 `rg -n "bg-cosmic|purple-|blue-|slate-|emerald-|rose-|amber-|sky-|text-white" src/pages src/components` returns no app-UI regressions in touched files.
-- [ ] 2.4 `rg -n "10x Astro Starter|template|starter" src/pages src/components src/layouts` returns no user-facing starter-branding matches.
-- [ ] 2.5 `rg -n "Topbar" src/pages src/components` shows Topbar usage is centralized through the shared shell or intentionally limited to the shell component.
+- [x] 2.1 `npm run lint` passes.
+- [x] 2.2 `npm run build` passes.
+- [x] 2.3 `rg -n "bg-cosmic|purple-|blue-|slate-|emerald-|rose-|amber-|sky-|text-white" src/pages src/components` returns no app-UI regressions in touched files.
+- [x] 2.4 `rg -n "10x Astro Starter|template|starter" src/pages src/components src/layouts` returns no user-facing starter-branding matches.
+- [x] 2.5 `rg -n "Topbar" src/pages src/components` shows Topbar usage is centralized through the shared shell or intentionally limited to the shell component.
 
 #### Manual
 
-- [ ] 2.6 Homepage, sign-in, sign-up, confirm-email, and dashboard share consistent top navigation and page spacing.
-- [ ] 2.7 Signed-out Topbar shows Sign in only, plus the theme toggle.
-- [ ] 2.8 Public homepage body still offers a clear create-account path.
-- [ ] 2.9 Dashboard task creation/list layout from S-06 remains intact on mobile and desktop.
-- [ ] 2.10 Auth forms remain centered and usable on mobile and desktop.
-- [ ] 2.11 Light, dark, and system themes render all unified shell surfaces cleanly.
+- [x] 2.6 Homepage, sign-in, sign-up, confirm-email, and dashboard share consistent top navigation and page spacing.
+- [x] 2.7 Signed-out Topbar shows Sign in only, plus the theme toggle.
+- [x] 2.8 Public homepage body still offers a clear create-account path.
+- [x] 2.9 Dashboard task creation/list layout from S-06 remains intact on mobile and desktop.
+- [x] 2.10 Auth forms remain centered and usable on mobile and desktop.
+- [x] 2.11 Light, dark, and system themes render all unified shell surfaces cleanly.
 
 ### Phase 3: User-Facing Copy and Final Route QA
 
