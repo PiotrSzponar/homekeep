@@ -1,175 +1,245 @@
-# 10x Astro Starter
+# 🏡 HomeKeep
 
-![](./public/template.png)
+**A simple way to stay ahead of recurring home maintenance.**
 
-A modern, opinionated starter template for building fast, accessible web applications.
+![](./public/banner.png)
 
-## Tech Stack
+HomeKeep turns a task's last completion date and recurrence interval into a clear next due date, so homeowners can immediately see what is fine, what needs attention soon, and what is overdue.
 
-- [Astro](https://astro.build/) v6 - Modern web framework with server-first rendering
-- [React](https://react.dev/) v19 - UI library for interactive components
-- [TypeScript](https://www.typescriptlang.org/) v5 - Type-safe JavaScript
-- [Tailwind CSS](https://tailwindcss.com/) v4 - Utility-first CSS framework
-- [Supabase](https://supabase.com/) - Authentication and backend-as-a-service
-- [Cloudflare Workers](https://workers.cloudflare.com/) - Edge deployment runtime
+[![Astro](https://img.shields.io/badge/Astro-6-BC52EE?logo=astro&logoColor=white)](https://astro.build/) [![React](https://img.shields.io/badge/React-19-149ECA?logo=react&logoColor=white)](https://react.dev/) [![TypeScript](https://img.shields.io/badge/TypeScript-5-3178C6?logo=typescript&logoColor=white)](https://www.typescriptlang.org/) [![Tailwind CSS](https://img.shields.io/badge/Tailwind_CSS-4-06B6D4?logo=tailwindcss&logoColor=white)](https://tailwindcss.com/) [![Supabase](https://img.shields.io/badge/Supabase-Auth_&_Data-3FCF8E?logo=supabase&logoColor=white)](https://supabase.com/) [![Cloudflare Workers](https://img.shields.io/badge/Cloudflare-Workers-F38020?logo=cloudflare&logoColor=white)](https://workers.cloudflare.com/)
 
-## Prerequisites
+## What HomeKeep does
 
-- Node.js v22.14.0 (as specified in `.nvmrc`)
-- npm (comes with Node.js)
+Home maintenance is easy to postpone when dates live in memory, scattered notes, or unrelated calendar events. HomeKeep keeps the workflow deliberately small: save a recurring task once, then use its current status to decide what needs attention next.
 
-## Getting Started
+For every task, HomeKeep shows:
 
-1. Clone the repository:
+- the maintenance task name;
+- when it was last completed;
+- how often it should recur;
+- the calculated next due date;
+- one current status: **OK**, **Due soon**, or **Overdue**.
 
-```bash
-git clone https://github.com/przeprogramowani/10x-astro-starter.git
-cd 10x-astro-starter
+Marking a task as completed updates its schedule and status, without requiring the task to be recreated.
+
+## Core features
+
+- 🔐 Email and password authentication
+- 🏠 Private maintenance list for every homeowner
+- ➕ Create recurring maintenance tasks
+- ✏️ Edit existing tasks and recurrence settings
+- ✅ Mark a task as completed
+- 🗑️ Delete tasks that are no longer relevant
+- 📅 Automatic next due date calculation
+- 🚦 Clear status classification for quick scanning
+- 📱 Responsive experience for modern desktop and mobile browsers
+
+## Status rules
+
+The next due date is calculated from the task's **last completed date** and **recurrence interval**. Each task always receives exactly one status.
+
+| Status | Meaning |
+| --- | --- |
+| **OK** | The task is due in more than 7 days. |
+| **Due soon** | The task is due within the next 7 days, including today. |
+| **Overdue** | The next due date has passed. |
+
+```mermaid
+flowchart TD
+    A[Last completed date] --> C[Calculate next due date]
+    B[Recurrence interval] --> C
+    C --> D{Time remaining}
+    D -->|More than 7 days| E[OK]
+    D -->|0–7 days| F[Due soon]
+    D -->|Past due| G[Overdue]
 ```
 
-2. Install dependencies:
+## MVP scope
+
+HomeKeep focuses on the shortest useful maintenance workflow for an individual homeowner.
+
+### Included
+
+- account-based access;
+- private task data;
+- create, read, update, and delete operations;
+- completion tracking;
+- automatic due dates and statuses.
+
+### Not included yet
+
+- shared homes, household members, invitations, or roles;
+- email, push, SMS, or calendar reminders;
+- a prebuilt maintenance task library;
+- AI-generated schedules or recommendations;
+- maintenance history or recovery of deleted tasks.
+
+## Tech stack
+
+| Technology | Purpose |
+| --- | --- |
+| [Astro 6](https://astro.build/) | Server-first web framework and routing |
+| [React 19](https://react.dev/) | Interactive UI components |
+| [TypeScript 5](https://www.typescriptlang.org/) | Static typing and safer application code |
+| [Tailwind CSS 4](https://tailwindcss.com/) | Styling and responsive layout |
+| [Supabase](https://supabase.com/) | Authentication and persistent user data |
+| [Cloudflare Workers](https://workers.cloudflare.com/) | Production runtime and deployment target |
+
+## Getting started
+
+### Prerequisites
+
+- [Node.js](https://nodejs.org/) `22.14.0` (see `.nvmrc`)
+- npm
+- [Docker](https://www.docker.com/) with approximately 7 GB of available memory for local Supabase, or access to a hosted Supabase project
+
+### 1. Install dependencies
 
 ```bash
 npm install
 ```
 
-3. Set up Supabase and configure environment variables — see [Supabase Configuration](#supabase-configuration) below.
+### 2. Configure environment variables
 
-4. Create a `.dev.vars` file for local Cloudflare dev secrets:
-
-```bash
-cp .env.example .dev.vars
-```
-
-5. Run the development server:
-
-```bash
-npm run dev
-```
-
-## Available Scripts
-
-- `npm run dev` - Start development server (Cloudflare workerd runtime)
-- `npm run build` - Build for production
-- `npm run preview` - Preview production build
-- `npm run lint` - Run ESLint with type-checked rules
-- `npm run lint:fix` - Auto-fix ESLint issues
-- `npm run format` - Run Prettier
-
-## Project Structure
-
-```md
-.
-├── src/
-│ ├── layouts/ # Astro layouts
-│ ├── pages/ # Astro pages
-│ │ └── api/ # API endpoints
-│ ├── components/ # UI components (Astro & React)
-│ └── assets/ # Static assets
-├── public/ # Public assets
-├── wrangler.jsonc # Cloudflare Workers config
-```
-
-## Supabase Configuration
-
-This project uses [Supabase](https://supabase.com/) for authentication. Environment variables are declared via Astro's `astro:env` schema and are treated as **server-only secrets** — they are never exposed to the client.
-
-### First-time setup (local, no cloud project needed)
-
-Requires [Docker](https://www.docker.com/) and ~7 GB RAM.
-
-1. Create your `.env` file:
+Create the environment files from the provided example:
 
 ```bash
 cp .env.example .env
+cp .env.example .dev.vars
 ```
 
-2. Initialize the local Supabase project (creates a `supabase/` config folder):
+Both files require the following values:
+
+| Variable | Description |
+| --- | --- |
+| `SUPABASE_URL` | URL of the local or hosted Supabase project |
+| `SUPABASE_KEY` | Supabase anonymous public key |
+
+These variables are declared through Astro's environment schema and are used server-side. Never commit real credentials.
+
+### 3. Start Supabase locally
+
+Initialize the local project once:
 
 ```bash
 npx supabase init
 ```
 
-3. Start the local stack (downloads Docker images on first run):
+Start the local Supabase stack:
 
 ```bash
 npx supabase start
 ```
 
-4. Copy the credentials printed by the CLI into your `.env` and `.dev.vars`:
+Copy the URL and anonymous key printed by the CLI into `.env` and `.dev.vars`:
 
-```
+```dotenv
 SUPABASE_URL=http://127.0.0.1:54321
-SUPABASE_KEY=<anon key from CLI output>
+SUPABASE_KEY=<your-local-anon-key>
 ```
 
-5. To stop the stack when done:
+Supabase Studio is then available at [http://localhost:54323](http://localhost:54323).
+
+To stop the local services:
 
 ```bash
 npx supabase stop
 ```
 
-The local Studio UI is available at `http://localhost:54323`.
+> Prefer a hosted project? Use its project URL and anonymous key instead of starting the local stack.
 
-No database tables or migrations are required — this project uses Supabase Auth's built-in `auth.users` table only.
+### 4. Run HomeKeep
 
-### Using a cloud Supabase project instead
-
-If you prefer to use a hosted Supabase project, add these variables to your `.env` and `.dev.vars` files:
-
-| Variable       | Description                                                |
-| -------------- | ---------------------------------------------------------- |
-| `SUPABASE_URL` | Project URL from Supabase dashboard → Settings → API       |
-| `SUPABASE_KEY` | `anon` public key from Supabase dashboard → Settings → API |
-
-```
-SUPABASE_URL=https://<project-ref>.supabase.co
-SUPABASE_KEY=<anon-key>
+```bash
+npm run dev
 ```
 
-### Email confirmation in local development
+Open the local URL displayed in the terminal, create an account, and add your first maintenance task.
 
-By default Supabase requires email confirmation before a user can sign in. To skip this during local development:
+## Available commands
 
-1. Open the Supabase dashboard for your project
-2. Go to **Authentication → Email → Confirm email**
-3. Toggle it **off**
+| Command | Description |
+| --- | --- |
+| `npm run dev` | Start the development server in the Cloudflare `workerd` runtime |
+| `npm run build` | Create a production build |
+| `npm run preview` | Preview the production build locally |
+| `npm run lint` | Run ESLint with type-aware rules |
+| `npm run lint:fix` | Automatically fix supported lint issues |
+| `npm run format` | Format the codebase with Prettier |
 
-Users can then sign in immediately after sign-up without clicking a confirmation link.
+## Project structure
 
-### Auth routes
+```text
+.
+├── public/                 # Static assets
+├── src/
+│   ├── assets/             # Imported images and other bundled assets
+│   ├── components/         # Astro and React UI components
+│   ├── layouts/            # Shared page layouts
+│   ├── pages/              # Application routes
+│   │   └── api/            # Server API endpoints
+│   └── middleware.ts       # Authentication and route protection
+├── supabase/               # Local Supabase configuration and migrations
+├── .env.example            # Environment variable template
+└── wrangler.jsonc          # Cloudflare Workers configuration
+```
 
-| Route                 | Description                                                             |
-| --------------------- | ----------------------------------------------------------------------- |
-| `/auth/signin`        | Email/password sign-in form                                             |
-| `/auth/signup`        | Email/password sign-up form                                             |
-| `/auth/confirm-email` | Post-signup "check your inbox" page                                     |
-| `/dashboard`          | Example protected page (redirects to `/auth/signin` if unauthenticated) |
+## Authentication and data privacy
 
-Route protection is handled in `src/middleware.ts`. Add paths to the `PROTECTED_ROUTES` array there to require authentication.
+HomeKeep requires authentication. Every maintenance task belongs to one account, and signed-in users must only be able to read or modify their own records.
+
+Authentication routes:
+
+| Route | Purpose |
+| --- | --- |
+| `/auth/signin` | Sign in with email and password |
+| `/auth/signup` | Create an account |
+| `/auth/confirm-email` | Confirm that a verification email has been sent |
+| `/dashboard` | View and manage the signed-in user's maintenance tasks |
+
+Protected routes are enforced in `src/middleware.ts`. Database access rules should remain consistent with the same ownership boundary.
+
+### Email confirmation during local development
+
+Supabase may require email confirmation before a new account can sign in. To shorten the local feedback loop, disable **Confirm email** in Supabase Studio under **Authentication → Providers → Email**. Keep confirmation enabled in production unless the project has a deliberate alternative verification flow.
 
 ## Deployment
 
-This project deploys to [Cloudflare Workers](https://workers.cloudflare.com/).
+HomeKeep targets Cloudflare Workers.
 
-1. Build the project:
+1. Build and verify the application:
 
 ```bash
+npm run lint
 npm run build
 ```
 
-2. Deploy with Wrangler:
+2. Add `SUPABASE_URL` and `SUPABASE_KEY` to the Cloudflare project environment.
+
+3. Deploy with Wrangler:
 
 ```bash
 npx wrangler deploy
 ```
 
-Set `SUPABASE_URL` and `SUPABASE_KEY` as secrets in your Cloudflare dashboard or via `npx wrangler secret put`.
+Do not reuse local Supabase credentials in production. Configure the production site URL and allowed redirect URLs in Supabase Authentication settings before accepting users.
 
-## CI
+## Continuous integration
 
-GitHub Actions runs lint + build on every push and PR to `master`. Configure `SUPABASE_URL` and `SUPABASE_KEY` as repository secrets in GitHub for the build step.
+GitHub Actions runs linting and a production build on pushes and pull requests to `master`. Add `SUPABASE_URL` and `SUPABASE_KEY` as repository secrets so the build can validate environment-dependent code.
+
+## Contributing
+
+Before opening a pull request:
+
+```bash
+npm run format
+npm run lint
+npm run build
+```
+
+Keep changes within HomeKeep's focused product model: recurring maintenance tasks, clear due dates, and private user data. If a change expands the MVP scope, describe the user problem it solves and the added complexity in the pull request.
 
 ## License
 
-MIT
+This project is licensed under the MIT License.
