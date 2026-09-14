@@ -27,6 +27,6 @@ pnpm-debug.log*
 # jetbrains setting folder
 .idea/
 
-.claude/**/10x-*
-.github/**/10x-*
-.agents/**/10x-*
+# local AI/agent tooling
+.agents/
+.10x-cli.json
